@@ -5,58 +5,66 @@
     </head>
     <body>
         <h1>회원가입</h1>
-        <form action="ex02.html">
-            <dl>
-                <dt>아이디</dt>
-                <dd>
-                    <input type="text" name="userId">
-                </dd>
-            </dl>
-            <dl>
-                <dt>비밀번호</dt>
-                <dd>
-                    <input type="password" name="userPw">
-                </dd>
-            </dl>
-            <dl>
-                <dt>비밀번호 확인</dt>
-                <dd>
-                    <input type="password" name="confirmPw">
-                </dd>
-            </dl>
-            <dl>
-                <dt>회원명</dt>
-                <dd>
-                    <input type="text" name="userNm">
-                </dd>
-            </dl>
-            <dl>
-                <dt>취미</dt>
-                <dd>
-                    <label>
-                        <input type="checkbox" name="hobby">취미1
-                    </label>
-                    <label>
-                        <input type="checkbox" name="hobby">취미2
-                    </label>
-                    <label>
-                        <input type="checkbox" name="hobby">취미3
-                    </label>
-                </dd>
-            </dl>
-            <dl>
-                <dt>학년</dt>
-                <dd>
-                    <input type="radio" name="grade" id="grade1">
-                    <label for="grade1">1학년</label>
+        <form name="frm" method="post" action="ex02.html" autocomplete="off">
+            <fieldset>
+                <legend>일반 정보</legend>
+                <dl>
+                    <dt>아이디</dt>
+                    <dd>
+                        <input type="text" name="userId">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>비밀번호</dt>
+                    <dd>
+                        <input type="password" name="userPw">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>비밀번호 확인</dt>
+                    <dd>
+                        <input type="password" name="confirmPw">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>회원명</dt>
+                    <dd>
+                        <input type="text" name="userNm">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>취미</dt>
+                    <dd>
+                        <label>
+                            <input type="checkbox" name="hobby" value="취미1">취미1
+                        </label>
+                        <label>
+                            <input type="checkbox" name="hobby" value="취미2">취미2
+                        </label>
+                        <label>
+                            <input type="checkbox" name="hobby" value="취미3">취미3
+                        </label>
+                    </dd>
+                </dl>
+            </fieldset>
+            
+            <fieldset>
+                <legend>학교 정보</legend>
+                <dl>
+                    <dt>학년</dt>
+                    <dd>
+                        <input type="radio" name="grade" id="grade1" value="1">
+                        <label for="grade1">1학년</label>
 
-                    <input type="radio" name="grade" id="grade2">
-                    <label for="grade2">2학년</label>
+                        <input type="radio" name="grade" id="grade2" value="2">
+                        <label for="grade2">2학년</label>
 
-                    <input type="radio" name="grade" id="grade3">
-                    <label for="grade3">3학년</label>
-                </dd>
-            </dl>
+                        <input type="radio" name="grade" id="grade3" value="3">
+                        <label for="grade3">3학년</label>
+                    </dd>
+                </dl>
+            </fieldset>
+
             <!--
             <input type="reset" value="다시입력">
             <input type="submit" value="가입하기">
