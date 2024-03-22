@@ -2,9 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <h1>회원가입</h1>
+
+        <h1 style="color: orange;">회원가입</h1>
         <form name="frm" method="post" action="ex02.html" autocomplete="off">
             <input type="hidden" name="mode" value="join">
 
@@ -66,6 +68,23 @@
                         </label>
                     </dd>
                 </dl>
+                <dl>
+                    <dt>지역</dt>
+                    <dd>
+                        <datalist id="locations">
+                            <option value="서울특별시" label="서울"></option>
+                            <option value="경기도" label="경기"></option>
+                            <option value="인천광역시" label="인천"></option>
+                        </datalist>
+                        <input type="text" name="location" list="locations">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>자기소개</dt>
+                    <dd>
+                        <textarea name="introduction" rows="10" cols="30"></textarea>
+                    </dd>
+                </dl>
             </fieldset>
             
             <fieldset>
@@ -80,7 +99,7 @@
                             </optgroup>
                             
                             <optgroup label="인문대학">
-                                <option value="영어영문학과">영어영문학과</option>
+                                <option value="영어영문학과" selected>영어영문학과</option>
                                 <option value="철학과">철학과</option>
                             </optgroup>
                         </select>
@@ -110,5 +129,6 @@
             <button type="submit">가입하기</button>
         </form>
 
+        <progress max="100" value="70"></progress>
     </body>
 </html>
