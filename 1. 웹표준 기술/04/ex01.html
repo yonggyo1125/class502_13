@@ -6,30 +6,50 @@
     <body>
         <h1>회원가입</h1>
         <form name="frm" method="post" action="ex02.html" autocomplete="off">
+            <input type="hidden" name="mode" value="join">
+
             <fieldset>
                 <legend>일반 정보</legend>
                 <dl>
                     <dt>아이디</dt>
                     <dd>
-                        <input type="text" name="userId">
+                        <input type="text" name="userId" autofocus placeholder="아이디" required minlength="6">
                     </dd>
                 </dl>
                 <dl>
                     <dt>비밀번호</dt>
                     <dd>
-                        <input type="password" name="userPw">
+                        <input type="password" name="userPw" placeholder="비밀번호" required minlength="8">
                     </dd>
                 </dl>
                 <dl>
                     <dt>비밀번호 확인</dt>
                     <dd>
-                        <input type="password" name="confirmPw">
+                        <input type="password" name="confirmPw" placeholder="비밀번호 확인" required>
                     </dd>
                 </dl>
                 <dl>
                     <dt>회원명</dt>
                     <dd>
-                        <input type="text" name="userNm">
+                        <input type="text" name="userNm" value="사용자01" disabled>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>이메일</dt>
+                    <dd>
+                        <input type="email" name="email">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>생년월일</dt>
+                    <dd>
+                        <input type="date" name="birthDt">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>프로필 이미지</dt>
+                    <dd>
+                        <input type="file" name="profile" multiple>
                     </dd>
                 </dl>
                 <dl>
@@ -51,9 +71,26 @@
             <fieldset>
                 <legend>학교 정보</legend>
                 <dl>
+                    <dt>전공</dt>
+                    <dd>
+                        <select name="major">
+                            <optgroup label="공과대학">
+                                <option value="컴퓨터공학과">컴퓨터공학과</option>
+                                <option value="기계공학과">기계공학과</option>
+                            </optgroup>
+                            
+                            <optgroup label="인문대학">
+                                <option value="영어영문학과">영어영문학과</option>
+                                <option value="철학과">철학과</option>
+                            </optgroup>
+                        </select>
+                    </dd>
+                </dl>
+
+                <dl>
                     <dt>학년</dt>
                     <dd>
-                        <input type="radio" name="grade" id="grade1" value="1">
+                        <input type="radio" name="grade" id="grade1" value="1" checked>
                         <label for="grade1">1학년</label>
 
                         <input type="radio" name="grade" id="grade2" value="2">
