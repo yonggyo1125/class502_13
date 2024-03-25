@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            input[type="checkbox"]:checked + label {
+                background: gray;
+            }
+
+            input[type="text"]:focus {
+                background: yellow;
+            } 
+
+            .box {
+                width: 100px;
+                height: 100px;
+                background: orange; 
+                transition: all 1s;
+            }    
+
+            .box:hover {
+                width: 200px;
+                height: 200px;
+            }
+
+        </style>
+        <input type="checkbox" id="check">
+        <label for="check">클릭!</label>
+
+        <br>
+        <input type="text" id="text">
+
+        <br>
+        <div class="box"></div>
+    </body>
+</html>
