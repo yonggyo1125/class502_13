@@ -14,27 +14,51 @@
                 background: blue; 
             } */
 
+            /*
             ul li:nth-child(1), 
             ul li:nth-child(3), 
             ul li:nth-child(5),
             ul li:nth-child(7),
-            ul li:nth-child(9) {
+            ul li:nth-child(9),
+            ul li:nth-child(11) {
                 background: orange;
             }
+            */
+            /*
+            ul li:nth-child(2n+1) {
+                background: orange;
+            }
+            */
+            /*
+            ul li:nth-of-type(2n+1) {
+                background: orange;
+            }
+            */
+            /*
+            ul li:not(.menu5) {
+                background: orange;
+            }
+            */
+            ul::before {
+                content: 'Before';
+            }
 
-           
+            ul::after {
+                content: 'After';
+            }
         </style>
         <ul>
             <li>메뉴1</li>
             <li>메뉴2</li>
             <li>메뉴3</li>
             <li>메뉴4</li>
-            <li>메뉴5</li>
+            <li class="menu5">메뉴5</li>
             <li>메뉴6</li>
             <li>메뉴7</li>
             <li>메뉴8</li>
             <li>메뉴9</li>
             <li>메뉴10</li>
+            <li>메뉴11</li>
         </ul>
     </body>
 </html>
