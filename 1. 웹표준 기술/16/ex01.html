@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            ul li:nth-of-type(1) {
+                background: red;
+            }
+
+            ul li:nth-of-type(2) {
+                background: green;
+            }
+
+            ul li:nth-of-type(3) {
+                background: blue;
+            }
+
+            .flex1 {
+                display: flex;
+            }
+            
+            .flex1 li:nth-of-type(1) {
+                order: 2;
+            }
+
+            .flex1 li:nth-of-type(2) {
+                order: 1;
+            }
+
+            .flex1 li:nth-of-type(3) {
+                order: 3;
+            }
+
+            .flex2 {
+                display: flex;
+                flex-direction: row-reverse; /* 우 -> 좌 */
+            }
+
+            .flex3 {
+                display: flex;
+                flex-direction: column-reverse; /* 하단 -> 상단 */
+            }
+        </style>
+        <ul class="flex1">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+
+        <ul class="flex2">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+
+        <ul class="flex3">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+    </body>
+</html>

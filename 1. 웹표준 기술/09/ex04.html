@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            .box {
+                width: 300px;
+                height: 300px;
+                position: absolute;
+            }
+            .box1 {
+                background: red;
+                z-index: 2;
+                margin: 50px;
+            }
+
+            .box2 {
+                background: green;
+                z-index: 3;
+                margin: 100px;
+            }
+
+            .box3 {
+                background: blue;
+                z-index: 0;
+                margin: 150px;
+            }
+        </style>
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+    </body>
+</html>
