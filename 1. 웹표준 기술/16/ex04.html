@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+             ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                border: 1px solid #000;
+                height: 200px;
+                display: flex;
+            }
+
+            ul li:nth-of-type(3n+1) {
+                background: orange;
+            }
+
+            ul li:nth-of-type(3n+2) {
+                background: green;
+            }
+
+            ul li:nth-of-type(3n) {
+                background: blue;
+            }
+
+            .flex1 {
+                justify-content: flex-start;
+            }
+
+            .flex2 {
+                justify-content: flex-end;
+            }
+
+            .flex3 {
+                justify-content: center;
+            }
+
+            .flex4 {
+                justify-content: space-between;
+            }
+
+            .flex5 {
+                justify-content: space-around;
+            }
+
+            .flex6 {
+                justify-content: space-evenly;
+            }
+        </style>
+        <h1>flex-start</h1>
+        <ul class="flex1">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+
+        <h1>flex-end</h1>
+        <ul class="flex2">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+
+        <h1>center</h1>
+        <ul class="flex3">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+
+        <h1>space-between</h1>
+        <ul class="flex4">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+
+        <h1>space-around</h1>
+        <ul class="flex5">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+
+        <h1>space-evenly</h1>
+        <ul class="flex6">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+    </body>
+</html>
