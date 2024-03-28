@@ -5,13 +5,19 @@
     </head>
     <body>
         <style>
-             ul {
+            ul {
                 list-style: none;
                 margin: 0;
                 padding: 0;
                 border: 1px solid #000;
                 height: 200px;
                 display: flex;
+                flex-wrap: wrap;
+                align-content: space-evenly;
+            }
+
+            ul li {
+                width: 300px;
             }
 
             ul li:nth-of-type(3n+1) {
@@ -25,51 +31,20 @@
             ul li:nth-of-type(3n) {
                 background: blue;
             }
-
-            .flex1 {
-                align-items: stretch;
-            }
-
-            .flex1 li:nth-of-type(3) {
-                align-self: center;
-            }
-
-            .flex2 {
-                align-items: flex-start;
-            }
-
-            .flex3 {
-                align-items: flex-end;
-            }
-
-            .flex4 {
-                align-items: center;
-            }
         </style>
-        
-        <h1>stretch</h1>
-        <ul class="flex1">
+        <ul>
             <li>메뉴1</li>
             <li>메뉴2</li>
             <li>메뉴3</li>
-        </ul>
-
-        <h1>flex-start</h1>
-        <ul class="flex2">
             <li>메뉴1</li>
             <li>메뉴2</li>
             <li>메뉴3</li>
-        </ul>
-
-        <h1>flex-end</h1>
-        <ul class="flex3">
             <li>메뉴1</li>
             <li>메뉴2</li>
             <li>메뉴3</li>
-        </ul>
-
-        <h1>center</h1>
-        <ul class="flex4">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
             <li>메뉴1</li>
             <li>메뉴2</li>
             <li>메뉴3</li>
