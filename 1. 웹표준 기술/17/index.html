@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            input[type='checkbox'] { 
+                display: none; 
+            }
+            input[type='checkbox']+label {
+                padding-left: 35px;
+                background:url('images/chk.png') no-repeat left center;
+                background-size: 25px;
+                display: inline-block;
+                height: 35px;
+                line-height: 35px;
+            }
+
+            input[type='checkbox']:checked+label {
+                background:url('images/chk_on.png') no-repeat left center;
+                background-size: 25px;
+            }
+        </style>
+        <input type="checkbox" id="checkbox">
+        <label for="checkbox">로그인 유지</label>
+    </body>
+</html>
