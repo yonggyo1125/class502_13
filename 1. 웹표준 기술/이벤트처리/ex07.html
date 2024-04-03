@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <style>
+            .box {
+                width: 150px;
+                height: 150px;
+                background: orange;
+            }
+
+            .box.on {
+                width: 300px;
+                height: 300px;
+            }
+        </style>
+        <script>
+            window.addEventListener("DOMContentLoaded", function() {
+                const boxEl = document.querySelector(".box");
+                boxEl.addEventListener("mouseenter", function() {
+                    this.classList.add("on");
+                });
+
+                boxEl.addEventListener("mouseleave", function() {
+                    this.classList.remove("on");
+                });
+
+                const textEl = document.getElementById("text");
+                textEl.addEventListener("keyup", function(e) {
+                    console.log(e);
+                    console.log("keyup", this.value);
+                });
+            });
+        </script>
+        <div class="box"></div>
+        <input type="text" id="text">
+    </body>
+</html>
