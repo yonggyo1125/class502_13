@@ -1,5 +1,5 @@
 //import MyComponent from './components/MyComponent2';
-import Counter from './components/Couter';
+import Counter from './components/Counter2';
 
 const App = () => {
   return <Counter />;
