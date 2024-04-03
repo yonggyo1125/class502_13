@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-const Counter = () => {
+const Counter = (props) => {
+    
   let num = 10;
   console.log('렌더링!', 'num', num);
 

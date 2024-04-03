@@ -1,8 +1,13 @@
 //import MyComponent from './components/MyComponent2';
-import Counter from './components/Counter2';
+//import Counter from './components/Counter';
+import Profile from './components/Profile';
 
 const App = () => {
-  return <Counter />;
+  return <Profile />;
+  /*
+  let num = 15;
+  return <Counter num={num} />;
+  */
   /*
   return (
     <MyComponent name={15}>
