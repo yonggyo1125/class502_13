@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            window.addEventListener("DOMContentLoaded", function() {
+                const linkEl = document.getElementById("link");
+                linkEl.addEventListener("click", function(e) {
+                    e.preventDefault(); // 기본 동작 취소 
+                    console.log("클릭!");
+                });
+            });
+        </script>
+        <a href="https://www.naver.com" id="link">네이버</a>
+    </body>
+</html>

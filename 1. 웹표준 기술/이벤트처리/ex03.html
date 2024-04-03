@@ -33,9 +33,10 @@
 
                 box2.addEventListener("click", function() {
                     console.log("BOX2");
-                }, true);
+                });
 
-                box3.addEventListener("click", function() {
+                box3.addEventListener("click", function(e) {
+                    e.stopPropagation(); // 이벤트 전파 취소
                     console.log("BOX3");
                 });
             });
