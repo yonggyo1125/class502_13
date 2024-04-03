@@ -10,9 +10,24 @@
                 linkEl.addEventListener("click", function(e) {
                     e.preventDefault(); // 기본 동작 취소 
                     console.log("클릭!");
+                    console.log('this', this);
+                    this.style="background: orange;";
+                });
+
+                const divEl = document.getElementById("div");
+                divEl.addEventListener("click", (e) => {
+                    console.log("e.target", e.target);
+                    console.log("e.currentTarget", e.currentTarget);
+                    console.log("this", this); // e.currentTarget
                 });
             });
         </script>
         <a href="https://www.naver.com" id="link">네이버</a>
+
+        <br>
+
+        <div id="div">
+            <span>클릭!</span>
+        </div>
     </body>
 </html>
