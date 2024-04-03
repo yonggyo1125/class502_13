@@ -1,6 +1,16 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class MyComponent extends Component {
+  static defaultProps = {
+    name: '기본 이름',
+  };
+
+  static propTypes = {
+    name: PropTypes.string,
+    num: PropTypes.number.isRequired,
+  };
+
   render() {
     const { name, num, children } = this.props;
 
@@ -13,9 +23,5 @@ class MyComponent extends Component {
     );
   }
 }
-
-MyComponent.defaultProps = {
-  name: '기본이름',
-};
 
 export default MyComponent;
