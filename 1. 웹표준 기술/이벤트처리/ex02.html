@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            window.addEventListener("DOMContentLoaded", function() {
+                const buttonEl = document.getElementById("button");
+                buttonEl.addEventListener("click", function() {
+                    alert("클릭1");
+                });
+
+                buttonEl.addEventListener("click", function() {
+                    alert("클릭2");
+                });
+            });
+        </script>
+        <button type="button" id="button">클릭!</button>
+    </body>
+</html>

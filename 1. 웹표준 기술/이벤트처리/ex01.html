@@ -5,13 +5,32 @@
     </head>
     <body>
         <script>
+            window.onload = function() {
+                const buttonEl = document.getElementById("button");
+                buttonEl.onclick = function() {
+                    alert("클릭1");
+                };
+
+            };
+            /*
             window.addEventListener("DOMContentLoaded", function() {
                 const buttonEl = document.getElementById("button");
                 buttonEl.onclick = function() {
                     alert("클릭1");
                 };
+
+                buttonEl.onclick = function() {
+                    alert("클릭2");
+                };
             });
+            */
         </script>
         <button type="button" id="button">클릭</button>
+
+        <script>
+            window.onload = function() {
+                console.log("다른 로직...");
+            };
+        </script>
     </body>
 </html>
