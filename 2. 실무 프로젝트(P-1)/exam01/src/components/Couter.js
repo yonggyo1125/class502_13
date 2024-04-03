@@ -1,9 +1,15 @@
 import { useState } from 'react';
 
 const Counter = () => {
+  let num = 10;
+  console.log('렌더링!', 'num', num);
+
   const [number, setNumber] = useState(0);
 
-  const plus = () => setNumber(number + 1);
+  const plus = () => {
+    num++;
+    setNumber(number + 1);
+  };
   const minus = () => setNumber(number - 1);
 
   return (
