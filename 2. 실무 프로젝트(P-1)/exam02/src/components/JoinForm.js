@@ -1,7 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const JoinForm = () => {
   const [form, setForm] = useState({});
+
+  let userIdEl;
+
+  useEffect(() => {
+    console.log(userIdEl);
+  }, [userIdEl]);
 
   const onChange = (e) => {
     //setForm({ ...form, [e.currentTarget.name]: e.currentTarget.value });
@@ -15,6 +21,7 @@ const JoinForm = () => {
     // 처리 완료
 
     // 양식 값을 비워주기
+
     setForm({});
   };
 
@@ -27,7 +34,8 @@ const JoinForm = () => {
             type="text"
             name="userId"
             onChange={onChange}
-            value={form.userId}
+            value={form.userId ?? ''}
+            ref={(ref) => (userIdEl = ref)}
           />
         </dd>
       </dl>
@@ -38,7 +46,7 @@ const JoinForm = () => {
             type="password"
             name="userPw"
             onChange={onChange}
-            value={form.userPw}
+            value={form.userPw ?? ''}
           />
         </dd>
       </dl>
@@ -49,7 +57,7 @@ const JoinForm = () => {
             type="password"
             name="confirmPw"
             onChange={onChange}
-            value={form.confirmPw}
+            value={form.confirmPw ?? ''}
           />
         </dd>
       </dl>
@@ -60,7 +68,7 @@ const JoinForm = () => {
             type="text"
             name="userNm"
             onChange={onChange}
-            value={form.userNm}
+            value={form.userNm ?? ''}
           />
         </dd>
       </dl>
