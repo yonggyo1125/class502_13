@@ -22,16 +22,30 @@ class Color extends Component {
         <div
           style={{ background: color, width: '100px', height: '100px' }}
         ></div>
-        <button type="button" onClick={() => changeColor('red')}>
+        <button
+          type="button"
+          onClick={() => changeColor('red')}
+          onContextMenu={() => changeSubColor('red')}
+        >
           RED
         </button>
-        <button type="button" onClick={() => changeColor('orange')}>
+        <button
+          type="button"
+          onClick={() => changeColor('orange')}
+          onContextMenu={() => changeSubColor('orange')}
+        >
           ORANGE
         </button>
-        <button type="button" onClick={() => changeColor('green')}>
+        <button
+          type="button"
+          onClick={() => changeColor('green')}
+          onContextMenu={() => changeSubColor('green')}
+        >
           GREEN
         </button>
-        <div style={{ background: subColor }}
+        <div
+          style={{ background: subColor, width: '50px', height: '50px' }}
+        ></div>
       </>
     );
   }
