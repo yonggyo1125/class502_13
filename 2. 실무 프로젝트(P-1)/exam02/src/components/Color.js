@@ -5,6 +5,8 @@ class Color extends Component {
     color: 'blue',
   };
 
+  
+
   render() {
     const { color } = this.state;
     return (
@@ -19,3 +21,5 @@ class Color extends Component {
     );
   }
 }
+
+export default Color;
