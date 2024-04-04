@@ -3,20 +3,35 @@ import { Component } from 'react';
 class Color extends Component {
   state = {
     color: 'blue',
+    subColor: 'black',
   };
 
-  
-
   render() {
-    const { color } = this.state;
+    /*
+    function changeColor(color) {
+      console.log(this);
+    }
+    */
+    const changeColor = (color) => this.setState({ color }); // Color
+    const changeSubColor = (color) =>
+      this.setState((prevState) => ({ ...prevState, subColor: color }));
+
+    const { color, subColor } = this.state;
     return (
       <>
         <div
           style={{ background: color, width: '100px', height: '100px' }}
         ></div>
-        <button type="button">RED</button>
-        <button type="button">ORANGE</button>
-        <button type="button">GREEN</button>
+        <button type="button" onClick={() => changeColor('red')}>
+          RED
+        </button>
+        <button type="button" onClick={() => changeColor('orange')}>
+          ORANGE
+        </button>
+        <button type="button" onClick={() => changeColor('green')}>
+          GREEN
+        </button>
+        <div style={{ background: subColor }}
       </>
     );
   }
