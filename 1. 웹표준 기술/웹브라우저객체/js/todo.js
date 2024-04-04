@@ -5,6 +5,12 @@ const todo = {
    */
   add() {
     const subject = frmRegist.subject.value;
+
+    if (!subject.trim()) { // 좌우 공백 제거
+      alert("할일을 입력하세요.");
+      return;
+    }
+
     const liEl = document.createElement("li");
     liEl.appendChild(document.createTextNode(subject));
 
