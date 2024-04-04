@@ -1,7 +1,7 @@
-import JoinForm from './components/JoinForm';
+import Todos from './components/Todos';
 
 const App = () => {
-  return <JoinForm onClick={() => console.log('클릭!')} />;
+  return <Todos />;
 };
 
 export default App;
