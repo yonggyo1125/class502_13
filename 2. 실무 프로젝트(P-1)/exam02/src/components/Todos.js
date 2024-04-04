@@ -10,8 +10,6 @@ const items = [
 ];
 
 const Todos = () => {
-  //const listItems = items.map((item) => <li>{item.title}</li>);
-
   return (
     <ul>
       {items.map(({ id, title, done }) => (
