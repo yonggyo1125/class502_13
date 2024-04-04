@@ -4,44 +4,64 @@ const JoinForm = () => {
   const [form, setForm] = useState({});
 
   const onChange = (e) => {
-    //form[e.currentTarget.name] = e.currentTarget.value;
-
     //setForm({ ...form, [e.currentTarget.name]: e.currentTarget.value });
-    setForm((prevForm) => ({
-      ...prevForm,
-      [e.currentTarget.name]: e.currentTarget.value,
-    }));
+    const name = e.currentTarget.name;
+    const value = e.currentTarget.value;
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+    // 처리 완료
+
+    // 양식 값을 비워주기
+    setForm({});
   };
 
   return (
     <form onSubmit={onSubmit}>
       <dl>
-        <dt>아이디({form.userId})</dt>
+        <dt>아이디</dt>
         <dd>
-          <input type="text" name="userId" onChange={onChange} />
+          <input
+            type="text"
+            name="userId"
+            onChange={onChange}
+            value={form.userId}
+          />
         </dd>
       </dl>
       <dl>
         <dt>비밀번호</dt>
         <dd>
-          <input type="password" name="userPw" onChange={onChange} />
+          <input
+            type="password"
+            name="userPw"
+            onChange={onChange}
+            value={form.userPw}
+          />
         </dd>
       </dl>
       <dl>
         <dt>비밀번호 확인</dt>
         <dd>
-          <input type="password" name="confirmPw" onChange={onChange} />
+          <input
+            type="password"
+            name="confirmPw"
+            onChange={onChange}
+            value={form.confirmPw}
+          />
         </dd>
       </dl>
       <dl>
         <dt>회원명</dt>
         <dd>
-          <input type="text" name="userNm" onChange={onChange} />
+          <input
+            type="text"
+            name="userNm"
+            onChange={onChange}
+            value={form.userNm}
+          />
         </dd>
       </dl>
       <button type="submit">가입하기</button>
