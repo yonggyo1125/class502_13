@@ -1,12 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const JoinForm = () => {
   const [form, setForm] = useState({});
 
-  let userIdEl;
+  let userIdEl = useRef();
+  //let userIdEl;
 
   useEffect(() => {
-    console.log(userIdEl);
+    //userIdEl.focus();
+    //console.log(userIdEl.current);
+    //userIdEl.current.focus();
+    console.log(userIdEl.current);
   }, [userIdEl]);
 
   const onChange = (e) => {
@@ -35,7 +39,8 @@ const JoinForm = () => {
             name="userId"
             onChange={onChange}
             value={form.userId ?? ''}
-            ref={(ref) => (userIdEl = ref)}
+            //ref={(ref) => (userIdEl = ref)}
+            ref={userIdEl}
           />
         </dd>
       </dl>

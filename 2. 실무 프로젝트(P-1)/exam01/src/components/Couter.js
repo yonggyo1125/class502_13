@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
-const Counter = (props) => {
-    
-  let num = 10;
+const Counter = () => {
+  let num = useRef(10);
+
   console.log('렌더링!', 'num', num);
 
   const [number, setNumber] = useState(0);
 
   const plus = () => {
-    num++;
+    num.current++; // 11
     setNumber(number + 1);
   };
   const minus = () => setNumber(number - 1);
