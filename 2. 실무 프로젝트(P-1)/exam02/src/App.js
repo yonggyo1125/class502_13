@@ -1,7 +1,7 @@
-import Color from './components/Color';
+import JoinForm from './components/JoinForm';
 
 const App = () => {
-  return <Color />;
+  return <JoinForm />;
 };
 
 export default App;

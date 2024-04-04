@@ -1,10 +1,17 @@
+import { useState } from 'react';
+
 const JoinForm = () => {
+  const [userId, setUserId] = useState('');
+  const [userPw, setUserPw] = useState('');
+
+  const onUserIdChange = (e) => setUserId(e.currentTarget.value);
+
   return (
     <form>
       <dl>
         <dt>아이디</dt>
         <dd>
-          <input type="text" />
+          <input type="text" onChange={onUserIdChange} />
         </dd>
       </dl>
       <dl>
