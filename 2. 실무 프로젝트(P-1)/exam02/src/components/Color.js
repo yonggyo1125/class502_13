@@ -7,6 +7,7 @@ class Color extends Component {
   };
 
   render() {
+    // this -> Color로 생성된 객체의 주소 
     /*
     function changeColor(color) {
       console.log(this);
