@@ -14,8 +14,11 @@ const Todos = () => {
 
   return (
     <ul>
-      {items.map(({ id, title }) => (
-        <li key={id}>{title}</li>
+      {items.map(({ id, title, done }) => (
+        <li key={id}>
+          {done ? <MdOutlineCheckBox /> : <MdOutlineCheckBoxOutlineBlank />}
+          {title}
+        </li>
       ))}
     </ul>
   );
