@@ -14,12 +14,15 @@ const todo = {
 
     const itemsEl = document.querySelector(".items");
     itemsEl.appendChild(liEl);
+
+    // 스케줄 삭제
+    buttonEl.addEventListener("click", function () {
+      itemsEl.removeChild(liEl);
+    });
+
+    frmRegist.subject.value = "";
+    frmRegist.subject.focus();
   },
-  /**
-   * 스케줄 삭제
-   *
-   */
-  remove() {},
 };
 
 window.addEventListener("DOMContentLoaded", function () {
