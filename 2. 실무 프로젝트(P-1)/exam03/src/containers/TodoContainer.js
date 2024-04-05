@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import AddTodo from '../components/AddTodo';
 import TodoList from '../components/TodoList';
 
@@ -10,10 +10,33 @@ const intialValue = [
 
 const TodoContainer = () => {
   const [items, setItems] = useState(intialValue);
+  const [todo, setTodo] = useState('');
+
+  let id = useRef(4); // 할일 id
+
+  // 할일 등록 처리
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const newItems = items.concat({
+      id: id.current,
+      title: todo,
+      done: false,
+    });
+
+    setItems(newItems);
+
+    id.current++;
+
+    setTodo('');
+  };
+
+  // 할일 입력시 todo 상태값 변경
+  const onChange = (e) => setTodo(e.currentTarget.value.trim());
 
   return (
     <>
-      <AddTodo />
+      <AddTodo onSubmit={onSubmit} onChange={onChange} todo={todo} />
       <TodoList items={items} />
     </>
   );
