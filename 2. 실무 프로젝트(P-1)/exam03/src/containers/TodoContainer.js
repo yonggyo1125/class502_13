@@ -11,12 +11,18 @@ const intialValue = [
 const TodoContainer = () => {
   const [items, setItems] = useState(intialValue);
   const [todo, setTodo] = useState('');
+  const [message, setMessage] = useState('');
 
   let id = useRef(4); // 할일 id
 
   // 할일 등록 처리
   const onSubmit = (e) => {
     e.preventDefault();
+
+    if (!todo.trim()) {
+      setMessage('할일을 입력하세요.');
+      return;
+    }
 
     const newItems = items.concat({
       id: id.current,
@@ -29,6 +35,7 @@ const TodoContainer = () => {
     id.current++;
 
     setTodo('');
+    setMessage('');
   };
 
   // 할일 입력시 todo 상태값 변경
@@ -40,6 +47,7 @@ const TodoContainer = () => {
         onSubmit={onSubmit}
         onChange={onChange}
         todo={todo}
+        message={message}
       />
       <TodoList items={items} />
     </>
