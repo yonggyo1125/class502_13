@@ -17,8 +17,22 @@ class LifeCycle extends Component {
     return null;
   }
 
+  shouldComponentUpdate(props, state) {
+    console.log('shouldComponentUpdate');
+
+    return true;
+  }
+
   componentDidMount() {
     console.log('componentDidMount');
+  }
+
+  getSnapshotBeforeUpdate(props, state) {
+    console.log('getSnapshotBeforeUpdate');
+  }
+
+  componentDidUpdate(props, state, snapshot) {
+    console.log('componentDidUpdate');
   }
 
   render() {
