@@ -8,6 +8,8 @@ const intialValue = [
   { id: 3, title: '할일3', done: false },
 ];
 
+let submitFunc;
+
 const TodoContainer = () => {
   const [items, setItems] = useState(intialValue);
   const [todo, setTodo] = useState('');
@@ -37,6 +39,9 @@ const TodoContainer = () => {
     setTodo('');
     setMessage('');
   };
+
+  console.log('같은 함수 : ? ', submitFunc === onSubmit);
+  submitFunc = onSubmit;
 
   // 할일 입력시 todo 상태값 변경
   const onChange = (e) => setTodo(e.currentTarget.value);
