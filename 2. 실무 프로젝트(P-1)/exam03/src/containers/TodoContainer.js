@@ -50,7 +50,10 @@ const TodoContainer = () => {
   };
 
   // 할일 목록 제거
-  const onRemove = (id) => {};
+  const onRemove = (id) => {
+    const newItems = items.filter((item) => item.id !== id);
+    setItems(newItems);
+  };
 
   return (
     <>
