@@ -1,12 +1,12 @@
 import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
 import { FaRegTrashCan } from 'react-icons/fa6';
 
-const TodoList = ({ items }) => {
+const TodoList = ({ items, onToggle }) => {
   return (
     <ul>
       {items.map(({ id, title, done }) => (
         <li key={id}>
-          <span>
+          <span onClick={() => onToggle(id)}>
             {done ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
             {title}
           </span>

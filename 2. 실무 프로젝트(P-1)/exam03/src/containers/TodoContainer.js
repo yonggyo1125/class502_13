@@ -41,6 +41,17 @@ const TodoContainer = () => {
   // 할일 입력시 todo 상태값 변경
   const onChange = (e) => setTodo(e.currentTarget.value);
 
+  // 할일 목록 완료 여부 토글(true -> false, false -> true)
+  const onToggle = (id) => {
+    const newItems = items.map((item) =>
+      item.id === id ? { ...item, done: !item.done } : item,
+    );
+    setItems(newItems);
+  };
+
+  // 할일 목록 제거
+  const onRemove = (id) => {};
+
   return (
     <>
       <AddTodo
@@ -49,7 +60,7 @@ const TodoContainer = () => {
         todo={todo}
         message={message}
       />
-      <TodoList items={items} />
+      <TodoList items={items} onToggle={onToggle} onRemove={onRemove} />
     </>
   );
 };
