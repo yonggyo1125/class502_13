@@ -58,13 +58,15 @@ class LifeCycle extends Component {
     const { number } = this.state;
     try {
       number.abc();
-      
     } catch (err) {
       console.log(err.message);
       console.error(err);
       console.log('에러 처리....');
+    } finally {
+      console.log('무조건 실행!');
     }
-    //throw new Error('에러 발생!!!!!');
+
+    throw new Error('에러 발생!!!!!');
 
     console.log('실행!');
     return (
