@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   MdOutlineCheckBox,
   MdOutlineCheckBoxOutlineBlank,
@@ -10,10 +11,14 @@ const items = [
 ];
 
 const Todos = () => {
+  const onToggle = (id) => {
+
+  };
+
   return (
     <ul>
       {items.map(({ id, title, done }) => (
-        <li key={id}>
+        <li key={id} onClick={() => onToggle(id)}>
           {done ? <MdOutlineCheckBox /> : <MdOutlineCheckBoxOutlineBlank />}
           {title}
         </li>
