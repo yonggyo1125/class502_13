@@ -55,6 +55,7 @@ class LifeCycle extends Component {
   render() {
     console.log('render');
     const { number } = this.state;
+    number.abc();
     return (
       <>
         <h1>{number}</h1>
