@@ -67,15 +67,18 @@ const TodoContainer = () => {
   }, []);
 
   // 할일 목록 제거
-  const onRemove = useCallback((id) => {
-    /*
+  const onRemove = useCallback(
+    (id) => {
+      /*
       const newItems = items.filter((item) => item.id !== id);
       setItems(newItems);
       */
-    setItems((prevItems) => {
-      return prevItems.filter((item) => item.id !== id);
-    });
-  }, []);
+      setItems((prevItems) => {
+        return prevItems.filter(item => item.id !== id)
+      });
+    },
+    [],
+  );
 
   return (
     <>
