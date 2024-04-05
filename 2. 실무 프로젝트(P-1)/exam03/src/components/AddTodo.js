@@ -1,5 +1,14 @@
+import { MdOutlineAdd } from 'react-icons/md';
+
 const AddTodo = () => {
-  return <h1>할일 등록</h1>;
+  return (
+    <form autoComplete="off">
+      <input type="text" />
+      <button type="submit">
+        <MdOutlineAdd />
+      </button>
+    </form>
+  );
 };
 
 export default AddTodo;
