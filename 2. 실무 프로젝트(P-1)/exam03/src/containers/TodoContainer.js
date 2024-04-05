@@ -20,7 +20,7 @@ const TodoContainer = () => {
 
     const newItems = items.concat({
       id: id.current,
-      title: todo,
+      title: todo.trim(),
       done: false,
     });
 
@@ -32,7 +32,7 @@ const TodoContainer = () => {
   };
 
   // 할일 입력시 todo 상태값 변경
-  const onChange = (e) => setTodo(e.currentTarget.value.trim());
+  const onChange = (e) => setTodo(e.currentTarget.value);
 
   return (
     <>
