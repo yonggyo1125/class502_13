@@ -1,5 +1,6 @@
-import AddTodo from "../components/AddTodo";
-import TodoList from "../components/TodoList";
+import { useReducer } from "react";
+import AddTodo from "../components/AddTodo2";
+import TodoList from "../components/TodoList2";
 
 
 const intialValue = [
@@ -13,10 +14,14 @@ function reducer(state, action) { // state : 현재 상태값, action - 액션 �
 }
 
 const TodoContainer2 = () => {
+
+    // state - 현재 상태값, dispatch - 액션 발생 함수
+    const [state, dispatch] = useReducer(reducer, intialValue);
+
     return (
         <>
-            <AddTodo />
-            <TodoList />
+            <AddTodo state={state} dispatch={dispatch} />
+            <TodoList state={state} dispatch={dispatch} />
         </>
     );
 };
