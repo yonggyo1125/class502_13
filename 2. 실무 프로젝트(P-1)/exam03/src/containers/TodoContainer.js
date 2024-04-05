@@ -36,7 +36,11 @@ const TodoContainer = () => {
 
   return (
     <>
-      <AddTodo onSubmit={onSubmit} onChange={onChange} todo={todo} />
+      <AddTodo
+        onSubmit={onSubmit}
+        onChange={onChange}
+        todo={todo}
+      />
       <TodoList items={items} />
     </>
   );
