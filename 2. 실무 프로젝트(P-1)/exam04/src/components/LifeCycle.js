@@ -13,14 +13,24 @@ class LifeCycle extends Component {
 
   static getDerivedStateFromProps(prevProps, prevState) {
     console.log('getDerivedStateFromProps');
-
+    if (prevProps.mode === 'even' && prevState.number % 2 === 1) {
+      return { number: prevState.number + 1 };
+    }
+    
     return null;
   }
 
   shouldComponentUpdate(props, state) {
-    console.log('shouldComponentUpdate');
+    //return state.number % 3 !== 0;
+    return true;
+    /*
+    if (state.number % 3 === 0) {
+      
+      return false;
+    }
 
     return true;
+    */
   }
 
   componentDidMount() {
@@ -29,10 +39,13 @@ class LifeCycle extends Component {
 
   getSnapshotBeforeUpdate(props, state) {
     console.log('getSnapshotBeforeUpdate');
+
+    return { value: 100 };
   }
 
   componentDidUpdate(props, state, snapshot) {
     console.log('componentDidUpdate');
+    console.log('snapshot', snapshot);
   }
 
   render() {
