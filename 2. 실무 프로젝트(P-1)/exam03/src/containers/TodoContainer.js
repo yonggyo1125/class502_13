@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import AddTodo from '../components/AddTodo';
 import TodoList from '../components/TodoList';
+import { produce } from 'immer';
 
 const intialValue = [
   { id: 1, title: '할일1', done: true },
@@ -26,6 +27,7 @@ const TodoContainer = () => {
         return;
       }
 
+      /*
       setItems((prevItems) => {
         return prevItems.concat({
           id: id.current,
@@ -33,6 +35,16 @@ const TodoContainer = () => {
           done: false,
         });
       });
+      */
+      setItems(
+        produce((draft) => {
+          draft.push({
+            id: id.current,
+            title: todo.trim(),
+            done: false,
+          });
+        }),
+      );
 
       id.current++;
 
@@ -53,9 +65,16 @@ const TodoContainer = () => {
       );
       setItems(newItems);
       */
+    /*
     setItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id ? { ...item, done: !item.done } : item,
+      ),
+    );
+    */
+    setItems(
+      produce((draft) =>
+        draft.forEach((item) => item.id === id && (`item.done = !item.done`)),
       ),
     );
   }, []);

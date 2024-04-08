@@ -1,4 +1,4 @@
-import TodoContainer from './containers/TodoContainer2';
+import TodoContainer from './containers/TodoContainer';
 
 const App = () => {
   return <TodoContainer />;
