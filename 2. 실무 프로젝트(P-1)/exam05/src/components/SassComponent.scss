@@ -1,0 +1,9 @@
+$gray: #555;
+
+.SassComponent {
+    .box {
+        width: 100px;
+        height: 100px;
+        background: $gray;
+    }
+}
