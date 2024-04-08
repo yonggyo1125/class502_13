@@ -8,8 +8,21 @@ const intialValue = [
   { id: 3, title: '할일3', done: false },
 ];
 
-function reducer(state, action) {
-  return state;
+function reducer(items, action) {
+  switch (action.type) {
+    case 'ADD':
+      return items.concat(action.todo);
+
+    case 'TOGGLE':
+      return items.map((item) =>
+        item.id === action.id ? { ...item, done: !item.id } : item,
+      );
+
+    case 'REMOVE':
+      return items.filter((item) => item.id !== action.id);
+  }
+
+  return items;
 }
 
 const TodoContainer = () => {
