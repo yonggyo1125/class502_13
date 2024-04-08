@@ -74,7 +74,7 @@ const TodoContainer = () => {
     */
     setItems(
       produce((draft) =>
-        draft.forEach((item) => item.id === id && (`item.done = !item.done`)),
+        draft.forEach((item) => item.id === id && (item.done = !item.done)),
       ),
     );
   }, []);
