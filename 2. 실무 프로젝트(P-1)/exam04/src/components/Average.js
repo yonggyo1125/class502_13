@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 function getAverage(nums) {
   // 합계 / 갯수
 
@@ -14,7 +16,21 @@ function getAverage(nums) {
 }
 
 const Average = () => {
+  const [nums, setNums] = useState([]);
 
+  return (
+    <>
+      <form autoComplete="off">
+        <input type="number" />
+        <button type="submit">등록</button>
+      </form>
+      <ul>
+        {
+            
+        }
+      </ul>
+    </>
+  );
 };
 
-
+export default Average;
