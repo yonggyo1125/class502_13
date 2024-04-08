@@ -1,4 +1,7 @@
 const todo = {
+  id: 1,
+  data: [], // 스케줄 데이터
+
   /**
    * 스케줄 추가
    *
@@ -6,7 +9,8 @@ const todo = {
   add() {
     const subject = frmRegist.subject.value;
 
-    if (!subject.trim()) { // 좌우 공백 제거
+    if (!subject.trim()) {
+      // 좌우 공백 제거
       alert("할일을 입력하세요.");
       return;
     }
@@ -28,6 +32,16 @@ const todo = {
 
     frmRegist.subject.value = "";
     frmRegist.subject.focus();
+
+    this.data.push({
+      id: this.id++,
+      title: subject,
+    });
+
+    this.save();
+  },
+  save() {
+    localStorage.setItem("todos", JSON.stringify(this.data));
   },
 };
 
