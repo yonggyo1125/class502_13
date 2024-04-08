@@ -5,9 +5,13 @@ const todo = {
     // 저장 값 조회 -> 스케줄 완성
     const jsonData = localStorage.getItem("todos");
     const todos = jsonData ? JSON.parse(jsonData) : [];
-    
-    for (const item of todos) { // Symbol.iterator / 반복자 패턴 / 반복이 필요한 객체 
 
+    const itemsEl = document.querySelector(".items");
+
+    for (const item of todos) {
+      // Symbol.iterator / 반복자 패턴 / 반복이 필요한 객체
+      const liEl = this.getItem(item.title);
+      itemsEl.appendChild(liEl);
     }
   },
   /**
@@ -24,9 +28,8 @@ const todo = {
     }
 
     const itemsEl = document.querySelector(".items");
+    const liEl = this.getItem(subject);
     itemsEl.appendChild(liEl);
-
-    
 
     frmRegist.subject.value = "";
     frmRegist.subject.focus();
@@ -43,7 +46,7 @@ const todo = {
   save() {
     localStorage.setItem("todos", JSON.stringify(this.data));
   },
-  getItem(id, subject) {
+  getItem(subject) {
     const liEl = document.createElement("li");
     liEl.appendChild(document.createTextNode(subject));
 
@@ -51,15 +54,14 @@ const todo = {
     buttonEl.appendChild(document.createTextNode("삭제"));
     liEl.appendChild(buttonEl);
 
-    
     // 스케줄 삭제
     buttonEl.addEventListener("click", function () {
-      const itemsEl = document.querySelector(".menus");
+      const itemsEl = document.querySelector(".items");
       itemsEl.removeChild(liEl);
     });
 
     return liEl;
-  }
+  },
 };
 
 window.addEventListener("DOMContentLoaded", function () {
