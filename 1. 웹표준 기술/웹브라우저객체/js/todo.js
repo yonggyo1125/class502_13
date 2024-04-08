@@ -1,7 +1,15 @@
 const todo = {
   id: 1,
   data: [], // 스케줄 데이터
+  init() {
+    // 저장 값 조회 -> 스케줄 완성
+    const jsonData = localStorage.getItem("todos");
+    const todos = jsonData ? JSON.parse(jsonData) : [];
+    
+    for (const item of todos) { // Symbol.iterator / 반복자 패턴 / 반복이 필요한 객체 
 
+    }
+  },
   /**
    * 스케줄 추가
    *
@@ -15,26 +23,18 @@ const todo = {
       return;
     }
 
-    const liEl = document.createElement("li");
-    liEl.appendChild(document.createTextNode(subject));
-
-    const buttonEl = document.createElement("button");
-    buttonEl.appendChild(document.createTextNode("삭제"));
-    liEl.appendChild(buttonEl);
-
     const itemsEl = document.querySelector(".items");
     itemsEl.appendChild(liEl);
 
-    // 스케줄 삭제
-    buttonEl.addEventListener("click", function () {
-      itemsEl.removeChild(liEl);
-    });
+    
 
     frmRegist.subject.value = "";
     frmRegist.subject.focus();
 
-    this.data.push({
-      id: this.id++,
+    const { data } = this;
+    let id = this.id++;
+    data.push({
+      id,
       title: subject,
     });
 
@@ -43,9 +43,28 @@ const todo = {
   save() {
     localStorage.setItem("todos", JSON.stringify(this.data));
   },
+  getItem(id, subject) {
+    const liEl = document.createElement("li");
+    liEl.appendChild(document.createTextNode(subject));
+
+    const buttonEl = document.createElement("button");
+    buttonEl.appendChild(document.createTextNode("삭제"));
+    liEl.appendChild(buttonEl);
+
+    
+    // 스케줄 삭제
+    buttonEl.addEventListener("click", function () {
+      const itemsEl = document.querySelector(".menus");
+      itemsEl.removeChild(liEl);
+    });
+
+    return liEl;
+  }
 };
 
 window.addEventListener("DOMContentLoaded", function () {
+  todo.init(); // 데이터 조회 및 완성
+
   frmRegist.addEventListener("submit", function (e) {
     e.preventDefault();
     todo.add(); // 스케줄 추가
