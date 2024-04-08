@@ -1,7 +1,7 @@
-import Counter from './components/Counter';
+import Average from './components/Average';
 
 const App = () => {
-  return <Counter />;
+  return <Average />;
 };
 
 export default App;
