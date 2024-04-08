@@ -15,7 +15,7 @@ function reducer(items, action) {
 
     case 'TOGGLE':
       return items.map((item) =>
-        item.id === action.id ? { ...item, done: !item.id } : item,
+        item.id === action.id ? { ...item, done: !item.done } : item,
       );
 
     case 'REMOVE':
