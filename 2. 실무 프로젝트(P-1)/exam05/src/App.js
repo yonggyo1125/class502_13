@@ -1,7 +1,7 @@
-import CSSModule from './components/CSSModule';
+import LoginForm from './components/LoginForm';
 
 const App = () => {
-  return <CSSModule />;
+  return <LoginForm />;
 };
 
 export default App;
