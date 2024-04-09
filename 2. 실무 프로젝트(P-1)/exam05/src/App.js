@@ -4,15 +4,14 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Board from './pages/Board';
 import BoardList from './pages/BoardList';
+import MainLayout from './layouts/MainLayout';
 
 const App = () => {
   return (
     <Routes>
-      <Route index element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/board" element={<BoardList />}>
-        <Route path="view/:id" element={<Board />} /> {/* /board/view/:id */}
-      </Route>
+     <Route path="/" element={<MainLayout />}>
+        
+     </Route>
     </Routes>
   );
 };
