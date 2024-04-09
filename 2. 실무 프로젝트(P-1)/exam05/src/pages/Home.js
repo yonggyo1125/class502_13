@@ -1,7 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 const Home = () => {
+  //const result = true;
+  //if (result) {
+  //  return <Navigate to="/about" replace={true} />;
+  //}
+
   return (
     <div>
       <h1>HOME</h1>
