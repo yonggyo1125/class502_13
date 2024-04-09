@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const BigButton = styled.button`
   width: 100%;
@@ -6,5 +6,12 @@ export const BigButton = styled.button`
   border: 0;
   font-size: 1.5rem;
   font-weight: bold;
-  background: ${(props) => props.bgcolor};
+  background: ${({ bgcolor }) => bgcolor ?? 'orange'};
+
+  ${({ selected, bgcolor }) =>
+    selected &&
+    css`
+      border: 1px solid ${bgcolor ?? 'orange'};
+      background: #fff;
+    `}
 `;

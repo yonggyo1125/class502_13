@@ -45,7 +45,7 @@ const LoginForm = () => {
 
         <InputBox type="text" placeholder="아이디" />
         <InputBox type="password" placeholder="비밀번호" />
-        <BigButton type="submit" bgcolor="blue">
+        <BigButton type="submit" selected={true}>
           로그인
         </BigButton>
       </FormBox>
