@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, useSearchParams } from 'react-router-dom';
 
 const posts = {
   post1: {
@@ -15,6 +15,14 @@ const posts = {
 const Board = () => {
   const { id } = useParams();
   const data = posts[`post${id}`];
+
+  //const [searchParams, setSearchParams] = useSearchParams();
+  //console.log(searchParams.get('key1'));
+  //setSearchParams('k1=v1&k2=v2');
+  //console.log(searchParams.toString());
+
+  // const location = useLocation();
+  // console.log(location);
 
   return (
     <>
