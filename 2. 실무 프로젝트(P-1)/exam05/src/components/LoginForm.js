@@ -1,12 +1,18 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { BigButton } from './commons/ButtonStyle';
+
+const commonStyle = css`
+  width: 100%;
+`;
 
 const OuterBox = styled.div`
+  ${commonStyle}
   position: fixed;
-  width: 100%;
   height: 100%;
   left: 0;
   top: 0;
-  background: gray;
+  display: flex;
+  align-items: center;
 `;
 
 const FormBox = styled.form`
@@ -19,11 +25,11 @@ const FormBox = styled.form`
 `;
 
 const InputBox = styled.input`
+  ${commonStyle}
   display: block;
   height: 45px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 100%;
   padding: 0 10px;
 
   & + & {
@@ -39,7 +45,9 @@ const LoginForm = () => {
 
         <InputBox type="text" placeholder="아이디" />
         <InputBox type="password" placeholder="비밀번호" />
-        <button type="submit">로그인</button>
+        <BigButton type="submit" bgcolor="blue">
+          로그인
+        </BigButton>
       </FormBox>
     </OuterBox>
   );
