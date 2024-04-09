@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import loadable from '@loadable/component';
 
 //const MessageBox = React.lazy(() => import('../components/commons/MessageBox'));
-const MessageBox = loadable(() => import('../components/commons/MessageBox'));
+const MessageBox = loadable(() => import('../components/commons/MessageBox'), {
+  fallback: <div>로딩중...</div>,
+});
 
 //const MessageBox2 = styled(MessageBox)`
 //  background: orange;
