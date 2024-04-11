@@ -1,17 +1,19 @@
 const todo = {
-  id: 1,
+  id: 0,
   data: [], // 스케줄 데이터
   tpl: "", // 스케줄 목록 템플릿 HTML
+  parser: null,
   init() {
     // 스케줄 목록 템플릿 가져오기
     const tplEl = document.getElementById("tpl");
     this.tpl = tplEl.innerHTML;
+    this.parser = new DOMParser(); // parse, parser : 변환
 
     // 저장 값 조회 -> 스케줄 완성
     const jsonData = localStorage.getItem("todos");
     const todos = jsonData ? JSON.parse(jsonData) : [];
     this.data = todos;
-    this.id = todos.length + 1;
+    this.id = todos.length;
 
     const itemsEl = document.querySelector(".items");
 
@@ -43,25 +45,29 @@ const todo = {
     frmRegist.subject.focus();
 
     const { data } = this;
-    let id = this.id++;
+    let id = this.id;
     data.push({
       id,
       title: subject,
     });
 
     this.save();
-
-    liEl.dataset.id = id;
   },
   save() {
     localStorage.setItem("todos", JSON.stringify(this.data));
   },
   getItem(subject) {
     let html = this.tpl;
-    html = html.replace(/#subject/g, subject)
-                .replace(/#id/g, this.id++); // 메서드 체이닝
+    html = html.replace(/#subject/g, subject).replace(/#id/g, ++this.id); // 메서드 체이닝
 
-    console.log(html);
+    const dom = this.parser.parseFromString(html, "text/html");
+    const liEl = dom.querySelector("li");
+    const buttonEl = liEl.querySelector("button");
+    buttonEl.addEventListener("click", function() {
+
+    });
+
+    return liEl;
   },
 };
 
