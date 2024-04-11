@@ -63,8 +63,17 @@ const todo = {
     const dom = this.parser.parseFromString(html, "text/html");
     const liEl = dom.querySelector("li");
     const buttonEl = liEl.querySelector("button");
-    buttonEl.addEventListener("click", function() {
+    buttonEl.addEventListener("click", function () {
+      const itemsEl = document.querySelector(".items");
+      itemsEl.removeChild(liEl);
 
+      // localStorage에 저장된 데이터도 삭제
+      const id = Number(liEl.dataset.id);
+      const index = todo.data.findIndex((item) => item.id === id);
+      if (index !== -1) {
+        todo.data.splice(index, 1);
+        todo.save();
+      }
     });
 
     return liEl;
