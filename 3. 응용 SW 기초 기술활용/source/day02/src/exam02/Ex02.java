@@ -8,8 +8,15 @@ public class Ex02 {
         nums[1] = 20;
         nums[2] = 30;
 
+        for (int i = 0; i <= 3; i++) {
+            System.out.println(nums[i]); // 0, 1, 2, 3
+        }
+
+        /*
         System.out.println(nums[0]);
         System.out.println(nums[1]);
         System.out.println(nums[2]);
+
+         */
     }
 }
