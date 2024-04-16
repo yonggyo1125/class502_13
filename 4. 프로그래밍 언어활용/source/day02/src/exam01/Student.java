@@ -5,6 +5,12 @@ public class Student {
     String name; // 이름
     String subject; // 과목
 
+    public Student() {
+        id = 1000;
+        name = "이이름";
+        subject = "자바";
+    }
+
     public Student(int _id, String _name, String _subject) { // 기본 생성자(Default 생성자)
        id = _id;
        name = _name;
