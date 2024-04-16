@@ -2,6 +2,7 @@ package exam01;
 
 public class Ex01 {
     public static void main(String[] args) {
+        /*
         Student s1 = new Student();
         s1.id = 1000; // 인스턴스 변수
         s1.name = "이이름";
@@ -28,5 +29,7 @@ public class Ex01 {
 
         s1 = null;
         s1.study();
+
+         */
     }
 }
