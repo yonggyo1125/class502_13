@@ -2,8 +2,10 @@ package exam02;
 
 public class Student {
     public static int id;
-    private String name;
+    private String name = "이이름";
     private String subject;
+
+    public Student() {}
 
     public Student(int id, String name, String subject) {
         this.id = id;
