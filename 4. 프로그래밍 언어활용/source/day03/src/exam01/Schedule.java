@@ -55,4 +55,13 @@ public class Schedule {
     public Schedule returnThis() {
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Schedule{" +
+                "year=" + year +
+                ", month=" + month +
+                ", day=" + day +
+                '}';
+    }
 }
