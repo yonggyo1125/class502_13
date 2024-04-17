@@ -1,7 +1,7 @@
 package exam02;
 
 public class Student {
-    private int id;
+    private static int id;
     private String name;
     private String subject;
 
@@ -9,5 +9,14 @@ public class Student {
         this.id = id;
         this.name = name;
         this.subject = subject;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", subject='" + subject + '\'' +
+                '}';
     }
 }
