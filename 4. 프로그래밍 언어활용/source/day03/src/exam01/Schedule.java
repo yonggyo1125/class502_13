@@ -6,7 +6,7 @@ public class Schedule {
     private int day;
 
     public Schedule() {
-        this(2024, 4, 17);
+        this(2024, 4, 18);
     }
 
     public Schedule(int year, int month, int day) {
