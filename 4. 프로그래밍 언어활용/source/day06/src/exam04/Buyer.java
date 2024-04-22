@@ -5,5 +5,11 @@ public interface Buyer {
 
     default void order() {
         System.out.println("Buyer에서 주문");
+
+        privateMethod();
+    }
+
+    private void privateMethod() {
+
     }
 }

@@ -12,6 +12,7 @@ public class Order implements Seller, Buyer {
     }
 
     public void order() {
-        Buyer.super.order();
+        //Seller.super.order();
+        System.out.println("Order에서 정의한 order");
     }
 }
