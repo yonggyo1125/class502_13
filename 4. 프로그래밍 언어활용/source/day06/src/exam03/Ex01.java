@@ -6,7 +6,7 @@ public class Ex01 {
         int result = cal.add(10, 20);
         System.out.println(result);
 
-        System.out.println(Calculator.num); // 정적 상수
+        System.out.println(Calculator.NUM); // 정적 상수
 
     }
 }
