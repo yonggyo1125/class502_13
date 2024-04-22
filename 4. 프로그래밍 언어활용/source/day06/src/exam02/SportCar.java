@@ -12,8 +12,8 @@ public class SportCar extends Car {
     public void turnoff() {
         System.out.println("시동 끄기");
     }
-
+    /*
     public void run() {
 
-    }
+    }*/
 }
