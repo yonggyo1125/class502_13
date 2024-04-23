@@ -8,6 +8,6 @@ public class Ex01 {
 
         System.out.println(result);
 
-        System.out.println("매우 중요한 실행코드...");
+      
     }
 }
