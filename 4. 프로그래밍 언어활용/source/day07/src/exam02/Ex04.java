@@ -13,20 +13,16 @@ public class Ex04 {
 
             System.out.println("파일 작업...");
 
-            fis.close(); // IOException
-            System.out.println("자원해제 완료!");
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
             if (fis != null) {
                 try {
                     fis.close();
-                } catch (IOException e2) {
+                } catch (IOException e) {
 
                 }
             }
-
-        } finally {
-            System.out.println("무조건 실행!");
         }
 
     }
