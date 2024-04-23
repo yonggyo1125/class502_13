@@ -1,6 +1,6 @@
 package exam02;
 
-public class Ex01 {
+public class Ex03 {
     public static void main(String[] args) {
         try {
             int num1 = 10;
@@ -11,16 +11,10 @@ public class Ex01 {
             System.out.println(str.toUpperCase()); // NullPointerException
 
             System.out.println(result);
-        } catch (ArithmeticException e) {
-            e.printStackTrace();
-
-        } catch (Exception e) {
-            System.out.println("유입!");
+        } catch (ArithmeticException | NullPointerException e) {
             e.printStackTrace();
         }
 
         System.out.println("매우 중요한 코드...");
-
-
     }
 }

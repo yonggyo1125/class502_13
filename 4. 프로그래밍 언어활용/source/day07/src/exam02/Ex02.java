@@ -13,8 +13,9 @@ public class Ex02 {
 
         } catch (FileNotFoundException e) {
             System.out.println("예외 발생!");
-            String message = e.getMessage();
-            System.out.println(message);
+            //String message = e.getMessage();
+            //System.out.println(message);
+            e.printStackTrace();
         }
 
         System.out.println("매우 중요한 실행 코드....");
