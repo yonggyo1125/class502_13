@@ -1,5 +1,7 @@
 package exam01;
 
+import java.util.Objects;
+
 public class Book extends java.lang.Object {
     private int isbn;
     private String title;
@@ -22,6 +24,11 @@ public class Book extends java.lang.Object {
         }
 
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(isbn, title, author);
     }
 
     @Override
