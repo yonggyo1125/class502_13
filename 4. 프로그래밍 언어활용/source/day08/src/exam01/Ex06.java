@@ -12,8 +12,11 @@ public class Ex06 {
         books.add(new Book(1000, "책4", "저자4"));
         books.add(new Book(1000, "책5", "저자5"));
 
+        books.forEach(System.out::println);
+
+        /*
         for (Book book : books) {
             System.out.println(book);
-        }
+        } */
     }
 }
