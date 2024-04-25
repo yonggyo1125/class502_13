@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Ex09 {
     public static void main(String[] args) {
-        String mobile = "010.3481.2101";
+        String mobile = "01034812101";
         System.out.println(checkMobile(mobile));
     }
 
