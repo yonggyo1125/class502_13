@@ -5,7 +5,8 @@ import java.util.regex.Pattern;
 
 public class Ex09 {
     public static void main(String[] args) {
-
+        String mobile = "010.3481.2101";
+        System.out.println(checkMobile(mobile));
     }
 
     public static boolean checkMobile(String mobile) {
@@ -15,7 +16,7 @@ public class Ex09 {
          * 016-000-0000
          */
 
-        Pattern pattern = Pattern.compile("01[016]-\\d{3,4}-\\d{4}");
+        Pattern pattern = Pattern.compile("^01[016]\\D*\\d{3,4}\\D*\\d{4}$");
         Matcher matcher = pattern.matcher(mobile);
 
         boolean matched = matcher.find();
