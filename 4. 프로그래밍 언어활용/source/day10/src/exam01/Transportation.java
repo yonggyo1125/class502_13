@@ -15,5 +15,5 @@ public enum Transportation {
         return fare;
     }
 
-    public abstract int getTotal(int person);
+    //public abstract int getTotal(int person);
 }
