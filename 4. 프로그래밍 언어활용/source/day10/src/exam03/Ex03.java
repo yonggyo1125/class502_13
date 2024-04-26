@@ -14,5 +14,8 @@ public class Ex03 {
 
         String[] names = anno.names();
         System.out.println(Arrays.toString(names));
+
+        String value = anno.value();
+        System.out.println(value);
     }
 }
