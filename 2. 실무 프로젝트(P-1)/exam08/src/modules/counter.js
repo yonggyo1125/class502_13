@@ -10,12 +10,16 @@ export const decrease = () => ({ type: DECREASE });
 const initialValue = { number: 0 };
 
 function counter(state = initialValue, action) {
-    switch(action.type) {
-        case INCREASE: 
-            return { number: state.number + 1};
-        case DECREASE:
-            return { number: state.number - 1 };
-        default:
-            return state;
-    }
+  console.log("type", action);
+
+  switch (action.type) {
+    case INCREASE:
+      return { number: state.number + 1 };
+    case DECREASE:
+      return { number: state.number - 1 };
+    default:
+      return state;
+  }
 }
+
+export default counter;
