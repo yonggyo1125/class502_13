@@ -5,7 +5,13 @@ import Todo from "../components/Todo";
 
 const TodoContainer = ({ todos, insert, remove }) => {
   const [todo, setTodo] = useState("");
-  const onSubmit = useCallback((e) => {}, [todo]);
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      insert(todo);
+    },
+    [todo, insert]
+  );
 
   const onChange = useCallback((e) => {
     setTodo(e.target.value);
