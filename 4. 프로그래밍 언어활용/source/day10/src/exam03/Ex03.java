@@ -1,6 +1,7 @@
 package exam03;
 
 import java.lang.annotation.Annotation;
+import java.util.Arrays;
 
 public class Ex03 {
     public static void main(String[] args) {
@@ -9,7 +10,9 @@ public class Ex03 {
         MyAnno anno = (MyAnno)cls.getAnnotation(MyAnno.class);
         int min = anno.min();
         int max = anno.max();
-
         System.out.printf("min=%d, max=%d%n", min, max);
+
+        String[] names = anno.names();
+        System.out.println(Arrays.toString(names));
     }
 }
