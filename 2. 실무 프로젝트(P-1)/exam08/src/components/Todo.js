@@ -1,8 +1,8 @@
-const Todo = ({ todos, onSubmit, onRemove }) => {
+const Todo = ({ todos, todo, onSubmit, onChange, onRemove }) => {
   return (
     <>
       <form onSubmit={onSubmit} autoComplete="off">
-        <input type="text" name="todo" />
+        <input type="text" name="todo" value={todo} onChange={onChange} />
         <button type="submit">등록</button>
       </form>
       <ul>

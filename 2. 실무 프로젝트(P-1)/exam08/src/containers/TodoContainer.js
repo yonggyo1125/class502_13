@@ -17,7 +17,15 @@ const TodoContainer = ({ todos, insert, remove }) => {
     setTodo(e.target.value);
   }, []);
 
-  return <Todo />;
+  return (
+    <Todo
+      todos={todos}
+      todo={todo}
+      onSubmit={onSubmit}
+      onChange={onChange}
+      onRemove={remove}
+    />
+  );
 };
 
 export default connect(

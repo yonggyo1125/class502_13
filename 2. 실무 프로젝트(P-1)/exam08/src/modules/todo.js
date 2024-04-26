@@ -26,7 +26,8 @@ const initialValue = [
 function todo(state = initialValue, action) {
   switch (action.type) {
     case INSERT:
-      return state.concat({ id: state[state.length - 1].id + 1, todo });
+      const id = state.length > 0 ? state[state.length - 1].id + 1 : 1;
+      return state.concat({ id, todo: action.todo });
     case REMOVE:
       return state.filter((todo) => todo.id !== action.id);
     default:
