@@ -1,7 +1,7 @@
 package exam05;
 
 public class Box<T> {
-    private T item;
+    private T item;//
 
     public void setItem(T item) {
         this.item = item;
