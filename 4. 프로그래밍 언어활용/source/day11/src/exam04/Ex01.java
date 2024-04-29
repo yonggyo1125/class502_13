@@ -10,8 +10,13 @@ public class Ex01 {
         names.add("이름3");
         names.add("이름4");
         names.add("이름5");
-
+        /*
         for (int i = 0; i < names.size(); i++) {
+            names.remove(i);
+        }
+        */
+
+        for (int i = names.size() - 1; i >= 0; i--) {
             names.remove(i);
         }
 
