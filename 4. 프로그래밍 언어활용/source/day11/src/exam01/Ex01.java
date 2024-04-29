@@ -7,5 +7,6 @@ public class Ex01 {
        // appleBox.setItem(new Grape()); 타입 안정성 확보
 
         Apple apple = appleBox.getItem(); // 형변환 X
+        System.out.println(appleBox);// appleBox.toString();
     }
 }
