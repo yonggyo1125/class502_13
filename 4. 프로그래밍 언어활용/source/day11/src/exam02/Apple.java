@@ -1,6 +1,6 @@
 package exam02;
 
-public class Apple {
+public class Apple extends Fruit {
     public String toString() {
         return "사과";
     }
