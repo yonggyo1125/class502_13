@@ -8,8 +8,9 @@ public class Ex04 {
         Jucier.make2(appleBox); // Apple, Fruit, Object
 
         //FruitBox<Grape> grapeBox = new FruitBox<Grape>();
-        FruitBox<Fruit> grapeBox = new FruitBox<>();
+        FruitBox<Grape> grapeBox = new FruitBox<>();
         grapeBox.add(new Grape()); // Fruit fruit = new Grape();
-        Jucier.make2(grapeBox);
+        Jucier.<Grape>make3(grapeBox);
+        Jucier.make3(grapeBox);
     }
 }
