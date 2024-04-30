@@ -52,7 +52,15 @@ public abstract class AbstractCoffeeShop implements CoffeeShop {
         person = null;
     }
 
-    public static void showSaleSummary(CoffeeShop shop) {
+    public int getTotalSalePrice() {
+        return totalSalePrice;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public static void showSaleSummary(CoffeeShop shop) {
+        System.out.printf("%s의 총 매출액은 %d원 입니다.%n", shop.getName(), shop.getTotalSalePrice());
     }
 }
