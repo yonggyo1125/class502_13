@@ -1,5 +1,7 @@
 package exam01;
 
+import java.util.Objects;
+
 public class Book {
     private int isbn; // 도서 번호
     private String title; // 도서명
@@ -26,7 +28,7 @@ public class Book {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(isbn, title, author);
     }
 
     @Override
