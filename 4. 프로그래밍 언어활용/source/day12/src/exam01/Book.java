@@ -42,7 +42,7 @@ public class Book implements Comparable<Book> {
 
     @Override
     public int compareTo(Book o) {
-        //return isbn - o.isbn; // 오름차순
-        return o.isbn - isbn; // 내림차순
+        return isbn - o.isbn; // 오름차순
+        //return o.isbn - isbn; // 내림차순
     }
 }
