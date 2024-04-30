@@ -16,10 +16,13 @@ public abstract class AbstractCoffeeShop implements CoffeeShop {
     @Override
     public void enter(Person person) {
         this.person = person;
+        System.out.printf("%s님이 %s에 입장하였습니다.%n", person.getName(), name);
     }
 
     @Override
     public void order() {
+        String menu = person.getMenu();
+        int price = menus.getOrDefault(menu, 0);
 
     }
 }
