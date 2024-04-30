@@ -1,9 +1,9 @@
 package exam01;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.ListIterator;
 
-public class Ex01 {
+public class Ex02 {
     public static void main(String[] args) {
         ArrayList<Book> books = new ArrayList<>();
         books.add(new Book(1000, "책1", "저자1"));
@@ -11,17 +11,14 @@ public class Ex01 {
         books.add(new Book(1002, "책3", "저자3"));
         books.add(new Book(1003, "책4", "저자4"));
         books.add(new Book(1004, "책5", "저자5"));
-        Iterator<Book> iter = books.iterator();
 
+        ListIterator<Book> iter = books.listIterator();
+        System.out.println("--- 순방향 ----");
         while(iter.hasNext()) {
             Book book = iter.next();
+            int index = iter.nextIndex();
             System.out.println(book);
-        }
-
-        iter = books.iterator();
-        while(iter.hasNext()) {
-            Book book = iter.next();
-            System.out.println(book);
+            System.out.println("index : " + index);
         }
     }
 }
