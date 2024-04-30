@@ -20,5 +20,13 @@ public class Ex02 {
             System.out.println(book);
             System.out.println("index : " + index);
         }
+
+        System.out.println("--- 역방향 ----");
+        while(iter.hasPrevious()) {
+            Book book = iter.previous();
+            int index = iter.previousIndex();
+            System.out.println(book);
+            System.out.println("index : " + index);
+        }
     }
 }
