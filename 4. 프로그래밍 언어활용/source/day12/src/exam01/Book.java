@@ -2,7 +2,7 @@ package exam01;
 
 import java.util.Objects;
 
-public class Book {
+public class Book implements Comparable<Book> {
     private int isbn; // 도서 번호
     private String title; // 도서명
     private String author; // 저자
@@ -38,5 +38,11 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        //return isbn - o.isbn; // 오름차순
+        return o.isbn - isbn; // 내림차순
     }
 }

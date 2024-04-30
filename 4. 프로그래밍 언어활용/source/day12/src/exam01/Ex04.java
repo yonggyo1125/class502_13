@@ -1,10 +1,13 @@
 package exam01;
 
 import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Ex04 {
     public static void main(String[] args) {
-        HashSet<String> names = new HashSet<>();
+        //HashSet<String> names = new HashSet<>();
+        Set<String> names = new TreeSet<>();
         names.add("이름2");
         names.add("이름2");
         names.add("이름1");
