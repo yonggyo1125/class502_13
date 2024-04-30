@@ -20,5 +20,10 @@ public class Ex01 {
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
+
+        System.out.println("커피숍별 매출액 요약");
+        CoffeeShop.showSaleSummary(starBucks);
+        CoffeeShop.showSaleSummary(coffeeBean);
+
     }
 }
