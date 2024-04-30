@@ -12,6 +12,8 @@ public class Ex05 {
         books.add(new Book(1003, "책4", "저자4"));
         books.add(new Book(1004, "책5", "저자5"));
 
-
+        for (Book book : books) {
+            System.out.println(book);
+        }
     }
 }
