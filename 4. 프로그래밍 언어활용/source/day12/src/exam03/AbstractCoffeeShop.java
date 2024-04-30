@@ -51,4 +51,8 @@ public abstract class AbstractCoffeeShop implements CoffeeShop {
         System.out.printf("%s님이 %s에서 퇴장하였습니다.%n", person.getName(), name);
         person = null;
     }
+
+    public static void showSaleSummary(CoffeeShop shop) {
+
+    }
 }

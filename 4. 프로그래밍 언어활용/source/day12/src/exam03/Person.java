@@ -29,4 +29,8 @@ public class Person {
     public void setMenu(String menu) {
         this.menu = menu;
     }
+
+    public String toString() {
+        return String.format("%s님의 남은 금액은 %d원 입니다.%n", name, money);
+    }
 }

@@ -11,8 +11,14 @@ public class Ex01 {
         kim.setMenu("아메리카노");
         lee.setMenu("라떼");
 
-        starBucks.enter(kim);
-        starBucks.order();
-        starBucks.exit();
+        try {
+            starBucks.enter(kim).order().exit();
+            coffeeBean.enter(lee).order().exit();
+
+            System.out.println(kim);
+            System.out.println(lee);
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
