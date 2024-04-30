@@ -1,15 +1,17 @@
 package exam02;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Ex03 {
     public static void main(String[] args) {
-        HashMap<String, String> members = new HashMap<>();
+        //HashMap<String, String> members = new HashMap<>();
+        Map<String, String> members = new TreeMap<>(Comparator.reverseOrder());
+
         members.put("user01", "사용자01");
         members.put("user02", "사용자02");
         members.put("user03", "사용자03");
+        members.put("user04", "사용자04");
+        members.put("user05", "사용자05");
 
         //Set<Map.Entry<String, String>> entries = members.entrySet();
 
