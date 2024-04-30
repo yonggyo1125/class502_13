@@ -39,5 +39,12 @@ public abstract class AbstractCoffeeShop implements CoffeeShop {
         totalSalePrice += price;
         money -= price;
         person.setMoney(money);
+
+        System.out.printf("%s님이 %s에서 %s를 %d원에 주문했습니다.%n", person.getName(), name, menu, price);
+    }
+
+    public void exit() {
+        System.out.printf("%s님이 %s에서 퇴장하였습니다.%n", person.getName(), name);
+        person = null;
     }
 }
