@@ -22,7 +22,22 @@ public abstract class AbstractCoffeeShop implements CoffeeShop {
     @Override
     public void order() {
         String menu = person.getMenu();
-        int price = menus.getOrDefault(menu, 0);
+        if (menu == null) {
+            throw new RuntimeException("메뉴를 선택하세요.");
+        }
 
+        int price = menus.getOrDefault(menu, 0);
+        if (price == 0) {
+            throw new RuntimeException("없는 메뉴 입니다.");
+        }
+
+        int money = person.getMoney();
+        if (money < price) {
+            throw new RuntimeException(menu + "를 구입하기에 부족한 금액입니다.");
+        }
+
+        totalSalePrice += price;
+        money -= price;
+        person.setMoney(money);
     }
 }
