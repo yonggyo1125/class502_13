@@ -14,13 +14,15 @@ public abstract class AbstractCoffeeShop implements CoffeeShop {
     }
 
     @Override
-    public void enter(Person person) {
+    public CoffeeShop enter(Person person) {
         this.person = person;
         System.out.printf("%s님이 %s에 입장하였습니다.%n", person.getName(), name);
+
+        return this;
     }
 
     @Override
-    public void order() {
+    public CoffeeShop order() {
         String menu = person.getMenu();
         if (menu == null) {
             throw new RuntimeException("메뉴를 선택하세요.");
@@ -41,6 +43,8 @@ public abstract class AbstractCoffeeShop implements CoffeeShop {
         person.setMoney(money);
 
         System.out.printf("%s님이 %s에서 %s를 %d원에 주문했습니다.%n", person.getName(), name, menu, price);
+
+        return this;
     }
 
     public void exit() {
