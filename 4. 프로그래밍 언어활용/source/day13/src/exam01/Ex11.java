@@ -15,5 +15,11 @@ public class Ex11 {
 
         Collections.swap(names, 1, 3);
         System.out.println(names);
+
+        Collections.reverse(names);
+        System.out.println(names);
+
+        Collections.replaceAll(names, "이름3", "name3");
+        System.out.println(names);
     }
 }
