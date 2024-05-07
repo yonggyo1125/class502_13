@@ -3,7 +3,6 @@ package exam01;
 public class Student {
     private int ban;
     private String name;
-
     private int score;
 
     public Student(int ban, String name) {
