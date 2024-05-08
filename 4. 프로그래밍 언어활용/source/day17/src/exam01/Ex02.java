@@ -2,19 +2,14 @@ package exam01;
 
 import java.util.Calendar;
 
-public class Ex01 {
+public class Ex02 {
     public static void main(String[] args) {
         Calendar cal = Calendar.getInstance();
+        //cal.add(Calendar.MONTH, 30);
+        cal.roll(Calendar.MONTH, 30);
         printDate(cal);
 
-        //cal.set(Calendar.MONTH, 11); // 12월
-        cal.add(Calendar.DAY_OF_MONTH, 150); // 150일 후
 
-        printDate(cal);
-
-        cal.add(Calendar.DAY_OF_MONTH, -100); // 100일 전
-
-        printDate(cal);
     }
 
     public static void printDate(Calendar cal) {
