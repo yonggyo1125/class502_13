@@ -25,7 +25,7 @@ public class CalendarTest {
 
                 System.out.printf("---- %d년 %d월 ----%n", year, month);
                 System.out.println(" S   M   T   W   T   F   S");
-                // 달력 데이터 조회
+
                 int[] days = getCalendar(year, month);
                 for (int i = 0; i < days.length; i++) {
                     int day = days[i];
@@ -39,6 +39,7 @@ public class CalendarTest {
                         System.out.println();
                     }
                 }
+
                 System.out.println();
             } catch (Exception e) { // 숫자 형식 오류가 발생한 경우
                 System.out.println("입력 형식이 잘못되었습니다. 입력 예) 2024 5");
@@ -55,8 +56,11 @@ public class CalendarTest {
         LocalDate startDate = LocalDate.of(year, month, 1);
         LocalDate endDate = startDate.plusMonths(1).minusDays(1);
 
-        int start = startDate.getDayOfWeek().getValue() % 7 * -1 + 1;
+        int yoil = startDate.getDayOfWeek().getValue() % 7; // 0(일) ~ 6(토)
+        int start = yoil * -1 + 1;
 
-        return IntStream.rangeClosed(start, endDate.getDayOfMonth()).toArray();
+        int[] days = IntStream.rangeClosed(start, endDate.getDayOfMonth()).toArray();
+
+        return days;
     }
 }
