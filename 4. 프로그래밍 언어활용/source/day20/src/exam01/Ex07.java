@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public class Ex07 {
     public static void main(String[] args) {
+        long stime = System.currentTimeMillis(); // 작업 시작 시간
         try (FileInputStream fis = new FileInputStream("specs.zip");
             FileOutputStream fos = new FileOutputStream("specs_copied2.zip")) {
 
@@ -16,5 +17,8 @@ public class Ex07 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        long etime = System.currentTimeMillis();
+        System.out.printf("걸린 시간: %d%n", etime - stime);
     }
 }
