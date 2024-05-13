@@ -11,7 +11,8 @@ public class Ex08 {
              BufferedOutputStream bos = new BufferedOutputStream(fos)) {
 
             while(bis.available() > 0) {
-                bos.write(bis.read());
+                bos.write(bis.read()); // 8kb 버퍼가 다 차면 -> 비우기 -> 출력
+                // 마지막 구간 8kb 버퍼는 다 차지 않을 수 도 있음
             }
 
         } catch(IOException e) {
