@@ -16,6 +16,8 @@ public class Ex03 {
                 dos.writeInt(score);
             }
 
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
