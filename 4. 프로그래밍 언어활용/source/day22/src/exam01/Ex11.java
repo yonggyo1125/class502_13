@@ -16,6 +16,8 @@ public class Ex11 {
             List<Book> books = (List<Book>)data.get("books");
             String str = (String)data.get("str");
 
+            Book book1 = (Book)data.get("book1");
+
             books.forEach(System.out::println);
             System.out.println(str);
 
