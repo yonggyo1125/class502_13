@@ -1,6 +1,8 @@
 package exam01;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
     private int isbn; // 도서 번호
     private String title; // 도서명
     private String author; // 저자
