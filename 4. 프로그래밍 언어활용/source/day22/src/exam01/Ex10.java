@@ -27,6 +27,8 @@ public class Ex10 {
             data.put("books", books);
             data.put("str", "안녕하세요.");
 
+            oos.writeObject(data);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
