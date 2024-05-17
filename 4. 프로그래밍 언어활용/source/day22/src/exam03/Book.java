@@ -1,20 +1,11 @@
-package exam01;
+package exam03;
 
 import java.io.Serializable;
 
 public class Book implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    private int isbn; // 도서 번호
-    private String title; // 도서명
-    private transient String author; // 저자   transient : 직렬화 배제
-
-    private int price;
-
-    public int getPrice() {
-        return price;
-    }
+    private int isbn;
+    private String title;
+    private String author;
 
     public Book(int isbn, String title, String author) {
         this.isbn = isbn;
