@@ -15,6 +15,9 @@ public class Ex07 {
             }
         });
 
+        th.setDaemon(true); // 현재 작업 중인 쓰레드가 종료 -> 함께 종료
+        th.start();
+
 
         for (int i = 1; i <= 10; i++) {
 
