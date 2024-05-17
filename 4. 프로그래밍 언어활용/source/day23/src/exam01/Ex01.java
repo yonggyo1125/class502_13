@@ -23,10 +23,14 @@ public class Ex01 {
 }
 
 class Ex01_1 extends Thread {
+    public Ex01_1() {
+        super("변경된이름1");
+    }
+
     public void run() {
         for (int i = 0; i < 5; i++) {
-            System.out.println("쓰레드1-" + i);
-
+            //System.out.println("쓰레드1-" + i);
+            System.out.println(getName() + "-" + i);
             for(long j = 0; j < 10000000000L; j++);
         }
     }
