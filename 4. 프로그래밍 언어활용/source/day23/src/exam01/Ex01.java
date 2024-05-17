@@ -5,6 +5,8 @@ public class Ex01 {
         Runnable r = () -> {
           for (int i = 0; i < 5; i++) {
               System.out.println("쓰레드2-" + i);
+
+              for(long j = 0; j < 10000000000L; j++);
           }
         };
 
@@ -24,6 +26,8 @@ class Ex01_1 extends Thread {
     public void run() {
         for (int i = 0; i < 5; i++) {
             System.out.println("쓰레드1-" + i);
+
+            for(long j = 0; j < 10000000000L; j++);
         }
     }
 }
