@@ -20,6 +20,10 @@ public class Ex04 {
 
         Thread th1 = new Thread(r1);
         Thread th2 = new Thread(r2);
+
+        th1.setPriority(Thread.MAX_PRIORITY); // 10
+        th2.setPriority(Thread.MIN_PRIORITY); // 1
+
         System.out.printf("th1:%d, th2:%d%n", th1.getPriority(), th2.getPriority());
 
         th1.start();
