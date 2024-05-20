@@ -16,5 +16,16 @@ public class Ex05 {
                } catch (InterruptedException e) {}
            }
         });
+
+        th.start();
+
+        for (int i = 1; i <= 10; i++) {
+            Thread th2 = Thread.currentThread();
+            System.out.println(th2.getName() + " - " + i);
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {}
+        }
     }
 }
