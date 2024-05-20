@@ -17,6 +17,13 @@ public class Ex04 {
                 for (long j = 0; j < 100000000L; j++);
             }
         };
+
+        Thread th1 = new Thread(r1);
+        Thread th2 = new Thread(r2);
+        System.out.printf("th1:%d, th2:%d%n", th1.getPriority(), th2.getPriority());
+
+        th1.start();
+        th2.start();
     }
 }
 
