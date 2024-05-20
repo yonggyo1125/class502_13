@@ -28,8 +28,8 @@ public class Ex08 {
 
 class Ex08_1 implements Runnable {
 
-    private boolean stopped = false; // 정지 X
-    private boolean suspended = false; // 일시정지 X
+    private volatile boolean stopped = false; // 정지 X
+    private volatile boolean suspended = false; // 일시정지 X
 
     private Thread th;
 
