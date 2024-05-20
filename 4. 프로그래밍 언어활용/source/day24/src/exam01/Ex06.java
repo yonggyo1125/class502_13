@@ -2,13 +2,16 @@ package exam01;
 
 public class Ex06 {
     public static void main(String[] args) {
-        Thread th = new Thread(() -> {
-            Thread th2 = Thread.currentThread();
-            int num = 0;
-            while(!th2.isInterrupted()) {
-                System.out.println(num++);
+        Thread th = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Thread th2 = Thread.currentThread();
+                int num = 0;
+                while(!th2.isInterrupted()) {
+                    System.out.println(num++);
 
-                for(long j = 0; j < 100000000L; j++);
+                    for(long j = 0; j < 1000000000L; j++);
+                }
             }
         });
 
@@ -19,6 +22,7 @@ public class Ex06 {
         } catch (InterruptedException e) {}
 
         th.interrupt(); // isInterrupted() -> true
+                        // interrupted() -> true
     }
 
 
