@@ -26,6 +26,8 @@ public class Ex05 {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {}
+
+            if (i == 3) autoSave = true;
         }
     }
 }
