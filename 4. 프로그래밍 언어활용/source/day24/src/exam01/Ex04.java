@@ -26,8 +26,14 @@ public class Ex04 {
 
         System.out.printf("th1:%d, th2:%d%n", th1.getPriority(), th2.getPriority());
 
-        th1.start();
-        th2.start();
+        th1.start(); // th1 쓰레드
+        th2.start(); // th2 쓰레드
+        try {
+            th1.join();
+            th2.join();
+        } catch (InterruptedException e) {};
+
+        System.out.println("작업 종료!"); // main 쓰레드
     }
 }
 
