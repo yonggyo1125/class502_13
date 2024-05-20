@@ -1,9 +1,8 @@
 package exam01;
 
-public class Ex01 {
+public class Ex02 {
     public static void main(String[] args) {
-        Ex01_1 th = new Ex01_1();
-        //th.run();
+        Thread th = new Thread(new Ex02_1());
         th.start();
 
         for (int i = 0; i < 5; i++) {
@@ -12,7 +11,9 @@ public class Ex01 {
     }
 }
 
-class Ex01_1 extends Thread {
+class Ex02_1 implements Runnable {
+
+    @Override
     public void run() {
         for (int i = 0; i < 5; i++) {
             System.out.println("쓰레드 - " + i);
