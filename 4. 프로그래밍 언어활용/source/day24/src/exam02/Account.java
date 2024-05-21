@@ -8,12 +8,15 @@ public class Account {
     }
 
     public void withdraw(int money) {
-        if (balance >= money) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {}
+        synchronized (this) {
+            if (balance >= money) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                }
 
-            balance -= money;
+                balance -= money;
+            }
         }
     }
 }

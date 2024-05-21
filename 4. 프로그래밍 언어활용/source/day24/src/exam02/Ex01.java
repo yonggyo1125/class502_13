@@ -5,6 +5,8 @@ public class Ex01 {
         Ex01_1 ex01_1 = new Ex01_1();
         Thread th1 = new Thread(ex01_1);
         Thread th2 = new Thread(ex01_1);
+        th1.start();
+        th2.start();
     }
 }
 
