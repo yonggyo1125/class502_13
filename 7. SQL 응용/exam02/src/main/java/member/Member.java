@@ -1,11 +1,15 @@
 package member;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Getter @Setter
+/*
+@EqualsAndHashCode
+@Getter @Setter @ToString */
+@Data
+@NoArgsConstructor(access=AccessLevel.PRIVATE) // 기본 생성자
+@AllArgsConstructor
 public class Member {
     private String userId;
     private String userNm;
