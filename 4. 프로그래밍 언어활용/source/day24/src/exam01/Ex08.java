@@ -44,7 +44,11 @@ class Ex08_1 implements Runnable {
                 System.out.println(th.getName());
                 try {
                     Thread.sleep(1000);
-                } catch (InterruptedException e) {}
+                } catch (InterruptedException e) {
+                    System.out.println("interrupted");
+                }
+            } else { // 일시 정지 상태 -> 다른 쓰레드로 바로 작업 양보
+                th.yield();
             }
         }
     }
@@ -54,7 +58,9 @@ class Ex08_1 implements Runnable {
     }
 
     public void suspend() {
-        suspended = true;
+        suspended = true; // 일시 정지
+        th.interrupt();
+        System.out.println("suspend - interrupted");
     }
 
     public void resume() {
@@ -63,5 +69,6 @@ class Ex08_1 implements Runnable {
 
     public void stop() {
         stopped = true;
+        System.out.println("stop - interrupted");
     }
 }
