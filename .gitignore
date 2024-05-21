@@ -2,3 +2,4 @@
 .idea/
 *.iml
 /dbeaver
+/apache-maven-*

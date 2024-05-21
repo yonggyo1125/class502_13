@@ -13,7 +13,7 @@ public class Ex07 {
                 } catch (InterruptedException e) { // RUNNABLE - 실행 대기
                     System.out.println("InterruptedException 발생!");
                     System.out.println(th2.isInterrupted());// false
-                    th2.interrupt(); // InterruptedException
+                    //th2.interrupt(); // InterruptedException
 
                 }
             }

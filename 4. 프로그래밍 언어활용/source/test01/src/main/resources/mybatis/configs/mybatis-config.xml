@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties>
+        <property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:EE" />
+        <property name="username" value="scott" />
+        <property name="password" value="tiger" />
+    </properties>
+    <settings>
+        <setting name="logImpl" value="SLF4J"/>
+    </settings>
+    <typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.LocalDateTimeTypeHandler" />
+        <typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler" />
+        <typeHandler handler="org.apache.ibatis.type.LocalTimeTypeHandler" />
+    </typeHandlers>
+     <environments default="development">
+        <environment id="dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mybatis/mappers/MemberMapper.xml"/>
+    </mappers>
+</configuration>
