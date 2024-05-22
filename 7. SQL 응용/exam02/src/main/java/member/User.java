@@ -11,6 +11,9 @@ public class User {
 
     private User() {}
 
+    public static Builder builder() {
+        return new Builder();
+    }
 
     static class Builder {
         private User user = new User();
@@ -33,6 +36,14 @@ public class User {
             return this;
         }
 
+        public Builder regDt(LocalDateTime regDt) {
+            user.regDt = regDt;
 
+            return this;
+        }
+
+        public User build() {
+            return user;
+        }
     }
 }
