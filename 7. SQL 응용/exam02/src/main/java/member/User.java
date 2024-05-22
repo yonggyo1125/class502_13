@@ -15,7 +15,17 @@ public class User {
         return new Builder();
     }
 
-    static class Builder {
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", userNm='" + userNm + '\'' +
+                ", email='" + email + '\'' +
+                ", regDt=" + regDt +
+                '}';
+    }
+
+    public static class Builder {
         private User user = new User();
 
         public Builder userId(String userId) {
