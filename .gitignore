@@ -3,3 +3,4 @@
 *.iml
 /dbeaver
 /apache-maven-*
+/gradle-*

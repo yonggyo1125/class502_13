@@ -43,5 +43,7 @@ public class Ex02 {
                 .regDt(LocalDateTime.now())
                 .build();
         System.out.println(user);
+
+        User2 user2 = new User2();
     }
 }
