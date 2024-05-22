@@ -3,6 +3,7 @@ package exam01;
 import member.Board;
 import member.Member;
 import member.User;
+import member.User2;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -29,6 +30,18 @@ public class Ex02 {
                 .email("USER01@test.org")
                 .regDt(LocalDateTime.now())
                 .build();
+        System.out.println(user);
 
+    }
+
+    @Test
+    void test4() {
+        User2 user = User2.builder()
+                .userId("USER01")
+                .userNm("사용자01")
+                .email("USER01@test.org")
+                .regDt(LocalDateTime.now())
+                .build();
+        System.out.println(user);
     }
 }
