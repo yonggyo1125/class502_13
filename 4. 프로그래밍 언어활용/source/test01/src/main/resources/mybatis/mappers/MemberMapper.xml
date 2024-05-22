@@ -14,4 +14,15 @@
         INSERT INTO MEMBER (USER_NO, USER_ID, USER_NM, USER_PW)
             VALUES (#{USER_NO}, #{USER_ID}, #{USER_NM}, #{USER_PW})
     </insert>
+    <select id="getLists" resultType="members.Member">
+        SELECT * FROM MEMBER
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="userNm != null">
+                <bind name="PuserNm" value="'%' + _parameter + '%'" />
+                USER_NM LIKE #{PuserNm}
+            </if>
+
+
+        </trim>
+    </select>
 </mapper>

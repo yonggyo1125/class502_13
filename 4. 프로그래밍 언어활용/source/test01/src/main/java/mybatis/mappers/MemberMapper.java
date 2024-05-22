@@ -14,4 +14,6 @@ public interface MemberMapper {
     Member getList(String userId);
 
     int insert(Member member);
+
+    List<Member> getLists(String userNm);
 }
