@@ -60,7 +60,17 @@ public class Ex03 {
         ds.setInitialSize(2); // 로드 초기에 생성할 연결 객체 수  - 기본값 10
         ds.setMaxActive(10); // 최대 생성할 연결 객체 수 - 기본값 100
         ds.setTestWhileIdle(true); // 연결 객체가 유휴 상태일때 연결상태 체크
+        ds.setTimeBetweenEvictionRunsMillis(5 * 1000); // 5초에 한번씩 연결 상태 체크
+        ds.setMinEvictableIdleTimeMillis(30 * 1000); // 유휴 상태 객체를 30초 이후에 소멸 후 새로 생성
         /* 커넥션 풀 설정 E */
+
+        /* Connection 객체 생성 */
+        try (Connection conn = ds.getConnection()) {
+            System.out.println(conn);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
