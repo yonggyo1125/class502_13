@@ -1,5 +1,7 @@
 package exam01;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -73,5 +75,23 @@ public class Ex03 {
         }
     }
 
+    @Test
+    void test3() {
+        /* 연결 설정 S */
+        HikariConfig config = new HikariConfig();
+        config.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+        config.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:XE");
+        config.setUsername("STUDY");
+        config.setPassword("oracle");
+        /* 연결 설정 E */
 
+        /* 커넥션 풀 설정 S */
+        config.setMinimumIdle(2);
+        config.setMaximumPoolSize(10);
+
+        /* 커넥션 풀 설정 E */
+
+        /* DataSource 객체 생성 */
+        HikariDataSource ds = new HikariDataSource(config);
+    }
 }
