@@ -46,8 +46,10 @@ public class Ex01 {
         String password = "oracle"; // tiger
         try(Connection conn = DriverManager.getConnection(url, user, password);
             Statement stmt = conn.createStatement()) {
+            String keyword = "사용자"; // SQL 주입의 가능성 높다
+            String sql = "SELECT * FROM MEMBER WHERE USER_NM LIKE '%" + keyword + "%'";
 
-            String sql = "SELECT * FROM MEMBER";
+
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()) {
                 long userNo = rs.getLong("USER_NO");
