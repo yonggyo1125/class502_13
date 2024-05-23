@@ -50,14 +50,14 @@ public class Ex02 {
 
     @Test
     void test2() {
-        String userId = "USER03";
+        String userId = "USER04";
         String userPw = "123456";
-        String userNm = "사용자03";
+        String userNm = "사용자04";
         String mobile = "01000000000";
 
         String sql = "INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, MOBILE) VALUES (SEQ_MEMBER.NEXTVAL, ?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(url, user, password);
-            PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            PreparedStatement pstmt = conn.prepareStatement(sql, new String[] {"USER_NO"})) {
 
             pstmt.setString(1, userId);
             pstmt.setString(2, userPw);
@@ -67,6 +67,11 @@ public class Ex02 {
             int cnt = pstmt.executeUpdate();
             System.out.println(cnt);
 
+            ResultSet rs = pstmt.getGeneratedKeys();
+            if (rs.next()) {
+                long userNo = rs.getLong(1);
+                System.out.printf("USER_NO : %d%n", userNo);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
