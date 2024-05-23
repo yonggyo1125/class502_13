@@ -1,5 +1,6 @@
 package exam01;
 
+import org.apache.tomcat.jdbc.pool.DataSource;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -43,4 +44,24 @@ public class Ex03 {
             e.printStackTrace();
         }
     }
+
+    @Test
+    void test2() {
+        // 커넥션 풀 제공
+        DataSource ds = new DataSource();
+        /* DB 연결 설정 S */
+        ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+        ds.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
+        ds.setUsername("STUDY");
+        ds.setPassword("oracle");
+        /* DB 연결 설정 E */
+
+        /* 커넥션 풀 설정 S */
+        ds.setInitialSize(2); // 로드 초기에 생성할 연결 객체 수  - 기본값 10
+        ds.setMaxActive(10); // 최대 생성할 연결 객체 수 - 기본값 100
+        ds.setTestWhileIdle(true); // 연결 객체가 유휴 상태일때 연결상태 체크
+        /* 커넥션 풀 설정 E */
+    }
+
+
 }
