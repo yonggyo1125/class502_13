@@ -59,6 +59,14 @@ public class Ex02 {
         try (Connection conn = DriverManager.getConnection(url, user, password);
             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
+            pstmt.setString(1, userId);
+            pstmt.setString(2, userPw);
+            pstmt.setString(3, userNm);
+            pstmt.setString(4, mobile);
+
+            int cnt = pstmt.executeUpdate();
+            System.out.println(cnt);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
