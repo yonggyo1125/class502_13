@@ -93,5 +93,12 @@ public class Ex03 {
 
         /* DataSource 객체 생성 */
         HikariDataSource ds = new HikariDataSource(config);
+
+        /* Connection 객체 생성 */
+        try (Connection conn = ds.getConnection()) {
+            System.out.println(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
