@@ -47,8 +47,15 @@ public class Ex01 {
             Statement stmt = conn.createStatement()) {
 
             String sql = "SELECT * FROM MEMBER";
-            ResultSet resultSet = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                long userNo = rs.getLong(1);
+                String userId = rs.getString(2);
 
+                System.out.printf("USER_NO:%d, USER_ID:%s%n", userNo, userId);
+            }
+
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
