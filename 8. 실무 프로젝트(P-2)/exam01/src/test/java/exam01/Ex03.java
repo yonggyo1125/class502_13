@@ -31,6 +31,13 @@ public class Ex03 {
         String sql = "CALL REGISTER_MEMBER(?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(url, user, password);
              CallableStatement cstmt = conn.prepareCall(sql)) {
+            cstmt.setString(1, "USER99");
+            cstmt.setString(2, "123456");
+            cstmt.setString(3, "사용자99");
+            cstmt.setString(4, "01000000000");
+
+            int cnt = cstmt.executeUpdate();
+            System.out.println(cnt);
 
         } catch (SQLException e) {
             e.printStackTrace();
