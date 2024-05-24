@@ -17,6 +17,20 @@
         SELECT * FROM MEMBER
     </select>
 
+    <select id="getList3" resultMap="memberMap">
+        SELECT * FROM MEMBER
+        WHERE
+        <if test="userId != null">
+            USER_ID = #{userId}
+        </if>
+        <if test="userNm != null">
+            AND USER_NM LIKE #{userNm}
+        </if>
+        <if test="mobile != null">
+            AND MOBILE LIKE #{mobile}
+        </if>
+    </select>
+
     <insert id="register">
         INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, MOBILE)
             VALUES (SEQ_MEMBER.NEXTVAL, #{userId}, #{userPw}, #{userNm}, #{mobile})
