@@ -12,4 +12,6 @@ public interface MemberMapper {
     List<Member> getList2();
 
     int register(Member member);
+
+    int modify(Member member);
 }
