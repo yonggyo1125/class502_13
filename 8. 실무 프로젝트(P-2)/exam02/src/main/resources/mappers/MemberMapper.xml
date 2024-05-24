@@ -61,10 +61,10 @@
         INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, MOBILE)
         VALUES (#{userNo}, #{userId}, #{userPw}, #{userNm}, #{mobile})
     </insert>
-
+    <!--
     <update id="modify">
         UPDATE MEMBER
-            SET
+            <trim prefix="SET" suffixOverrides=",">
                 <if test="userPw != null">
                 USER_PW = #{userPw},
                 </if>
@@ -74,8 +74,24 @@
                 <if test="mobile != null">
                 MOBILE = #{mobile},
                 </if>
-                MOD_DT = SYSDATE
+            </trim>
             WHERE USER_ID = #{userId}
+    </update>
+    -->
+    <update id="modify">
+        UPDATE MEMBER
+        <set>
+            <if test="userPw != null">
+                USER_PW = #{userPw},
+            </if>
+            <if test="userNm != null">
+                USER_NM = #{userNm},
+            </if>
+            <if test="mobile != null">
+                MOBILE = #{mobile},
+            </if>
+        </set>
+        WHERE USER_ID = #{userId}
     </update>
     <delete id="delete">
         DELETE FROM MEMBER WHERE USER_ID = #{userId}
