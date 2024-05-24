@@ -9,6 +9,9 @@
         <property name="username" value="STUDY" />
         <property name="password" value="oracle" />
     </properties>
+    <settings>
+        <setting name="logImpl" value="SLF4J"/>
+    </settings>
     <environments default="dev">
         <environment id="dev">
             <transactionManager type="JDBC"/>
