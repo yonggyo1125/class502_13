@@ -19,16 +19,17 @@
 
     <select id="getList3" resultMap="memberMap">
         SELECT * FROM MEMBER
-        WHERE
-        <if test="userId != null">
-            USER_ID = #{userId}
-        </if>
-        <if test="userNm != null">
-            AND USER_NM LIKE #{userNm}
-        </if>
-        <if test="mobile != null">
-            AND MOBILE LIKE #{mobile}
-        </if>
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="userId != null">
+                USER_ID = #{userId}
+            </if>
+            <if test="userNm != null">
+                AND USER_NM LIKE #{userNm}
+            </if>
+            <if test="mobile != null">
+                AND MOBILE LIKE #{mobile}
+            </if>
+        </trim>
     </select>
 
     <insert id="register">
