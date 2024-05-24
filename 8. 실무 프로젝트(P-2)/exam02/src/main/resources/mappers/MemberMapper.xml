@@ -34,16 +34,18 @@
     -->
 
     <select id="getList3" resultMap="memberMap">
+        <bind name="P_userNm" value="'%' + _parameter.getUserNm() + '%'" />
+        <bind name="P_mobile" value="'%' + _parameter.getMobile() + '%'" />
         SELECT * FROM MEMBER
         <where>
             <if test="userId != null">
                 USER_ID = #{userId}
             </if>
             <if test="userNm != null">
-                AND USER_NM LIKE #{userNm}
+                AND USER_NM LIKE #{P_userNm}
             </if>
             <if test="mobile != null">
-                AND MOBILE LIKE #{mobile}
+                AND MOBILE LIKE #{P_mobile}
             </if>
         </where>
     </select>
