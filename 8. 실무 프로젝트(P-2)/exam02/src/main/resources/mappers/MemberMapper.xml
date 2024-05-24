@@ -50,6 +50,23 @@
         </where>
     </select>
 
+    <select id="getList4" resultMap="memberMap">
+        SELECT * FROM MEMBER
+        <where>
+            <foreach item="item" index="index" collection="list"
+                open="USER_ID IN (" close=")" separator=",">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="getList5">
+        SELECT * FROM MEMBER WHERE
+        <![CDATA[
+            USER_NO > #{userNo}
+        ]]>
+    </select>
+
     <insert id="register">
         INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, MOBILE)
             VALUES (SEQ_MEMBER.NEXTVAL, #{userId}, #{userPw}, #{userNm}, #{mobile})

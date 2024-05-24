@@ -6,6 +6,7 @@ import member.Member;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Ex03 {
@@ -33,6 +34,21 @@ public class Ex03 {
                 .mobile("010")
                 .build();
         List<Member> members = mapper.getList3(member);
+        members.forEach(System.out::println);
+    }
+
+    @Test
+    void test3() {
+        MemberMapper mapper = session.getMapper(MemberMapper.class);
+        List<String> userIds = Arrays.asList("USER04", "USER05", "USER06");
+        List<Member> members = mapper.getList4(userIds);
+        members.forEach(System.out::println);
+    }
+
+    @Test
+    void test4() {
+        MemberMapper mapper = session.getMapper(MemberMapper.class);
+        List<Member> members = mapper.getList5(10);
         members.forEach(System.out::println);
     }
 }
