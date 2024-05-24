@@ -12,6 +12,8 @@ public interface MemberMapper {
     @Select("SELECT USER_NO userNo, USER_ID userId FROM MEMBER")
     List<Member> getList2();
 
+    List<Member> getList3(Member member);
+
     int register(Member member);
     int register2(Member member);
 
