@@ -19,12 +19,18 @@
 
     <insert id="register">
         INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, MOBILE)
-            VALUES (SEQ_MEMBER.NEXTVAL, #{userId}, #{userPw}, #{userNm}, #{mobile});
+            VALUES (SEQ_MEMBER.NEXTVAL, #{userId}, #{userPw}, #{userNm}, #{mobile})
     </insert>
-    <update>
-
+    <update id="modify">
+        UPDATE MEMBER
+            SET
+                USER_PW = #{userPw},
+                USER_NM = #{userNm},
+                MOBILE = #{mobile},
+                MOD_DT = SYSDATE
+            WHERE USER_ID = #{userId}
     </update>
-    <delete>
-
+    <delete id="delete">
+        DELETE FROM MEMBER WHERE USER_ID = #{userId}
     </delete>
 </mapper>
