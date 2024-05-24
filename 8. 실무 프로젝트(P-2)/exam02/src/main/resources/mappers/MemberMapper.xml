@@ -16,7 +16,7 @@
     <select id="getList" resultMap="memberMap">
         SELECT * FROM MEMBER
     </select>
-
+    <!--
     <select id="getList3" resultMap="memberMap">
         SELECT * FROM MEMBER
         <trim prefix="WHERE" prefixOverrides="AND | OR">
@@ -30,6 +30,22 @@
                 AND MOBILE LIKE #{mobile}
             </if>
         </trim>
+    </select>
+    -->
+
+    <select id="getList3" resultMap="memberMap">
+        SELECT * FROM MEMBER
+        <where>
+            <if test="userId != null">
+                USER_ID = #{userId}
+            </if>
+            <if test="userNm != null">
+                AND USER_NM LIKE #{userNm}
+            </if>
+            <if test="mobile != null">
+                AND MOBILE LIKE #{mobile}
+            </if>
+        </where>
     </select>
 
     <insert id="register">

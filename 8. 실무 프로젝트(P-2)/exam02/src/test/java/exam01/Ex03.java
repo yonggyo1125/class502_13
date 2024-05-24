@@ -29,8 +29,8 @@ public class Ex03 {
         MemberMapper mapper = session.getMapper(MemberMapper.class);
         Member member = Member.builder()
                 //.userId("USER99")
-                //.userNm("사용")
-                //.mobile("010")
+                .userNm("%사용%")
+                .mobile("%010%")
                 .build();
         List<Member> members = mapper.getList3(member);
         members.forEach(System.out::println);
