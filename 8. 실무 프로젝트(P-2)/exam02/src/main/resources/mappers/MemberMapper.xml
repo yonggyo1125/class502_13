@@ -21,6 +21,16 @@
         INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, MOBILE)
             VALUES (SEQ_MEMBER.NEXTVAL, #{userId}, #{userPw}, #{userNm}, #{mobile})
     </insert>
+
+    <insert id="register2">
+        <selectKey keyProperty="userNo" order="BEFORE" resultType="long">
+            SELECT SEQ_MEMBER.NEXTVAL FROM DUAL
+        </selectKey>
+
+        INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, MOBILE)
+        VALUES (#{userNo}, #{userId}, #{userPw}, #{userNm}, #{mobile})
+    </insert>
+
     <update id="modify">
         UPDATE MEMBER
             SET
