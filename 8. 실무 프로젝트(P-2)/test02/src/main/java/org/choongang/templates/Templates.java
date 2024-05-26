@@ -3,6 +3,7 @@ package org.choongang.templates;
 import org.choongang.templates.commons.Common;
 import org.choongang.templates.mains.MainTpl;
 import org.choongang.templates.members.JoinTpl;
+import org.choongang.templates.members.LoginTpl;
 
 public class Templates {
 
@@ -22,6 +23,10 @@ public class Templates {
         return new JoinTpl();
     }
 
+    public LoginTpl loginTpl() {
+        return new LoginTpl();
+    }
+
     public static Templates getInstance() {
         if (instance == null) {
             instance = new Templates();
@@ -36,6 +41,8 @@ public class Templates {
             template = mainTpl();
         } else if (tpl.equals("join")) {
             template = joinTpl();
+        } else if (tpl.equals("login")) {
+            template = loginTpl();
         }
 
         return template.getTpl();
