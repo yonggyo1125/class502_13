@@ -33,6 +33,15 @@ public class Server {
             while(true) {
                 Socket socket = server.accept();
 
+                SocketHandler socketHandler = new SocketHandler(socket);
+
+                // 수신 처리
+                socketHandler.inputHandler((data) -> {
+
+                });
+
+                // 전송 처리
+                socketHandler.outputHandler();
 
             }
 
