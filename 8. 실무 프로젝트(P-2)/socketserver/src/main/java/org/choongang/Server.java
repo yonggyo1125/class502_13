@@ -1,5 +1,8 @@
 package org.choongang;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -13,9 +16,13 @@ import java.util.concurrent.TimeUnit;
 public class Server {
 
     private ExecutorService threadPool;
+    private ObjectMapper om;
 
     public Server() {
         threadPool = new ThreadPoolExecutor(2, 100, 120L, TimeUnit.SECONDS, new SynchronousQueue<>(){});
+
+        om = new ObjectMapper();
+        om.registerModule(new JavaTimeModule()); // java.time 패키지 대응
     }
 
     public void start() {
@@ -39,6 +46,7 @@ public class Server {
 
         public SocketHandler(Socket socket) {
             this.socket = socket;
+
         }
 
         public void setData(Object data) {
