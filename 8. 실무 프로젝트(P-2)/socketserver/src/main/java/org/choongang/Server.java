@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 public class Server {
 
@@ -53,12 +54,12 @@ public class Server {
             this.data = data;
         }
 
-        public void inputHandler() {
+        public void inputHandler(Consumer<String> handler) {
             threadPool.execute(() -> {
                 try (DataInputStream dis = new DataInputStream(socket.getInputStream())) {
 
                     String data = dis.readUTF();
-                    System.out.println(data);
+                    handler.accept(data);
 
                 } catch (IOException e) {
                     e.printStackTrace();
