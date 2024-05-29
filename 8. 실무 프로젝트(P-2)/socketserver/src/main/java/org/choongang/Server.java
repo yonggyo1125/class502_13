@@ -1,6 +1,7 @@
 package org.choongang;
 
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -34,9 +35,14 @@ public class Server {
 
     class SocketHandler {
         private Socket socket;
+        private Object data;
 
         public SocketHandler(Socket socket) {
             this.socket = socket;
+        }
+
+        public void setData(Object data) {
+            this.data = data;
         }
 
         public void inputHandler() {
@@ -54,7 +60,19 @@ public class Server {
 
         public void outputHandler() {
             threadPool.execute(() -> {
+                while(true) {
+                    if (data == null) {
+                        Thread.currentThread().yield();
+                        continue;
+                    }
 
+                    try (DataOutputStream dos = new DataOutputStream(socket.getOutputStream())) {
+
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             });
         }
     }
