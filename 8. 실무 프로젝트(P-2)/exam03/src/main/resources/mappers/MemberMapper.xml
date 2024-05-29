@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.MemberMapper">
+    <select id="getList" resultType="exam01.Member">
+        SELECT * FROM MEMBER
+    </select>
+
+    <insert id="register">
+        INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM)
+            VALUES (SEQ_MEMBER.NEXTVAL, #{USER_ID}, #{USER_PW}, #{USER_NM})
+    </insert>
+</mapper>
