@@ -75,11 +75,14 @@ public class Server {
                     }
 
                     try (DataOutputStream dos = new DataOutputStream(socket.getOutputStream())) {
-
+                        // 자바 객체 data -> JSON 문자열 변환
+                        String json = om.writeValueAsString(data);
+                        dos.writeUTF(json); // 데이터 전송
 
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    data = null; // 전송 후 데이터 비우기
                 }
             });
         }
