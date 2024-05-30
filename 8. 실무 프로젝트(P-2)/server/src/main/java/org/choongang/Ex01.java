@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class Ex01 {
     public static void main(String[] args) throws Exception {
-        Socket socket = new Socket("127.0.0.1", 9999);
+        Socket socket = new Socket("127.0.0.1", 3000);
         Scanner sc = new Scanner(System.in);
 
         ObjectMapper om = new ObjectMapper();
