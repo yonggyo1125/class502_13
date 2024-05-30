@@ -4,9 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
@@ -57,6 +55,7 @@ public class Server {
                     }
 
                     // 전송
+                    System.out.println(sData);
                     String to = sData.getTo();
                     handler.send(to, sData);
                 });
@@ -99,7 +98,8 @@ public class Server {
         // 수신 처리
         public void input(Consumer<String> handler) {
             threadPool.execute(() -> {
-                try(DataInputStream dis = new DataInputStream(socket.getInputStream())) {
+                try {
+                    DataInputStream dis = new DataInputStream(socket.getInputStream());
 
                     while(true) {
                         if (socket == null || socket.isClosed() || handler == null) {
@@ -124,7 +124,9 @@ public class Server {
             }
 
             threadPool.execute(() -> {
-                try(DataOutputStream dos = new DataOutputStream(toSocket.getOutputStream())) {
+                try {
+                    DataOutputStream dos = new DataOutputStream(toSocket.getOutputStream());
+
 
                     String json = toJSON(data);
                     dos.writeUTF(json);
@@ -132,7 +134,7 @@ public class Server {
                 } catch(IOException e) {
                     e.printStackTrace();
                 }
-            });
+           });
         }
 
         public void send(String to, SocketData data) {
