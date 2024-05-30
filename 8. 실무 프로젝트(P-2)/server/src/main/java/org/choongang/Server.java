@@ -149,16 +149,20 @@ public class Server {
 
         /**
          * 소켓 연결이 종료된 경우 clients에서 제거
-         * 10초마다 소켓 연결상태 체크
+         * 5초마다 소켓 연결상태 체크
          */
         public void monitoring() {
             Thread th = new Thread(() -> {
                 while(true) {
                     try {
-                        Thread.sleep(10000);
+                        Thread.sleep(5000);
                     } catch (InterruptedException e) {}
 
-
+                    for (Map.Entry<String, Socket> client : clients.entrySet()) {
+                        if (client.getValue().isClosed()) {
+                            clients.remove(client.getKey());
+                        }
+                    }
                 }
             });
 
