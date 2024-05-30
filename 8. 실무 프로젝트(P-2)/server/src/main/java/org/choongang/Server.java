@@ -56,7 +56,6 @@ public class Server {
                 try(DataInputStream dis = new DataInputStream(socket.getInputStream())) {
 
                     while(true) {
-
                         if (socket == null || handler == null) {
                             Thread.currentThread().yield();
                             break;
