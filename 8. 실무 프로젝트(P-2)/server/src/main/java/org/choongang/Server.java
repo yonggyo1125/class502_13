@@ -127,7 +127,6 @@ public class Server {
                 try {
                     DataOutputStream dos = new DataOutputStream(toSocket.getOutputStream());
 
-
                     String json = toJSON(data);
                     dos.writeUTF(json);
 
@@ -146,6 +145,26 @@ public class Server {
                     output(s, data);
                 }
             }
+        }
+
+        /**
+         * 소켓 연결이 종료된 경우 clients에서 제거
+         * 10초마다 소켓 연결상태 체크
+         */
+        public void monitoring() {
+            Thread th = new Thread(() -> {
+                while(true) {
+                    try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException e) {}
+
+
+                }
+            });
+
+            th.setDaemon(true);
+
+            th.start();
         }
     }
 }
