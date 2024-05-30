@@ -4,9 +4,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
@@ -14,6 +17,7 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class Server {
     private ServerSocket serverSocket;
@@ -38,6 +42,9 @@ public class Server {
     }
 
     public void start() {
+
+        // 소켓 연결 상태 체크
+        monitoring();
 
         while(true) {
             try {
@@ -160,9 +167,39 @@ public class Server {
            });
         }
 
+        /**
+         * 메세지 전송
+         *
+         * @param to
+         *          all : 모든 접속자
+         *          request_users : 모든 접속자 목록
+         *          request_exit : 연결 종료, 소켓 close(), 제거
+         * @param data
+         */
         public void send(String to, SocketData data) {
+
+            data.setRegDt(LocalDateTime.now());
+
             if (to.equals("all")) { // 전체 전송
                 clients.values().forEach(s -> output(s, data));
+
+            } else if (to.equals("request_users")) { // 모든 접속자 목록
+                to = data.getFrom(); // 요청 정보는 요청한 사용자에게 반송
+
+                String message = clients.keySet().stream().collect(Collectors.joining("||"));
+                data.setMessage(message);
+            } else if (to.equals("request_exit")) { // 접속 종료
+                String from = data.getFrom();
+                Socket s = clients.get(from);
+                if (s != null) {
+                    if (!s.isClosed()) {
+                        try {
+                            s.close();
+                        } catch (IOException e) {}
+                    }
+
+                    clients.remove(from);
+                }
             } else { // 특정 사용자 전송
                 Socket s = clients.get(to);
                 if (s != null) {

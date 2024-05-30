@@ -37,7 +37,7 @@ public class Ex01 {
                System.out.print("메세지: ");
                String message = sc.nextLine();
 
-               SocketData data = new SocketData("user01", "all", message, LocalDateTime.now());
+               SocketData data = new SocketData("user01", "request_users", message, LocalDateTime.now());
                String json = om.writeValueAsString(data);
 
                dos.writeUTF(json);
