@@ -1,5 +1,6 @@
 package org.choongang;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
@@ -12,6 +13,7 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
+import java.util.logging.SocketHandler;
 
 public class Server {
     private ServerSocket serverSocket;
@@ -49,6 +51,28 @@ public class Server {
                 e.printStackTrace();
             }
         }
+    }
+
+    private SocketData toObject(String json) {
+        SocketData data = null;
+        try {
+            data = om.readValue(json, SocketData.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return data;
+    }
+
+    private String toJSON(SocketData sData) {
+        String data = null;
+        try {
+            data = om.writeValueAsString(sData);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return data;
     }
 
     class SocketHandler {
