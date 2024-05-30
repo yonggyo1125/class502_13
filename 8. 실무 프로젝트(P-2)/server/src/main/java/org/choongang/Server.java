@@ -56,6 +56,9 @@ public class Server {
                         clients.put(from, socket);
                     }
 
+                    // 전송
+                    String to = sData.getTo();
+                    handler.send(to, sData);
                 });
 
             } catch (IOException e) {
