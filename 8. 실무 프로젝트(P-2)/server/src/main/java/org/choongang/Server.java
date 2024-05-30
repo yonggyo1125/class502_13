@@ -44,7 +44,8 @@ public class Server {
 
                 // 수신 처리
                 handler.input(data -> {
-                    System.out.println(data);
+                   SocketData sData = toObject(data);
+                    System.out.println(sData);
                 });
 
             } catch (IOException e) {
