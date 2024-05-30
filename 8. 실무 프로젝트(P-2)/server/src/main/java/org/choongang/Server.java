@@ -188,6 +188,10 @@ public class Server {
 
                 String message = clients.keySet().stream().collect(Collectors.joining("||"));
                 data.setMessage(message);
+
+                Socket s = clients.get(to);
+                output(s, data);
+
             } else if (to.equals("request_exit")) { // 접속 종료
                 String from = data.getFrom();
                 Socket s = clients.get(from);
