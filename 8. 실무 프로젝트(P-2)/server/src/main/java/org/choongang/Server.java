@@ -116,6 +116,10 @@ public class Server {
 
         // 전송 처리
         public void output(Socket toSocket, SocketData data) {
+            if (toSocket == null || toSocket.isClosed() || data == null) {
+                return;
+            }
+
             threadPool.execute(() -> {
                 try(DataOutputStream dos = new DataOutputStream(toSocket.getOutputStream())) {
 
@@ -126,6 +130,17 @@ public class Server {
                     e.printStackTrace();
                 }
             });
+        }
+
+        public void send(String to, SocketData data) {
+            if (to.equals("all")) { // 전체 전송
+                clients.values().forEach(s -> output(s, data));
+            } else { // 특정 사용자 전송
+                Socket s = clients.get(to);
+                if (s != null) {
+                    output(s, data);
+                }
+            }
         }
     }
 }
