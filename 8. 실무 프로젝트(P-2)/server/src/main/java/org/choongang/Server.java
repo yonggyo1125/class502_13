@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 public class Server {
     private ServerSocket serverSocket;
@@ -29,6 +30,13 @@ public class Server {
             try {
                 Socket socket = serverSocket.accept();
 
+                SocketHandler handler = new SocketHandler(socket);
+
+                // 수신 처리
+                handler.input(data -> {
+                    System.out.println(data);
+                });
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -43,9 +51,20 @@ public class Server {
         }
 
         // 수신 처리
-        public void input() {
+        public void input(Consumer<String> handler) {
             threadPool.execute(() -> {
                 try(DataInputStream dis = new DataInputStream(socket.getInputStream())) {
+
+                    while(true) {
+
+                        if (socket == null || handler == null) {
+                            Thread.currentThread().yield();
+                            break;
+                        }
+
+                        String data = dis.readUTF();
+                        handler.accept(data);
+                    }
 
                 } catch (IOException e) {
                     e.printStackTrace();
