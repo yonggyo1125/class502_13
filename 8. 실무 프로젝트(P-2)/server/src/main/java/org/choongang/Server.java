@@ -5,20 +5,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
-import java.util.logging.SocketHandler;
 
 public class Server {
     private ServerSocket serverSocket;
     private ExecutorService threadPool;
     private ObjectMapper om;
+    private Map<String, Socket> clients; // 접속한 사용자(소켓)
 
     public Server() {
 
@@ -32,6 +35,8 @@ public class Server {
 
         om = new ObjectMapper();
         om.registerModule(new JavaTimeModule());
+
+        clients = new HashMap<>();
     }
 
     public void start() {
@@ -44,8 +49,13 @@ public class Server {
 
                 // 수신 처리
                 handler.input(data -> {
-                   SocketData sData = toObject(data);
-                    System.out.println(sData);
+                    SocketData sData = toObject(data);
+                    String from = sData.getFrom(); // 보낸 사람
+                    // 최초 접속인 경우, 사용자(소켓) 등록
+                    if (!clients.containsKey(from)) {
+                        clients.put(from, socket);
+                    }
+
                 });
 
             } catch (IOException e) {
@@ -105,9 +115,16 @@ public class Server {
         }
 
         // 전송 처리
-        public void output() {
+        public void output(Socket toSocket, SocketData data) {
             threadPool.execute(() -> {
+                try(DataOutputStream dos = new DataOutputStream(toSocket.getOutputStream())) {
 
+                    String json = toJSON(data);
+                    dos.writeUTF(json);
+
+                } catch(IOException e) {
+                    e.printStackTrace();
+                }
             });
         }
     }
