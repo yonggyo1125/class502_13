@@ -147,7 +147,10 @@ public class Server {
                     }
 
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    // 소켓 종료 및 연결 문제 발생시 소켓 제거
+                    remove(socket);
+
+                    System.err.println(e.getMessage());
                 }
             });
         }
@@ -166,10 +169,24 @@ public class Server {
                     dos.writeUTF(json);
 
                 } catch(IOException e) {
-                    e.printStackTrace();
+                    // 소켓 종료 및 연결 문제 발생시 소켓 제거
+                    remove(socket);
+
+                    System.err.println(e.getMessage());
                 }
            });
         }
+
+        public void remove(Socket socket) {
+            for (Map.Entry<String, Socket> client : clients.entrySet()) {
+                if (client.getValue() == socket) {
+                    clients.remove(client.getKey());
+                }
+            }
+
+            clients.values().forEach(System.out::println);
+        }
+
 
         /**
          * 메세지 전송
@@ -190,7 +207,7 @@ public class Server {
             } else if (to.equals("request_users")) { // 모든 접속자 목록
                 to = data.getFrom(); // 요청 정보는 요청한 사용자에게 반송
 
-                String message = clients.keySet().stream().collect(Collectors.joining("||"));
+                String message = clients.keySet().stream().collect(Collectors.joining("__"));
                 data.setMessage(message);
 
                 Socket s = clients.get(to);
