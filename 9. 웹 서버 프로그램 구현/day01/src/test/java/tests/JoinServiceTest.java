@@ -3,6 +3,7 @@ package tests;
 import global.exceptions.ValidationException;
 import member.controllers.RequestJoin;
 import member.services.JoinService;
+import member.validators.JoinValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -16,7 +17,7 @@ public class JoinServiceTest {
     @DisplayName("회원가입 성공시 예외가 발생 없음")
    void successTest() {
         assertDoesNotThrow(() -> {
-            JoinService service = new JoinService();
+            JoinService service = new JoinService(new JoinValidator());
             RequestJoin form = RequestJoin.builder().build();
             service.process(form);
         });
@@ -28,7 +29,7 @@ public class JoinServiceTest {
         /* 이메일 필수 검증 S */
         assertThrows(ValidationException.class, () -> {
             RequestJoin form = RequestJoin.builder().build();
-            JoinService service = new JoinService();
+            JoinService service = new JoinService(new JoinValidator());
             service.process(form);
         });
        /* 이메일 필수 검증 E */
