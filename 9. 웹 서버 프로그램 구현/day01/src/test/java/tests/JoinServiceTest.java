@@ -61,7 +61,7 @@ public class JoinServiceTest {
        /* 비밀번호 필수 검증 S */
        thrown = assertThrows(ValidationException.class, () -> {
            RequestJoin form = getData();
-           form.setUserName(null);
+           form.setPassword(null);
            joinService.process(form);
 
            form.setPassword("     ");
@@ -70,5 +70,14 @@ public class JoinServiceTest {
        message = thrown.getMessage();
        assertTrue(message.contains("비밀번호"));
        /* 비밀번호 필수 검증 E */
+   }
+
+   void requiredFieldEachTest(RequestJoin form, String keyword) {
+       ValidationException thrown = assertThrows(ValidationException.class, () -> {
+            joinService.process(form);
+        });
+
+       String message = thrown.getMessage();
+       assertTrue(message.contains(keyword));
    }
 }
