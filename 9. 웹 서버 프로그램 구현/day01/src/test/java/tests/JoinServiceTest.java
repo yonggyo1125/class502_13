@@ -43,7 +43,7 @@ public class JoinServiceTest {
    @DisplayName("필수항목(이메일, 비밀번호, 비밀번호 확인, 회원명) 검증, 검증 실패시 ValidationException 발생")
    void requiredFieldTest() {
         /* 이메일 필수 검증 S */
-        assertThrows(ValidationException.class, () -> {
+        ValidationException thrown = assertThrows(ValidationException.class, () -> {
             RequestJoin form = getData();
             // null 체크
             form.setEmail(null);
@@ -53,10 +53,13 @@ public class JoinServiceTest {
             form.setEmail("     ");
             joinService.process(form);
         });
+
+        String message = thrown.getMessage(); // 발생한 예외 메세지
+       assertTrue(message.contains("이메일"));
        /* 이메일 필수 검증 E */
 
        /* 비밀번호 필수 검증 S */
-        assertThrows(ValidationException.class, () -> {
+       thrown = assertThrows(ValidationException.class, () -> {
            RequestJoin form = getData();
            form.setUserName(null);
            joinService.process(form);
@@ -64,6 +67,8 @@ public class JoinServiceTest {
            form.setPassword("     ");
            joinService.process(form);
         });
+       message = thrown.getMessage();
+       assertTrue(message.contains("비밀번호"));
        /* 비밀번호 필수 검증 E */
    }
 }
