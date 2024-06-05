@@ -1,10 +1,17 @@
 package exam01;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class Ex02Test {
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("BEFORE ALL");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("AFTER ALL");
+    }
 
     @BeforeEach
     void beforeEach() {
