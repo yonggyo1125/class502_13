@@ -83,7 +83,7 @@ public class JoinServiceTest {
                () -> {
                     RequestJoin form = getData();
                     form.setTermsAgree(false);
-                    requiredFieldEachTest(form, "약관 동의");
+                    requiredFieldEachTest(form, "약관에 동의");
                }
        );
    }
