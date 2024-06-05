@@ -7,7 +7,6 @@ import member.validators.JoinValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -55,7 +54,7 @@ public class JoinServiceTest {
                // 비밀번호 검증
                () -> {
                    RequestJoin form = getData();
-                   form.setPassword(null);
+                   //form.setPassword(null);
                    requiredFieldEachTest(form, "비밀번호");
 
                    form.setPassword("     ");
@@ -91,7 +90,7 @@ public class JoinServiceTest {
    void requiredFieldEachTest(RequestJoin form, String keyword) {
        ValidationException thrown = assertThrows(ValidationException.class, () -> {
             joinService.process(form);
-        });
+        }, keyword + " 오류!");
 
        String message = thrown.getMessage();
        assertTrue(message.contains(keyword));
