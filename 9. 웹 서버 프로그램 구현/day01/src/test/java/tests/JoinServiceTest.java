@@ -40,7 +40,7 @@ public class JoinServiceTest {
    }
    
    @Test
-   @DisplayName("필수항목(이메일, 비밀번호, 비밀번호 확인, 회원명) 검증, 검증 실패시 ValidationException 발생")
+   @DisplayName("필수항목(이메일, 비밀번호, 비밀번호 확인, 회원명, 약관동의) 검증, 검증 실패시 ValidationException 발생")
    void requiredFieldTest() {
        assertAll(
                // 이메일 검증
@@ -78,6 +78,12 @@ public class JoinServiceTest {
 
                     form.setUserName("    ");
                     requiredFieldEachTest(form, "회원명");
+               },
+               // 약관 동의 검증
+               () -> {
+                    RequestJoin form = getData();
+                    form.setTermsAgree(false);
+                    requiredFieldEachTest(form, "약관 동의");
                }
        );
    }
