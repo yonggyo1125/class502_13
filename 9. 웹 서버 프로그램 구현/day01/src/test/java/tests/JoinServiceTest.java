@@ -55,7 +55,15 @@ public class JoinServiceTest {
         });
        /* 이메일 필수 검증 E */
 
+       /* 비밀번호 필수 검증 S */
+        assertThrows(ValidationException.class, () -> {
+           RequestJoin form = getData();
+           form.setUserName(null);
+           joinService.process(form);
 
-        
+           form.setPassword("     ");
+           joinService.process(form);
+        });
+       /* 비밀번호 필수 검증 E */
    }
 }
