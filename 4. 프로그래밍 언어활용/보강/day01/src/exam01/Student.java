@@ -7,5 +7,12 @@ public class Student {
 
     void study() {
         System.out.printf("id=%d, name=%s, subject=%s%n", id, name, subject);
+
+        boolean result = true;
+        if (result) {
+            return;
+        }
+
+        System.out.println("실행2");
     }
 }

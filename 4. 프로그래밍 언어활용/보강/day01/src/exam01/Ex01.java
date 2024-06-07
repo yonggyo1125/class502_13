@@ -7,6 +7,11 @@ public class Ex01 {
         s1.name = "이이름";
         s1.subject = "과목1";
 
-        s1.study();
+        System.out.println("s1:" + System.identityHashCode(s1));
+
+        Student s2 = new Student();
+        System.out.println("s2:" + System.identityHashCode(s2));
+
+       // s1.study();
     }
 }
