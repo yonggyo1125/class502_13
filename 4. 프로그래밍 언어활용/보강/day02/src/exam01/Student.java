@@ -14,6 +14,13 @@ public class Student {
         subject = "과목1";
     }
 
+
+    public Student(int _id, String _name, String _subject) {
+        id = _id;
+        name = _name;
+        subject = _subject;
+    }
+
     void study() {
         System.out.printf("id=%d, name=%s, subject=%s%n", id, name, subject);
     }
