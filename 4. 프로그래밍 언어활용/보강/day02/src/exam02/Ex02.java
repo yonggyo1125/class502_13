@@ -8,5 +8,8 @@ public class Ex02 {
         s1.setDay(8);
 
         System.out.println(s1); // s1.toString();
+
+        Schedule2 _this = s1.getThis();
+        System.out.println(_this == s1);
     }
 }

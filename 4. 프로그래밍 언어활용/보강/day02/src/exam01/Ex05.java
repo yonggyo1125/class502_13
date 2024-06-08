@@ -7,5 +7,7 @@ public class Ex05 {
 
         s1.study();
         s2.study();
+
+
     }
 }

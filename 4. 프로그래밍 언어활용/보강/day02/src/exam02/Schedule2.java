@@ -5,6 +5,16 @@ public class Schedule2 {
     private int month;
     private int day;
 
+    public Schedule2() {
+        this(2024, 6, 8);
+    }
+
+    public Schedule2(int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
+
     public int getYear() {
         return year;
     }
@@ -27,6 +37,10 @@ public class Schedule2 {
 
     public void setDay(int day) {
         this.day = day;
+    }
+
+    public Schedule2 getThis() {
+        return this;
     }
 
     @Override
