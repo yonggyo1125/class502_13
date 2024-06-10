@@ -53,8 +53,9 @@ public class LoginServiceTest {
     @Test
     @DisplayName("필수 항목(아이디, 비밀번호) 검증, 검증 실패시 ValidationException 발생")
     void requiredFieldTest() {
-        // 아이디 필수 항목 검증
-        assertThrows(ValidationException.class, () -> {
+        // 아이디 필수 항목 검증 - null, " "
+        ValidationException thrown = assertThrows(ValidationException.class, () -> {
+            setParamData("email", faker.internet().emailAddress());
            loginService.process(request);
         });
     }
