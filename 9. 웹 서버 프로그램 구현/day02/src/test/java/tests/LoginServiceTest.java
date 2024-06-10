@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
 @DisplayName("로그인 서비스 기능 테스트")
@@ -21,6 +22,9 @@ public class LoginServiceTest {
 
         // HttpServletRequest 모의 객체 생성
         request = mock(HttpServletRequest.class);
+
+        given(request.getParameter("email")).willReturn("test01@test.org");
+        given(request.getParameter("password")).willReturn("12345678");
     }
 
     @Test
