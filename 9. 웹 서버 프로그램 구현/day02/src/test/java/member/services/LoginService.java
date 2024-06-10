@@ -1,13 +1,20 @@
 package member.services;
 
+import global.exceptions.ValidationException;
+import global.validators.Validator;
 import jakarta.servlet.http.HttpServletRequest;
+import member.validators.LoginValidator;
 
 public class LoginService {
+    private Validator<HttpServletRequest> validator;
+
+    public LoginService(Validator<HttpServletRequest> validator) {
+        this.validator = validator;
+    }
 
     public void process(HttpServletRequest request) {
-        // 아이디 : email, 비밀번호 password
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        System.out.printf("email=%s, password=%s%n", email, password);
+
+        validator.check(request);
+
     }
 }
