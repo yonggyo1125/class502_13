@@ -58,5 +58,22 @@ public class LoginServiceTest {
             setParamData("email", faker.internet().emailAddress());
            loginService.process(request);
         });
+
+        String message = thrown.getMessage();
+        assertTrue(message.contains("이메일"));
+    }
+
+    void requiredFieldEachTest(String name, String message) {
+        setParamData("email", null);
+        setParamData("password", null);
+
+        ValidationException thrown = assertThrows(ValidationException.class, () -> {
+             // null
+             loginService.process(request);
+
+             // 빈값
+             setParamData(name, "     ");
+             loginService.process(request);
+        });
     }
 }
