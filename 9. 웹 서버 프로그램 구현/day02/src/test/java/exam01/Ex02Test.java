@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Locale;
 
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
 public class Ex02Test {
@@ -24,6 +25,12 @@ public class Ex02Test {
         loginService = new LoginService(new LoginValidator());
         mailer = mock(Mailer.class);
         faker = new Faker(Locale.ENGLISH);
+
+        request = mock(HttpServletRequest.class);
+
+        // 스텁(Stub) 추가
+        given(request.getParameter("email")).willReturn(faker.internet().emailAddress());
+        given(request.getParameter("password")).willReturn(faker.regexify("\\w{8}").toLowerCase());
     }
 
     @Test
