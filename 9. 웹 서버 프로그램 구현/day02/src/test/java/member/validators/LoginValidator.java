@@ -12,7 +12,7 @@ public class LoginValidator implements Validator<HttpServletRequest>, RequiredVa
         String password = form.getParameter("password");
 
         /* 필수 항목 검증 S */
-        checkRequired(email, new ValidationException("아이디를 입력하세요."));
+        checkRequired(email, new ValidationException("이메일을 입력하세요."));
         checkRequired(password, new ValidationException("비밀번호를 입력하세요."));
         /* 필수 항목 검증 E */
     }
