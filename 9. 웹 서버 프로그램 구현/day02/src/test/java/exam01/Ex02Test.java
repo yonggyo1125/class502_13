@@ -2,6 +2,7 @@ package exam01;
 
 import com.github.javafaker.Faker;
 import global.Mailer;
+import jakarta.servlet.http.HttpServletRequest;
 import member.services.LoginService;
 import member.validators.LoginValidator;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +17,7 @@ public class Ex02Test {
     private LoginService loginService;
     private Mailer mailer;
     private Faker faker;
+    private HttpServletRequest request;
 
     @BeforeEach
     void init() {
@@ -26,6 +28,6 @@ public class Ex02Test {
 
     @Test
     void test1() {
-
+        loginService.process(request);
     }
 }
