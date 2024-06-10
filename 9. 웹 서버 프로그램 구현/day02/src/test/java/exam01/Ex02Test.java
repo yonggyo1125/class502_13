@@ -7,11 +7,15 @@ import member.services.LoginService;
 import member.validators.LoginValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.util.Locale;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.only;
 
 public class Ex02Test {
 
@@ -35,6 +39,24 @@ public class Ex02Test {
 
     @Test
     void test1() {
+        loginService.setMailer(mailer);
         loginService.process(request);
+        String email = request.getParameter("email");
+
+        then(mailer).should(only()).send(email); // send 함수가 loginSerivce.process 메서드에서 단 한번 호출되는지 테스트
+    }
+
+    @Test
+    void test2() {
+        loginService.setMailer(mailer);
+        loginService.process(request);
+        String email = request.getParameter("email");
+
+        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+
+        then(mailer).should().send(captor.capture());
+
+        String usedEmail = captor.getValue(); // send 메서드에서 매개변수로 사용한 값
+        assertEquals(email, usedEmail);
     }
 }
