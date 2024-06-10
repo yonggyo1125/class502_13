@@ -7,7 +7,10 @@ import member.services.LoginService;
 import member.validators.LoginValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Locale;
 
@@ -17,20 +20,25 @@ import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.only;
 
+@ExtendWith(MockitoExtension.class)
 public class Ex02Test {
 
     private LoginService loginService;
+
+    @Mock
     private Mailer mailer;
     private Faker faker;
+
+    @Mock
     private HttpServletRequest request;
 
     @BeforeEach
     void init() {
         loginService = new LoginService(new LoginValidator());
-        mailer = mock(Mailer.class);
+        //mailer = mock(Mailer.class);
         faker = new Faker(Locale.ENGLISH);
 
-        request = mock(HttpServletRequest.class);
+        //request = mock(HttpServletRequest.class);
 
         // 스텁(Stub) 추가
         given(request.getParameter("email")).willReturn(faker.internet().emailAddress());
