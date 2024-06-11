@@ -5,9 +5,27 @@
                       https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
 
+    <context-param>
+        <param-name>common1</param-name>
+        <param-value>commonValue1</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>common2</param-name>
+        <param-value>commonValue2</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>hello-servlet</servlet-name>
         <servlet-class>servlets.HelloServlet</servlet-class>
+        <init-param>
+            <param-name>key1</param-name>
+            <param-value>value1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>key2</param-name>
+            <param-value>value2</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>hello-servlet</servlet-name>
