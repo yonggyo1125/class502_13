@@ -13,6 +13,11 @@ public class HelloServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //System.out.println("안녕하세요~!");
         System.out.println("doGet()");
+
+        // 모든 서블릿이 공유 가능한 초기 설정 값 - context-param
+        String common1 = req.getServletContext().getInitParameter("common1");
+        String common2 = req.getServletContext().getInitParameter("common2");
+        System.out.printf("common1=%s, common2=%s%n", common1, common2);
     }
     /*
     @Override
@@ -28,10 +33,11 @@ public class HelloServlet extends HttpServlet {
         String key2 = config.getInitParameter("key2");
         System.out.printf("key1=%s, key2=%s%n", key1, key2);
 
-        // 모든 서블릿이 조회 가능
-        String common1 = config.getInitParameter("common1");
-        String common2 = config.getInitParameter("common2");
-        System.out.printf("common1=%s, common2=%s%n", common1, common2);
+
+
+
+
+
     }
 
     @Override
