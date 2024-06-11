@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
 public class JoinServlet extends HttpServlet {
     @Override
@@ -40,7 +41,11 @@ public class JoinServlet extends HttpServlet {
         String password = req.getParameter("password");
         String confirmPassword = req.getParameter("confirmPassword");
         String userName = req.getParameter("userName");
+        String[] hobbies = req.getParameterValues("hobby");
 
         System.out.printf("email=%s, password=%s, confirmPassword=%s, userName=%s%n", email, password, confirmPassword, userName);
+
+        Arrays.stream(hobbies)
+                .forEach(s -> System.out.println("hobby:" + s));
     }
 }

@@ -32,13 +32,30 @@
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
-
+    <servlet>
+        <servlet-name>member-servlet</servlet-name>
+        <servlet-class>servlets.MemberServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>member-servlet</servlet-name>
+        <url-pattern>/member/*</url-pattern>
+    </servlet-mapping>
+    <!--
     <servlet>
         <servlet-name>join-servlet</servlet-name>
         <servlet-class>servlets.JoinServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>join-servlet</servlet-name>
-        <url-pattern>/join</url-pattern>
+        <url-pattern>/member/join</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>login-servlet</servlet-name>
+        <servlet-class>servlets.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>login-servlet</servlet-name>
+        <url-pattern>/member/login</url-pattern>
+    </servlet-mapping>-->
 </web-app>
