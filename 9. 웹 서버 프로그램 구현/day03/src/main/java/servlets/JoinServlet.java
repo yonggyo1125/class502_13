@@ -22,6 +22,11 @@ public class JoinServlet extends HttpServlet {
         out.println("비밀번호:<input type='password' name='password'><br>");
         out.println("비밀번호 확인:<input type='password' name='confirmPassword'><br>");
         out.println("회원명:<input type='text' name='userName'><br>");
+        out.println("취미:<input type='checkbox' name='hobby' value='취미1'>취미1");
+        out.println("<input type='checkbox' name='hobby' value='취미2'>취미2");
+        out.println("<input type='checkbox' name='hobby' value='취미3'>취미3");
+        out.println("<input type='checkbox' name='hobby' value='취미4'>취미4");
+        out.println("<input type='checkbox' name='hobby' value='취미5'>취미5");
         out.println("<button type='submit'>가입하기</button>");
         out.println("</form>");
     }
@@ -29,9 +34,13 @@ public class JoinServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.setCharacterEncoding("UTF-8"); // 서블릿 4버전 까지, 기본 유니코드 2바이트 형식, 서블릿 6버전 부터는 기본 유니코드가 3바이트(UTF-8)
+
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String confirmPassword = req.getParameter("confirmPassword");
         String userName = req.getParameter("userName");
+
+        System.out.printf("email=%s, password=%s, confirmPassword=%s, userName=%s%n", email, password, confirmPassword, userName);
     }
 }
