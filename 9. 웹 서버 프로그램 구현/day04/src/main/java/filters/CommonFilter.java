@@ -22,10 +22,10 @@ public class CommonFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        System.out.println("CommonFilter - 요청 전");
+        //System.out.println("CommonFilter - 요청 전");
 
-        chain.doFilter(request, response);
+        chain.doFilter(new CommonRequestWrapper(request), response);
 
-        System.out.println("CommonFilter - 응답 후");
+        //System.out.println("CommonFilter - 응답 후");
     }
 }
