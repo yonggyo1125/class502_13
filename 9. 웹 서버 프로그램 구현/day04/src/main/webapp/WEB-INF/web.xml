@@ -15,4 +15,12 @@
 </servlet-mapping>
 -->
 
+    <filter>
+        <filter-name>board-filter</filter-name>
+        <filter-class>filters.BoardFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>board-filter</filter-name>
+        <url-pattern>/board</url-pattern>
+    </filter-mapping>
 </web-app>
