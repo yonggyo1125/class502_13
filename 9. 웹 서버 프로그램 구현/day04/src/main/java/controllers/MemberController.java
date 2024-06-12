@@ -10,11 +10,29 @@ import java.io.IOException;
 public class MemberController extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+       String mode = getMode(req);
+       if (mode.equals("join")) {
+           joinForm(req, resp);
+       } else if (mode.equals("login")) {
+           loginForm(req, resp);
+       }
     }
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String mode = getMode(req);
+        if (mode.equals("join")) {
 
+        } else if (mode.equals("login")) {
+
+        }
+    }
+
+    private String getMode(HttpServletRequest req) {
+        String url = req.getRequestURI();
+        String[] urls = url.split("/");
+        String mode = urls.length > 0 ? urls[urls.length - 1] : "";
+
+        return mode;
     }
 }
