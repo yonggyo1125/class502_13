@@ -22,9 +22,9 @@ public class MemberController extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String mode = getMode(req);
         if (mode.equals("join")) {
-
+            joinProcess(req, resp);
         } else if (mode.equals("login")) {
-
+            loginProcess(req, resp);
         }
     }
 
@@ -34,5 +34,9 @@ public class MemberController extends HttpServlet {
         String mode = urls.length > 0 ? urls[urls.length - 1] : "";
 
         return mode;
+    }
+
+    private void joinForm(HttpServletRequest req, HttpServletResponse resp) {
+
     }
 }
