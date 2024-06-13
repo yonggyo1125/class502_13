@@ -9,6 +9,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 
 public class Ex01 {
     public static void main(String[] args) {
@@ -25,11 +26,20 @@ public class Ex01 {
                   for(Method method : methods) {
                       for (Annotation manno : method.getAnnotations()) {
                           if (manno instanceof GetMapping) {
-                              Object r = method.invoke(obj);
+                              Parameter[] params = method.getParameters();
+                              for (Parameter param: params) {
+                                  String type = param.getParameterizedType().getTypeName();
+                                  String name = param.getName();
+                                  System.out.printf("type=%s, name=%s%n", type, name);
+                              }
+
+                              Object r = method.invoke(obj, new Object[]{"ABC", 20});
                               if (r instanceof String) {
                                   String view = (String)r;
                                   System.out.println(view);
                               }
+
+
                           } else if (manno instanceof PostMapping) {
                               Object r = method.invoke(obj);
                               System.out.println(r);
