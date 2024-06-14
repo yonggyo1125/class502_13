@@ -7,7 +7,7 @@
 <jsp:setProperty name="item" property="subject" />
 <jsp:setProperty name="item" property="content" />
 <jsp:setProperty name="item" property="poster" param="writer"/>
--->
+--%>
 제목: ${item.subject}<br>
 내용: ${item.content}<br>
 작성자: ${item.poster}<br>
