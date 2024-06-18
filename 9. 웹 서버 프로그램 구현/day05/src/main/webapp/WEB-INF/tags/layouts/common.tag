@@ -10,6 +10,19 @@
     <head>
         <meta charset="UTF-8">
         <title>레이아웃 연습!</title>
+        <link rel="stylesheet" type="text/css" href="${cssUrl}style.css">
+        <c:if test="${addCss != null}">
+            <c:forEach var="cssFile" items="${addCss}">
+                <link rel="stylesheet" type="text/css" href="${cssUrl}${cssFile}">
+            </c:forEach>
+        </c:if>
+
+        <script src="${jsUrl}common.js"></script>
+        <c:if test="${addScript != null}">
+            <c:forEach var="jsFile" items="${addScript}">
+                <script src="${jsUrl}${jsFile}"></script>
+            </c:forEach>
+        </c:if>
     </head>
     <body>
         <header>
