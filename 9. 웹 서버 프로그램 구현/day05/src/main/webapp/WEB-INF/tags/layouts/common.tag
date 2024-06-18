@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ attribute name="header" fragment="true" %>
 <%@ attribute name="footer" fragment="true" %>
+<%@ attribute name="commonCss" fragment="true" %>
+<%@ attribute name="commonJs" fragment="true" %>
 <c:url var="cssUrl" value="/static/css/" />
 <c:url var="jsUrl" value="/static/js/" />
 <!DOCTYPE html>
@@ -11,6 +13,7 @@
         <meta charset="UTF-8">
         <title>레이아웃 연습!</title>
         <link rel="stylesheet" type="text/css" href="${cssUrl}style.css">
+        <jsp:invoke fragment="commonCss" />
         <c:if test="${addCss != null}">
             <c:forEach var="cssFile" items="${addCss}">
                 <link rel="stylesheet" type="text/css" href="${cssUrl}${cssFile}.css">
@@ -18,6 +21,7 @@
         </c:if>
 
         <script src="${jsUrl}common.js"></script>
+        <jsp:invoke fragment="commonJs" />
         <c:if test="${addScript != null}">
             <c:forEach var="jsFile" items="${addScript}">
                 <script src="${jsUrl}${jsFile}.js"></script>
