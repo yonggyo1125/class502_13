@@ -15,7 +15,9 @@
     <head>
         <meta charset="UTF-8">
         <title>
-         ${empty title ? '' : title + ' - '}
+         <c:if test="${!empty title}">
+         ${title} -
+         </c:if>
          <fmt:message key="SITE_TITLE" />
         </title>
         <link rel="stylesheet" type="text/css" href="${cssUrl}style.css">
