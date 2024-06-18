@@ -4,6 +4,7 @@
 <%@ attribute name="header" fragment="true" %>
 <%@ attribute name="footer" fragment="true" %>
 <c:url var="cssUrl" value="/static/css/" />
+<c:url var="jsUrl" value="/static/js/" />
 <!DOCTYPE html>
 <html>
     <head>
