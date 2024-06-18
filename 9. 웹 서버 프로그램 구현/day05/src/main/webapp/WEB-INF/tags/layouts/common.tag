@@ -5,13 +5,14 @@
 <%@ attribute name="footer" fragment="true" %>
 <%@ attribute name="commonCss" fragment="true" %>
 <%@ attribute name="commonJs" fragment="true" %>
+<%@ attribute name="title" %>
 <c:url var="cssUrl" value="/static/css/" />
 <c:url var="jsUrl" value="/static/js/" />
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>레이아웃 연습!</title>
+        <title>${title}</title>
         <link rel="stylesheet" type="text/css" href="${cssUrl}style.css">
         <jsp:invoke fragment="commonCss" />
         <c:if test="${addCss != null}">
