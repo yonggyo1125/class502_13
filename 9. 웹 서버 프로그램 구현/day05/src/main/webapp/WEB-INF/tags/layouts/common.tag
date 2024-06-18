@@ -13,14 +13,14 @@
         <link rel="stylesheet" type="text/css" href="${cssUrl}style.css">
         <c:if test="${addCss != null}">
             <c:forEach var="cssFile" items="${addCss}">
-                <link rel="stylesheet" type="text/css" href="${cssUrl}${cssFile}">
+                <link rel="stylesheet" type="text/css" href="${cssUrl}${cssFile}.css">
             </c:forEach>
         </c:if>
 
         <script src="${jsUrl}common.js"></script>
         <c:if test="${addScript != null}">
             <c:forEach var="jsFile" items="${addScript}">
-                <script src="${jsUrl}${jsFile}"></script>
+                <script src="${jsUrl}${jsFile}.js"></script>
             </c:forEach>
         </c:if>
     </head>

@@ -22,8 +22,8 @@ public class BoardListController extends HttpServlet {
 
         req.setAttribute("items", items);
 
-        req.setAttribute("addCss", new String[] { "board/style.css", "board/list.css"});
-        req.setAttribute("addScript", List.of("board/common.js", "board/list.js"));
+        req.setAttribute("addCss", new String[] { "board/style", "board/list"});
+        req.setAttribute("addScript", List.of("board/common", "board/list"));
 
         // 속성 설정은 RequestDispatcher 상단에 정의
         // 출력 완료 되면 속성은 반영 X
