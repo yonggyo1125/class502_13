@@ -1,7 +1,9 @@
 <%@ tag body-content="scriptless" %>
 <%@ tag pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ attribute name="header" fragment="true" %>
 <%@ attribute name="footer" fragment="true" %>
+<c:url var="cssUrl" value="/static/css/" />
 <!DOCTYPE html>
 <html>
     <head>
