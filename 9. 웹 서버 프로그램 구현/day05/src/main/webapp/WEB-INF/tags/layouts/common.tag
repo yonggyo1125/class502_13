@@ -1,18 +1,23 @@
 <%@ tag body-content="scriptless" %>
 <%@ tag pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%@ attribute name="header" fragment="true" %>
 <%@ attribute name="footer" fragment="true" %>
 <%@ attribute name="commonCss" fragment="true" %>
 <%@ attribute name="commonJs" fragment="true" %>
 <%@ attribute name="title" %>
+<fmt:setBundle basename="messages.commons" />
 <c:url var="cssUrl" value="/static/css/" />
 <c:url var="jsUrl" value="/static/js/" />
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>${title}</title>
+        <title>
+         ${empty title ? '' : title + ' - '}
+         <fmt:message key="SITE_TITLE" />
+        </title>
         <link rel="stylesheet" type="text/css" href="${cssUrl}style.css">
         <jsp:invoke fragment="commonCss" />
         <c:if test="${addCss != null}">
