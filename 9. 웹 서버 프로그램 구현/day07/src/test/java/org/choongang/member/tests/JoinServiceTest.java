@@ -3,6 +3,7 @@ package org.choongang.member.tests;
 import com.github.javafaker.Faker;
 import org.choongang.global.exceptions.BadRequestException;
 import org.choongang.member.controllers.RequestJoin;
+import org.choongang.member.exceptions.DuplicatedMemberException;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.MemberServiceProvider;
 import org.choongang.member.validators.JoinValidator;
@@ -133,6 +134,10 @@ public class JoinServiceTest {
     @Test
     @DisplayName("이미 가입된 메일인 경우 DuplicatedMemberException 발생")
     void duplicateEmailTest() {
-
+        assertThrows(DuplicatedMemberException.class, () -> {
+            RequestJoin form = getData();
+            service.process(form);
+            service.process(form);
+        });
     }
 }
