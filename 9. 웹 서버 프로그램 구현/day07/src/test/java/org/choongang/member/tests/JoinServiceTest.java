@@ -52,11 +52,17 @@ public class JoinServiceTest {
     @Test
     @DisplayName("필수 입력항목(이메일, 비밀번호, 비밀번호 확인, 회원명, 약관 동의) 검증, 검증 실패시 BadRequestException 발생")
     void requiredFieldTest() {
-        assertThrows(BadRequestException.class, () -> {
-           RequestJoin form = getData();
-           form.setEmail(null);
-           service.process(form);
-        });
+        assertAll(
+                () -> requiredEachFieldTest("email", true, "이메일"),
+                () -> requiredEachFieldTest("email", false, "이메일"),
+                () -> requiredEachFieldTest("password", true, "비밀번호"),
+                () -> requiredEachFieldTest("password", false, "비밀번호"),
+                () -> requiredEachFieldTest("confirmPassword", true, "비밀번호를 확인"),
+                () -> requiredEachFieldTest("confirmPassword", false, "비밀번호를 확인"),
+                () -> requiredEachFieldTest("userName", true, "회원명"),
+                () -> requiredEachFieldTest("userName", false, "회원명"),
+                () -> requiredEachFieldTest("termsAgree", false, "약관")
+        );
     }
 
     void requiredEachFieldTest(String field, boolean isNull, String keyword) {
@@ -77,5 +83,8 @@ public class JoinServiceTest {
             service.process(form);
 
         }, field + " 테스트");
+        
+        String message = thrown.getMessage();
+        assertTrue(message.contains(keyword), field + " 키워드 테스트");
     }
 }
