@@ -1,11 +1,12 @@
 package org.choongang.member.validators;
 
 import org.choongang.global.exceptions.BadRequestException;
+import org.choongang.global.validators.EmailValidator;
 import org.choongang.global.validators.RequiredValidator;
 import org.choongang.global.validators.Validator;
 import org.choongang.member.controllers.RequestJoin;
 
-public class JoinValidator implements Validator<RequestJoin>, RequiredValidator {
+public class JoinValidator implements Validator<RequestJoin>, RequiredValidator, EmailValidator {
 
     @Override
     public void check(RequestJoin form) {
@@ -26,5 +27,8 @@ public class JoinValidator implements Validator<RequestJoin>, RequiredValidator 
         checkTrue(password.equals(confirmPassword), new BadRequestException("비밀번호가 일치하지 않습니다."));
 
         // 이메일 형식 체크
+        if (!checkEmail(email)) {
+            throw new BadRequestException("이메일 형식이 아닙니다.");
+        }
     }
 }
