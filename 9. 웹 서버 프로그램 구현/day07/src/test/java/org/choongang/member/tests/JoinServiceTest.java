@@ -117,7 +117,17 @@ public class JoinServiceTest {
     @Test
     @DisplayName("비밀번호 자리수가 8자리 미만이면 BadRequestException 발생")
     void passwordLengthTest() {
+        BadRequestException thrown = assertThrows(BadRequestException.class, () -> {
+           Faker faker = new Faker();
+           RequestJoin form = getData();
+           form.setPassword(faker.regexify("\\w{3,7}").toLowerCase());
+           form.setConfirmPassword(form.getPassword());
+           service.process(form);
+        });
 
+        String message = thrown.getMessage();
+
+        assertTrue(message.contains("8자리 이상"));
     }
 
     @Test

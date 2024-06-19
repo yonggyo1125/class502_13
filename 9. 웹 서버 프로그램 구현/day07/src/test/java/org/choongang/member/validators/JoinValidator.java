@@ -30,5 +30,8 @@ public class JoinValidator implements Validator<RequestJoin>, RequiredValidator,
         if (!checkEmail(email)) {
             throw new BadRequestException("이메일 형식이 아닙니다.");
         }
+
+        // 비밀번호 자리수 체크
+        checkTrue(password.length() >= 8, new BadRequestException("비밀번호는 8자리 이상 입력하세요."));
     }
 }
