@@ -13,7 +13,7 @@ public class DBConnTest {
     @DisplayName("DB 연결 테스트")
     void dbConnectionTest() {
         assertDoesNotThrow(() -> {
-            SqlSession session = DBConn.sqlSession();
+            SqlSession session = DBConn.getSession();
             System.out.println(session);
         });
     }
