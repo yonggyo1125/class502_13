@@ -115,6 +115,12 @@ public class JoinServiceTest {
     }
 
     @Test
+    @DisplayName("비밀번호 자리수가 8자리 미만이면 BadRequestException 발생")
+    void passwordLengthTest() {
+
+    }
+
+    @Test
     @DisplayName("이미 가입된 메일인 경우 DuplicatedMemberException 발생")
     void duplicateEmailTest() {
 
