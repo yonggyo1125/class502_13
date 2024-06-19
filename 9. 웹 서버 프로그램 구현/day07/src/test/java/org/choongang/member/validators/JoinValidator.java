@@ -22,5 +22,7 @@ public class JoinValidator implements Validator<RequestJoin>, RequiredValidator 
         checkRequired(userName, new BadRequestException("회원명을 입력하세요."));
         checkTrue(termsAgree, new BadRequestException("약관에 동의하세요."));
 
+        // 비밀번호, 비밀번호 확인 일치 여부
+        checkTrue(password.equals(confirmPassword), new BadRequestException("비밀번호가 일치하지 않습니다."));
     }
 }
