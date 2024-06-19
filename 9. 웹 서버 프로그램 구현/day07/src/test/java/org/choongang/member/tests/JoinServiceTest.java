@@ -87,4 +87,23 @@ public class JoinServiceTest {
         String message = thrown.getMessage();
         assertTrue(message.contains(keyword), field + " 키워드 테스트");
     }
+
+    @Test
+    @DisplayName("비밀번호와 확인이 일치하지 않으면 BadRequestException 발생")
+    void passwordMismatchTest() {
+        BadRequestException thrown = assertThrows(BadRequestException.class, () -> {
+            RequestJoin form = getData();
+            form.setConfirmPassword(form.getPassword() + "**");
+            service.process(form);
+        });
+
+        String message = thrown.getMessage();
+        assertTrue(message.contains("비밀번호가 일치하지"));
+    }
+
+    @Test
+    @DisplayName("이미 가입된 메일인 경우 DuplicatedMemberException 발생")
+    void duplicateEmailTest() {
+
+    }
 }
