@@ -7,6 +7,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.choongang.member.services.JoinService;
+import org.choongang.member.services.MemberServiceProvider;
 
 import java.io.IOException;
 
@@ -22,5 +24,7 @@ public class JoinController extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        JoinService service = MemberServiceProvider.getInstance().joinService();
+        service.process(req);
     }
 }
