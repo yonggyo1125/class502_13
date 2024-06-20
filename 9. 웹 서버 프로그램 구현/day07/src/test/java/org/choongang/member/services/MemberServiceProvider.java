@@ -31,4 +31,8 @@ public class MemberServiceProvider {
     public JoinService joinService() {
         return new JoinService(joinValidator(), memberMapper());
     }
+
+    public LoginService loginService() {
+        return new LoginService();
+    }
 }
