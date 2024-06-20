@@ -41,15 +41,18 @@ public class LoginServiceTest {
                         .email(System.currentTimeMillis() + faker.internet().emailAddress())
                         .password(faker.regexify("\\w{8,16}").toLowerCase())
                         .userName(faker.name().fullName())
+                        .termsAgree(true)
                         .build();
+        form.setConfirmPassword(form.getPassword());
+
         joinService.process(form);
 
         setData();
     }
 
     void setData() {
-        setParam("email", faker.internet().emailAddress());
-        setParam("password", faker.regexify("\\w{8}").toLowerCase());
+        setParam("email", form.getEmail());
+        setParam("password", form.getPassword());
     }
 
     void setParam(String name, String value) {
@@ -94,6 +97,9 @@ public class LoginServiceTest {
     @Test
     @DisplayName("이메일로 회원이 조회 되는지 검증, 검증 실패시 BadRequestException 발생")
     void memberExistTest() {
-        
+        setParam("email", "****" + form.getEmail());
+        BadRequestException thrown = assertThrows(BadRequestException.class, () -> {
+            loginService.process(request);
+        });
     }
 }
