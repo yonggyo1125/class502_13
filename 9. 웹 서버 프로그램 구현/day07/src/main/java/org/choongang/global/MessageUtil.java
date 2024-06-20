@@ -16,4 +16,16 @@ public class MessageUtil {
         PrintWriter out = resp.getWriter();
         out.printf("<script>alert('%s');</script>", e.getMessage());
     }
+
+    public static void go(String url, String target, HttpServletResponse resp) throws IOException {
+        target = target == null || target.isBlank() ? "self" : target;
+
+        resp.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = resp.getWriter();
+        out.printf("<script>%s.location.href='%s';</script>", target, url);
+    }
+
+    public static void go(String url, HttpServletResponse resp) throws IOException {
+        go(url, "self", resp);
+    }
 }
