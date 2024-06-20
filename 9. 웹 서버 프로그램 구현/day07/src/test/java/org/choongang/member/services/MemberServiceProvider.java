@@ -37,7 +37,7 @@ public class MemberServiceProvider {
     }
 
     public LoginValidator loginValidator() {
-        return new LoginValidator();
+        return new LoginValidator(memberMapper());
     }
 
     public LoginService loginService() {
