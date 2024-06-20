@@ -6,6 +6,7 @@ import org.choongang.global.validators.RequiredValidator;
 import org.choongang.global.validators.Validator;
 import org.choongang.member.entities.Member;
 import org.choongang.member.mapper.MemberMapper;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginValidator implements Validator<HttpServletRequest>, RequiredValidator {
 
@@ -29,6 +30,8 @@ public class LoginValidator implements Validator<HttpServletRequest>, RequiredVa
         Member member = mapper.get(email);
         checkTrue(member != null, new BadRequestException(message));
 
-
+        // 비밀번호 일치 여부 체크
+        boolean isMatched = BCrypt.checkpw(password, member.getPassword());
+        checkTrue(isMatched, new BadRequestException(message));
     }
 }
