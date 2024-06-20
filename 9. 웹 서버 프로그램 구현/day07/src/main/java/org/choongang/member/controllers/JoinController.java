@@ -29,10 +29,7 @@ public class JoinController extends HttpServlet {
             JoinService service = MemberServiceProvider.getInstance().joinService();
             service.process(req);
         } catch (CommonException e) {
-            resp.setContentType("text/html; charset=UTF-8");
-            resp.setStatus(e.getStatus());
-            PrintWriter out = resp.getWriter();
-            out.printf("<script>alert('%s');</script>", e.getMessage());
+
         }
     }
 }
