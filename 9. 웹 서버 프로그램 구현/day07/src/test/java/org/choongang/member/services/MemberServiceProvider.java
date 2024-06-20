@@ -20,9 +20,12 @@ public class MemberServiceProvider {
         return instance;
     }
 
+    public SqlSession getSession() {
+        return DBConn.getSession();
+    }
+
     public MemberMapper memberMapper() {
-        SqlSession session = DBConn.getSession();
-        return session.getMapper(MemberMapper.class);
+        return getSession().getMapper(MemberMapper.class);
     }
 
     public JoinValidator joinValidator() {
@@ -38,6 +41,6 @@ public class MemberServiceProvider {
     }
 
     public LoginService loginService() {
-        return new LoginService(loginValidator());
+        return new LoginService(loginValidator(), memberMapper());
     }
 }
