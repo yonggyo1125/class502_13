@@ -78,4 +78,10 @@ public class LoginServiceTest {
         String msg = thrown.getMessage();
         assertTrue(msg.contains(message), name + ", 키워드:" + message + "테스트");
     }
+    
+    @Test
+    @DisplayName("이메일로 회원이 조회 되는지 검증, 검증 실패시 BadRequestException 발생")
+    void memberExistTest() {
+        
+    }
 }
