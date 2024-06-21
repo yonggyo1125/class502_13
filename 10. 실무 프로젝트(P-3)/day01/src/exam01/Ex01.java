@@ -22,12 +22,13 @@ public class Ex01 {
                     arguments.add(200L);
                 }
             }
-
+            /*
             Object obj = arguments.isEmpty()
                             ?constructor.newInstance()
                             :
                             constructor.newInstance(arguments.toArray());
-
+            */
+            Object obj = constructor.newInstance(arguments.toArray());
             JoinService service = (JoinService) obj;
             System.out.println(service);
         }
