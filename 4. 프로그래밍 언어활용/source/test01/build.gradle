@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.choongang'
+version = '1.0-SNAPSHOT'
+
+javafx {
+    version = "21"
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+mainClassName = "fxex.HelloFX";
+
+jlink {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = '데모'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    runtimeOnly 'com.oracle.database.jdbc:ojdbc11:23.3.0.23.09'
+    implementation 'org.apache.tomcat:tomcat-jdbc:10.1.24'
+    implementation 'org.mybatis:mybatis:3.5.16'
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'ch.qos.logback:logback-classic:1.4.14'
+    implementation 'com.zaxxer:HikariCP:5.1.0'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+
+
+test {
+    useJUnitPlatform()
+}
