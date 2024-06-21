@@ -7,6 +7,8 @@ public class Member {
     private String email;
     private LocalDateTime regDt;
 
+    public final String str = "ABC";
+
     public String getUserId() {
         return userId;
     }
@@ -36,7 +38,8 @@ public class Member {
         return "Member{" +
                 "userId='" + userId + '\'' +
                 ", email='" + email + '\'' +
-                ", regDt=" + regDt +
+                ", regDt=" + regDt + '\'' +
+                ", str='" + str +
                 '}';
     }
 }
