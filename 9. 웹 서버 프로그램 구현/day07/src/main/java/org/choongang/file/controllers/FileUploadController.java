@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletDiskFileUpload;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
@@ -41,6 +42,9 @@ public class FileUploadController extends HttpServlet {
                 long size = item.getSize(); // 파일 용량
 
                 System.out.printf("파일이름: %s, 파일형식: %s, 파일용량: %d%n", fileName, contentType, size);
+
+                File file = new File("D:/uploads/" + fileName);
+                item.write(file.toPath()); // 메모리에 있느 파일 데이터가 file 쪽 경로로 이동
 
             }
         }
