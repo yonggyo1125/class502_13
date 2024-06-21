@@ -5,6 +5,8 @@
 <c:url var="joinUrl" value="/member/join" />
 <c:url var="logoutUrl" value="/member/logout" />
 
+로그인 상태 : ${isLogin} <br>
+
 <%-- 미로그인 상태 --%>
 <util:GuestOnly>
     <a href="${loginUrl}">로그인</a>
@@ -13,6 +15,6 @@
 
 <%-- 로그인 상태 --%>
 <util:MemberOnly>
-    ${sessionScope.member.userName}(${sessionScope.member.email})님 로그인...
+    ${loggedMember.userName}(${loggedMember.email})님 로그인...
     <a href="${logoutUrl}">로그아웃</a>
 </util:MemberOnly>
