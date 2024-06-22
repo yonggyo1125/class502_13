@@ -1,5 +1,7 @@
 package exam01;
 
+import java.lang.reflect.Parameter;
+
 public class Ex02 {
     public static void main(String[] args) {
         Animal[] animals = new Animal[3];
@@ -9,6 +11,16 @@ public class Ex02 {
 
         for (Animal animal: animals) {
             animal.move();
+            if (animal instanceof Human human) {
+                //Human human = (Human) animal;
+                human.hobby();
+            } else if (animal instanceof Tiger tiger) {
+                //Tiger tiger = (Tiger) animal;
+                tiger.shouting();
+            } else if (animal instanceof Bird bird) {
+                //Bird bird = (Bird) animal;
+                bird.hatching();
+            }
         }
     }
 }
