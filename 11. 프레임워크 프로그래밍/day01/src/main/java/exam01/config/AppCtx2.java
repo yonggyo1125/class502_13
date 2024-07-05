@@ -1,6 +1,7 @@
 package exam01.config;
 
 import exam01.member.dao.MemberDao;
+import exam01.member.services.InfoService;
 import exam01.member.services.JoinService;
 import exam01.member.validators.JoinValidator;
 import org.springframework.context.annotation.Bean;
@@ -25,5 +26,13 @@ public class AppCtx2 {
     @Bean
     public JoinService joinService() {
         return new JoinService(joinValidator(), memberDao());
+    }
+
+    @Bean
+    public InfoService infoService() {
+        InfoService infoService = new InfoService();
+        infoService.setMemberDao(memberDao());
+
+        return infoService;
     }
 }
