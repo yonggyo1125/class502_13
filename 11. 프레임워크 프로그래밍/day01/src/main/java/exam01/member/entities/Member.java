@@ -3,6 +3,8 @@ package exam01.member.entities;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 public class Member {
@@ -10,5 +12,5 @@ public class Member {
     private String email;
     private String password;
     private String userName;
-    private String regDt;
+    private LocalDateTime regDt;
 }
