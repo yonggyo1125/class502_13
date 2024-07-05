@@ -4,18 +4,22 @@ import exam01.member.controllers.RequestJoin;
 import exam01.member.dao.MemberDao;
 import exam01.member.entities.Member;
 import exam01.member.validators.JoinValidator;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Service
+@RequiredArgsConstructor
 public class JoinService {
 
-    @Autowired
-    private JoinValidator validator;
+    //@Autowired
+    private final JoinValidator validator;
 
-    @Autowired
+    //@Autowired
+    @NonNull
     private MemberDao memberDao;
 
     // 의존 관계 - 없으면 객체 생성 X
