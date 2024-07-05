@@ -4,6 +4,8 @@ import exam01.member.dao.MemberDao;
 import exam01.member.entities.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +15,7 @@ import java.util.Optional;
 public class InfoService {
     private MemberDao memberDao;
 
-    private DateTimeFormatter formatter;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy.MM.dd");
 
     @Autowired
     @Qualifier("mDao")
@@ -21,8 +23,17 @@ public class InfoService {
         this.memberDao = opt.get();
     }
 
-    @Autowired
+    /*
+    @Autowired(required = false) // DateTimeFormatter 빈이 없으면 -> 호출 X
     public void setFormatter(DateTimeFormatter formatter) {
+        System.out.println("호출!");
+        this.formatter = formatter;
+    }
+    */
+
+    @Autowired
+    public void setFormatter(@Nullable DateTimeFormatter formatter) {
+        System.out.println("호출!");
         this.formatter = formatter;
     }
 
@@ -31,7 +42,9 @@ public class InfoService {
         members.forEach(m -> {
             System.out.println(m);
             LocalDateTime regDt = m.getRegDt();
-            System.out.println(formatter.format(regDt));
+            if (formatter != null) {
+                System.out.println(formatter.format(regDt));
+            }
         });
     }
 }
