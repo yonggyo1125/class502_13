@@ -5,6 +5,7 @@ import exam01.member.dao.MemberDao;
 import exam01.member.entities.Member;
 import exam01.member.validators.JoinValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ public class JoinService {
     private JoinValidator validator;
 
     @Autowired
+    @Qualifier("mDao")
     private MemberDao memberDao;
 
     // 의존 관계 - 없으면 객체 생성 X
