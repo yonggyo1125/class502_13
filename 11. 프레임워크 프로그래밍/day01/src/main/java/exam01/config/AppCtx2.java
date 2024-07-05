@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.format.DateTimeFormatter;
+
 @Configuration
 public class AppCtx2 {
 
@@ -40,5 +42,12 @@ public class AppCtx2 {
         InfoService infoService = new InfoService();
 
         return infoService;
+    }
+
+    @Bean
+    public DateTimeFormatter dateTimeFormatter() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
+
+        return formatter;
     }
 }
