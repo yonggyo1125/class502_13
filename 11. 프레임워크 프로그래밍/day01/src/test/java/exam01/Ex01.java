@@ -20,4 +20,16 @@ public class Ex01 {
 
         ctx.close();
     }
+
+    @Test
+    void test2() {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+
+        // 싱글톤으로 기본 관리하므로  객체가 한개만 있는 경우가 많다
+        // Class 클래스만 있어도 찾는다.`
+        Greeter g1 = ctx.getBean(Greeter.class);
+        g1.hello("이이름");
+
+        ctx.close();
+    }
 }
