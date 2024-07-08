@@ -35,7 +35,7 @@ public class InfoService {
 
     @Autowired
     public void setFormatter(@Nullable DateTimeFormatter formatter) {
-        System.out.println("호출!");
+       // System.out.println("호출!");
         this.formatter = formatter;
     }
 
