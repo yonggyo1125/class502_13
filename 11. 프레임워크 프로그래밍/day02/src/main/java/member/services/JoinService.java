@@ -1,19 +1,22 @@
 package member.services;
 
 
-import lombok.RequiredArgsConstructor;
 import member.controllers.RequestJoin;
 import member.dao.MemberDao;
 import member.entities.Member;
 import member.validators.JoinValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Service
 public class JoinService {
 
+    @Autowired
     private JoinValidator validator;
 
+    @Autowired
     private MemberDao memberDao;
 
 

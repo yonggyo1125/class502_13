@@ -14,12 +14,13 @@ import java.util.Optional;
 
 @Service
 public class InfoService {
+
     private MemberDao memberDao;
 
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy.MM.dd");
 
-    @Autowired
 
+    @Autowired
     public void setMemberDao(Optional<MemberDao> opt) {
         this.memberDao = opt.get();
     }
