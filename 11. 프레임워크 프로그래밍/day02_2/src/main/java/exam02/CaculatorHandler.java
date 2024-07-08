@@ -23,7 +23,7 @@ public class CaculatorHandler implements InvocationHandler {
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println(proxy.getClass());
+
         long stime = System.nanoTime(); // 공통 기능
         try {
             Object result = method.invoke(obj, args); // 핵심 기능 proxy가 대신 수행

@@ -2,6 +2,7 @@ package exam01;
 
 import exam02.CaculatorHandler;
 import exam02.Calculator;
+import exam02.ImplCalculator;
 import exam02.RecCalculator;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +15,7 @@ public class Ex02 {
         Object obj = Proxy.newProxyInstance(
                 Calculator.class.getClassLoader(),
                 new Class[] { Calculator.class },
-                new CaculatorHandler(new RecCalculator())
+                new CaculatorHandler(new ImplCalculator())
         );
 
         Calculator cal = (Calculator) obj;
