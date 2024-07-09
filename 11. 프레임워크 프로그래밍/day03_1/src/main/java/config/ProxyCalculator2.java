@@ -10,10 +10,12 @@ import org.springframework.core.annotation.Order;
 @Order(2)
 public class ProxyCalculator2 {
 
+    /*
     @Pointcut("execution(* exam01..*(..))")
     public void publicTarget() {}
-
-    @Around("publicTarget()")
+    */
+    //@Around("publicTarget()")
+    @Around("execution(* exam01..*(..))")
     public Object process(ProceedingJoinPoint joinPoint) throws Throwable {
 
         long stime = System.nanoTime();
