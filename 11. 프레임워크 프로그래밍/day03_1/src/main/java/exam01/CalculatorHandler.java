@@ -13,6 +13,7 @@ public class CalculatorHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println(proxy.getClass());
         long stime = System.nanoTime(); // 추가 기능 - 공통기능, 공통 관심사
         try {
             Object result = method.invoke(obj, args); // Calculalor factorial 호출 / 핵심 기능을 대신 수행
