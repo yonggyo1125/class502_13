@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppCtx {
 
-    @Bean
+    @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         DataSource ds = new DataSource();
         /* DB 연결 설정 S */
