@@ -32,29 +32,35 @@ public class Ex01 {
 
     @Test
     void test2() {
-        List<Member> members = jdbcTemplate.query("SELECT * FROM MEMBER",
-                (rs, num) ->  Member.builder()
-                        .seq(rs.getLong("SEQ"))
-                        .email(rs.getString("EMAIL"))
-                        .password(rs.getString("PASSWORD"))
-                        .userName(rs.getString("USER_NAME"))
-                        .regDt(rs.getTimestamp("REG_DT").toLocalDateTime())
-                        .build());
+        List<Member> members = jdbcTemplate.query("SELECT * FROM MEMBER", this::mapper);
 
         members.forEach(System.out::println);
     }
 
     @Test
     void test3() {
-        String email = "user01@test.org";
-        Member member = jdbcTemplate.queryForObject("SELECT * FROM MEMBER WHERE EMAIL = ?", (rs, num) ->  Member.builder()
+        String email = "user05@test.org";
+        try {
+            Member member = jdbcTemplate.queryForObject("SELECT * FROM MEMBER WHERE EMAIL = ?", this::mapper, email);
+            System.out.println(member);
+        } catch (Exception e) {
+            System.out.println("없음");
+        }
+    }
+
+    @Test
+    void test4() {
+        int total = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM MEMBER", int.class);
+        System.out.println(total);
+    }
+
+    private Member mapper(ResultSet rs, int num) throws SQLException {
+        return Member.builder()
                 .seq(rs.getLong("SEQ"))
                 .email(rs.getString("EMAIL"))
                 .password(rs.getString("PASSWORD"))
                 .userName(rs.getString("USER_NAME"))
                 .regDt(rs.getTimestamp("REG_DT").toLocalDateTime())
-                .build(), email);
-
-        System.out.println(member);
+                .build();
     }
 }
