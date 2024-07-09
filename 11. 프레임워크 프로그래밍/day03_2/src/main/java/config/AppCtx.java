@@ -12,6 +12,7 @@ public class AppCtx {
         DataSource ds = new DataSource();
         /* DB 연결 설정 S */
         ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+        ds.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
         ds.setUsername("SPRING");
         ds.setPassword("oracle");
         /* DB 연결 설정 E */
