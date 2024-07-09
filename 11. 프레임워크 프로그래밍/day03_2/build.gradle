@@ -14,7 +14,10 @@ dependencies {
     implementation 'org.springframework:spring-jdbc:6.1.10'
     implementation 'org.apache.tomcat:tomcat-jdbc:10.1.25'
     implementation 'com.oracle.database.jdbc:ojdbc11:23.4.0.24.05'
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
 
+    testImplementation 'org.springframework:spring-test:6.1.10'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
