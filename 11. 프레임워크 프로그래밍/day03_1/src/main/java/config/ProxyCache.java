@@ -14,11 +14,13 @@ import java.util.Map;
 public class ProxyCache {
 
     private Map<Long, Object> data = new HashMap<>();
-
+    /*
     @Pointcut("execution(* exam01..*(..))")
     public void publicTarget() {}
 
     @Around("publicTarget()")
+     */
+    @Around("config.CommonPointcut.publicTarget()")
     public Object process(ProceedingJoinPoint joinPoint) throws Throwable {
 
         Object[] args = joinPoint.getArgs();
