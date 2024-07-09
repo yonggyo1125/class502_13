@@ -19,7 +19,7 @@ public class Ex01 {
     void test1() {
         String sql = "INSERT INTO MEMBER (SEQ, EMAIL, PASSWORD, USER_NAME) " +
                     " VALUES (SEQ_MEMBER.NEXTVAL, ?, ?, ?)";
-        int result = jdbcTemplate.update(sql, "user01@test.org", "123456", "사용자01");
+        int result = jdbcTemplate.update(sql, "user03@test.org", "123456", "사용자03");
 
         System.out.println(result);
     }
