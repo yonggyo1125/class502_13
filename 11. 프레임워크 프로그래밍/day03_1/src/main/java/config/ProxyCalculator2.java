@@ -15,7 +15,8 @@ public class ProxyCalculator2 {
     public void publicTarget() {}
     */
     //@Around("publicTarget()")
-    @Around("execution(* exam01..*(..))")
+   // @Around("execution(* exam01..*(..))")
+    @Around("config.CommonPointcut.publicTarget()")
     public Object process(ProceedingJoinPoint joinPoint) throws Throwable {
 
         long stime = System.nanoTime();
