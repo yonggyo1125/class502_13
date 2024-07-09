@@ -1,10 +1,9 @@
 package config;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 
 import java.util.Arrays;
 
@@ -14,9 +13,19 @@ public class ProxyCalculator {
     @Pointcut("execution(* exam01..*(..))")
     public void publicTarget() {}
 
+    @Before("publicTarget()")
+    public void before(JoinPoint joinPoint) {
+        System.out.println("Before..");
+    }
+
+    @After("publicTarget()")
+    public void after(JoinPoint joinPoint) {
+        System.out.println("After..");
+    }
+
     @Around("publicTarget()")
     public Object process(ProceedingJoinPoint joinPoint) throws Throwable {
-
+        /*
         Signature sig = joinPoint.getSignature(); // 호출된 메서드 정의 정보
         System.out.println(sig.toLongString());
 
@@ -25,7 +34,7 @@ public class ProxyCalculator {
 
         Object obj = joinPoint.getTarget(); // 호출한 메서드를 가지고 있는 객체
         System.out.println(obj.getClass());
-
+        */
         long stime = System.nanoTime(); // 공통 기능
         try {
             Object result = joinPoint.proceed(); // 핵심 기능 대신 실행 - factorial
