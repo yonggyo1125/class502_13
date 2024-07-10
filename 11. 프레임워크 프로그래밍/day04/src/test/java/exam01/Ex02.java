@@ -13,17 +13,17 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-//@ExtendWith(SpringExtension.class)
-//@ContextConfiguration(classes = AppCtx.class)
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = AppCtx.class)
 public class Ex02 {
 
-    //@Autowired
-    //private MemberRepository repository;
+    @Autowired
+    private MemberRepository repository;
 
     @Test
     void test1() {
-        //List<Member> members = (List<Member>)repository.findAll();
-        //members.forEach(System.out::println);
+        List<Member> members = (List<Member>)repository.findAll();
+        members.forEach(System.out::println);
     }
 
     @Test

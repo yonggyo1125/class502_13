@@ -6,4 +6,10 @@ public interface RequiredValidator {
             throw e;
         }
     }
+
+    default void checkTrue(boolean result, RuntimeException e) {
+        if (!result) {
+            throw e;
+        }
+    }
 }
