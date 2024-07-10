@@ -32,9 +32,9 @@ public class Ex01 {
                         " VALUES (SEQ_MEMBER.NEXTVAL, ?, ?, ?)";
 
                 PreparedStatement pstmt = con.prepareStatement(sql, new String[] {"SEQ"});
-                pstmt.setString(1, "user06@test.org");
+                pstmt.setString(1, "user07@test.org");
                 pstmt.setString(2, "12345678");
-                pstmt.setString(3, "사용자06");
+                pstmt.setString(3, "사용자07");
 
                 return pstmt;
         }, keyHolder);
