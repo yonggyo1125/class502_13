@@ -6,13 +6,17 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+@Transactional
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = AppCtx.class)
 public class Ex01 {
@@ -22,19 +26,22 @@ public class Ex01 {
 
     @Test
     void test1() {
-        int result = jdbcTemplate.update(new PreparedStatementCreator() {
-            @Override
-            public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        int result = jdbcTemplate.update(con -> {
                 String sql = "INSERT INTO MEMBER (SEQ, EMAIL, PASSWORD, USER_NAME) " +
                         " VALUES (SEQ_MEMBER.NEXTVAL, ?, ?, ?)";
 
-                PreparedStatement pstmt = con.prepareStatement(sql);
-                pstmt.setString(1, "user04@test.org");
+                PreparedStatement pstmt = con.prepareStatement(sql, new String[] {"SEQ"});
+                pstmt.setString(1, "user06@test.org");
                 pstmt.setString(2, "12345678");
-                pstmt.setString(3, "사용자04");
+                pstmt.setString(3, "사용자06");
 
                 return pstmt;
-            }
-        });
+        }, keyHolder);
+
+        System.out.println(result);
+        Number key = keyHolder.getKey();
+        long seq = key.longValue();
+        System.out.println(seq);
     }
 }

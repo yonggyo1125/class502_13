@@ -3,9 +3,11 @@ package config;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
+@EnableJdbcRepositories
 public class AppCtx {
 
     @Bean(destroyMethod = "close")
