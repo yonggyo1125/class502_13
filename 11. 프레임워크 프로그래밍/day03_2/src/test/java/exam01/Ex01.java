@@ -32,6 +32,8 @@ public class Ex01 {
 
     @Test
     void test2() {
+        // 메서드 참조
+        // 참조자료형::메서드명
         List<Member> members = jdbcTemplate.query("SELECT * FROM MEMBER", this::mapper);
 
         members.forEach(System.out::println);
