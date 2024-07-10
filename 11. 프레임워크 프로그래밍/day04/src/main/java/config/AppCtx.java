@@ -4,10 +4,16 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
+import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -16,9 +22,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @MapperScan("mappers")
 @ComponentScan("member")
-//@EnableJdbcRepositories("member")
-public class AppCtx {
+@EnableJdbcRepositories("member")
+public class AppCtx extends AbstractJdbcConfiguration {
 
+    @Autowired
+    private ApplicationContext appCtx;
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         DataSource ds = new DataSource();
@@ -61,11 +69,12 @@ public class AppCtx {
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
         return sqlSessionFactory;
     }
-    /*
-    @Bean
-    public MappingContext mappingContext() {
-        JdbcMappingContext ctx = new JdbcMappingContext();
 
-        return ctx;
-    } */
+    @Bean
+    public NamedParameterJdbcOperations namedParameterJdbcOperations(DataSource dataSource) {
+        return new NamedParameterJdbcTemplate(dataSource);
+    }
+
+
+
 }
