@@ -11,4 +11,5 @@
     </root>
 
     <logger name="org.springframework.jdbc" level="TRACE" />
+    <logger name="mappers" level="DEBUG" />
 </configuration>
