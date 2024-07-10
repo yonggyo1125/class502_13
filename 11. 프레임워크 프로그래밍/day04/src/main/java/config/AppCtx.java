@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @MapperScan("mappers")
-//@ComponentScan("member")
+@ComponentScan("member")
 //@EnableJdbcRepositories("member.repositories")
 public class AppCtx {
 
