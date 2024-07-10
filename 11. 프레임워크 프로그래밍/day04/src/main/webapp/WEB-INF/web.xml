@@ -18,8 +18,8 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
-                config.MvcConfig
-                config.ControllerConfig
+                configs.MvcConfig
+                configs.ControllerConfig
             </param-value>
         </init-param>
     </servlet>
