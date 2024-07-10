@@ -3,11 +3,16 @@ package member.validators;
 import global.exceptions.BadRequestException;
 import global.validators.RequiredValidator;
 import global.validators.Validator;
+import lombok.RequiredArgsConstructor;
+import mappers.member.MemberMapper;
 import member.controllers.RequestJoin;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class JoinValidator implements Validator<RequestJoin>, RequiredValidator {
+
+    private final MemberMapper mapper;
 
     @Override
     public void check(RequestJoin form) {
@@ -28,5 +33,13 @@ public class JoinValidator implements Validator<RequestJoin>, RequiredValidator 
         checkRequired(password, new BadRequestException("비밀번호를 입력하세요."));
         checkRequired(confirmPassword, new BadRequestException("비밀번호를 확인하세요."));
         checkRequired(userName, new BadRequestException("회원명을 입력하세요."));
+
+        checkTrue(result, new BadRequestException("약관에 동의하세요."));
+
+        // 이메일 중복 여부
+        checkTrue(mapper.exists(email) > 0L, new BadRequestException("이미 가입된 이메일 입니다."));
+
+        // 비밀번호 자리수 체크
+        checkTrue(password.length() >= 8, new BadRequestException("비밀번호는 8자리 이상 입력하세요."));
     }
 }
