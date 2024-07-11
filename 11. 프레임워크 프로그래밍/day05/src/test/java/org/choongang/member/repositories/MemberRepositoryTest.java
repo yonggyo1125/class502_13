@@ -21,4 +21,31 @@ public class MemberRepositoryTest {
         List<Member> members = (List<Member>) repository.findAll();
         members.forEach(System.out::println);
     }
+
+    @Test
+    void test2() {
+        Member member = Member.builder()
+                .seq(1L)
+                .email("user01@test.org")
+                .password("12345678")
+                .userName("사용자06(수정)")
+                .build();
+
+        repository.save(member);
+
+    }
+
+    @Test
+    void test3() {
+        Member member = repository.findById(1L).orElse(null);
+        System.out.println(member);
+
+        repository.delete(member);
+    }
+
+    @Test
+    void test4() {
+        Member member = repository.findByEmail("user02@test.org");
+        System.out.println(member);
+    }
 }
