@@ -48,4 +48,10 @@ public class MemberRepositoryTest {
         Member member = repository.findByEmail("user02@test.org");
         System.out.println(member);
     }
+
+    @Test
+    void test5() {
+        List<Member> members = repository.findByUserNameContaining("용자");
+        members.forEach(System.out::println);
+    }
 }
