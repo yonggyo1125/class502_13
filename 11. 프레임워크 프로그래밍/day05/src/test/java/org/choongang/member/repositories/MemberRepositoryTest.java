@@ -70,4 +70,21 @@ public class MemberRepositoryTest {
         List<Member> members = repository.getMembers("%용자%", "%user%");
         members.forEach(System.out::println);
     }
+
+    @Test
+    void test8() {
+
+        Pageable pageable = PageRequest.of(0, 3);
+        Page<Member> data = repository.findByUserNameContaining("용자", pageable);
+
+        List<Member> members = data.getContent();
+
+        long total = data.getTotalElements(); // 조회된 전체 레코드 갯수
+        int pages = data.getTotalPages();
+
+        members.forEach(System.out::println);
+
+        System.out.printf("총 갯수 : %d, 총 페이지 수 : %d%n", total, pages);
+
+    }
 }
