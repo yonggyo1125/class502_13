@@ -7,10 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 
 import java.util.List;
+
+import static org.springframework.data.domain.Sort.Order.asc;
+import static org.springframework.data.domain.Sort.Order.desc;
 
 @SpringJUnitWebConfig
 @ContextConfiguration(classes = MvcConfig.class)
@@ -74,7 +78,8 @@ public class MemberRepositoryTest {
     @Test
     void test8() {
 
-        Pageable pageable = PageRequest.of(0, 3);
+        //Pageable pageable = PageRequest.of(0, 3);
+        Pageable pageable = PageRequest.of(0, 3, Sort.by(desc("regDt"), asc("email")));
         Page<Member> data = repository.findByUserNameContaining("용자", pageable);
 
         List<Member> members = data.getContent();
