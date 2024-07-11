@@ -60,4 +60,10 @@ public class MemberRepositoryTest {
         List<Member> members = repository.findByUserNameContainingAndEmailContainingOrderByRegDtDesc("용자", "user");
         members.forEach(System.out::println);
     }
+
+    @Test
+    void test7() {
+        List<Member> members = repository.getMembers("%용자%", "%user%");
+        members.forEach(System.out::println);
+    }
 }
