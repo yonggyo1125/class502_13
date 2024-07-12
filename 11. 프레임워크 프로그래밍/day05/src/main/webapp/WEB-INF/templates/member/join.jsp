@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:url var="actionUrl" value="/member/join" />
 
 ${requestJoin}
@@ -27,7 +28,7 @@ ${requestJoin}
     <dl>
         <dt>회원명</dt>
         <dd>
-            <input type="text" name="userName">
+            <input type="text" name="userName" value="${requestJoin.userName}">
         </dd>
     </dl>
     <dl>
