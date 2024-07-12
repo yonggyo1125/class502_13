@@ -32,7 +32,7 @@ public class MemberController {
 
 
 
-    @PostMapping(path="/join", headers="appKey=1234", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path="/join", headers="appKey=1234", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String joinPs(RequestJoin form) {
 
         log.info("joinPs 실행...");
