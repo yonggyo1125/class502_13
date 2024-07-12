@@ -8,7 +8,7 @@ ${commonValue}
     <dl>
         <dt>이메일</dt>
         <dd>
-            <form:input path="email" />
+            <form:input type="email" path="email" />
         </dd>
     </dl>
     <dl>
@@ -32,7 +32,10 @@ ${commonValue}
     <dl>
         <dt>취미</dt>
         <dd>
+            <form:select path="hobby" items="${hobbies}" />
+            <%--
             <form:checkboxes path="hobby" items="${hobbies}" />
+            --%>
         </dd>
     </dl>
     <dl>
