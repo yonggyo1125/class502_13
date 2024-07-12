@@ -31,8 +31,10 @@ public class MemberController {
 
 
 
-    @PostMapping("/join")
+    @PostMapping(path="/join", headers="appKey=1234", consumes = "application/json")
     public String joinPs(RequestJoin form) {
+
+        log.info("joinPs 실행...");
 
         return "redirect:/member/login";
     }
