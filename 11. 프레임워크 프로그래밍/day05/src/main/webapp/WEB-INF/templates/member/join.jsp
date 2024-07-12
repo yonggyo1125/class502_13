@@ -1,12 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:url var="actionUrl" value="/member/join" />
+
+${requestJoin}
+
 <h1>회원가입</h1>
 <form method="POST" action="${actionUrl}" autocomplete="off">
     <dl>
         <dt>이메일</dt>
         <dd>
-            <input type="text" name="email">
+            <input type="text" name="email" value="${requestJoin.email}">
         </dd>
     </dl>
     <dl>

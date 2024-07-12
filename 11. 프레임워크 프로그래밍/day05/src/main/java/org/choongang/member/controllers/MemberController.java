@@ -20,8 +20,9 @@ public class MemberController {
     @PostMapping("/join")
     public String joinPs(RequestJoin form) {
 
-       //return "redirect:/member/login"; // Location: /day05/member/login
-        return "forward:/member/login";
+        log.info(form.toString());
+
+        return "member/join";
     }
 
     @GetMapping("/login")
@@ -32,6 +33,14 @@ public class MemberController {
 
     //private final Logger log = LoggerFactory.getLogger(MemberController.class);
     /*
+
+
+    @PostMapping("/join")
+    public String joinPs(RequestJoin form) {
+
+       //return "redirect:/member/login"; // Location: /day05/member/login
+        return "forward:/member/login"; // 버퍼 치환
+    }
     @GetMapping("/join")
     public String join1() {
 
