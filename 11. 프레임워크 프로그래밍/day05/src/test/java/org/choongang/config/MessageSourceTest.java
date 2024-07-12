@@ -17,7 +17,8 @@ public class MessageSourceTest {
 
     @Test
     void test1() {
-        String message = messageSource.getMessage("LOGIN_MSG", new Object[] {"사용자01", "USER01"}, Locale.KOREAN);
+        //String message = messageSource.getMessage("LOGIN_MSG", new Object[] {"사용자01", "USER01"}, Locale.KOREAN);
+        String message = messageSource.getMessage("LOGIN_MSG", new Object[] {"사용자01", "USER01"}, Locale.ENGLISH);
         System.out.println(message);
     }
 
