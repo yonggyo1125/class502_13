@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Slf4j
 @Controller
 @RequestMapping("/member")
@@ -15,6 +17,11 @@ public class MemberController {
     @ModelAttribute("commonValue")
     public String commonValue() {
         return "공통 속성값...";
+    }
+
+    @ModelAttribute("hobbies")
+    public List<String> hobbies() {
+        return List.of("취미1", "취미2", "취미3", "취미4");
     }
 
     @GetMapping("/join")
@@ -33,7 +40,11 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(RequestLogin2 form) {
+
+        if (form != null) {
+            log.info("이메일:{}, 비밀번호: {}", form.email(), form.password());
+        }
 
         return "member/login";
     }
