@@ -14,6 +14,7 @@ public class RequestJoin {
     //private Set<String> hobby;
     private List<String> hobby;
     //private String hobby;
-
     private boolean agree;
+
+    private Address addr;
 }
