@@ -2,8 +2,8 @@ package org.choongang.member.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/member")
 public class MemberController {
 
+    @ModelAttribute("commonValue")
+    public String commonValue() {
+        return "공통 속성값...";
+    }
+
     @GetMapping("/join")
-    public String join(Model model) {
+    public String join(@ModelAttribute RequestJoin form) {
 
-        RequestJoin form = new RequestJoin();
-
-        model.addAttribute("requestJoin", form);
 
         return "member/join";
     }
@@ -39,7 +41,14 @@ public class MemberController {
     //private final Logger log = LoggerFactory.getLogger(MemberController.class);
     /*
 
+    @GetMapping("/join")
+    public String join(Model model) {
 
+        RequestJoin form = new RequestJoin();
+        model.addAttribute("requestJoin", form);
+
+        return "member/join";
+    }
     @PostMapping("/join")
     public String joinPs(RequestJoin form) {
 

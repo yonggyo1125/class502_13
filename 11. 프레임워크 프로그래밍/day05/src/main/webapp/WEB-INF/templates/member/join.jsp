@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:url var="actionUrl" value="/member/join" />
-
+${commonValue}
 <h1>회원가입</h1>
 <form:form method="POST" action="${actionUrl}" autocomplete="off" modelAttribute="requestJoin">
     <dl>
