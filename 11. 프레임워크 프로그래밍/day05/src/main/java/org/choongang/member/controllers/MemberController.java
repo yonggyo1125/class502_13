@@ -26,7 +26,12 @@ public class MemberController {
 
     @ModelAttribute("hobbies2")
     public List<CodeValue> hobbies2() {
-
+        return List.of(
+                new CodeValue("취미1", "hobby1"),
+                new CodeValue("취미2", "hobby2"),
+                new CodeValue("취미3", "hobby3"),
+                new CodeValue("취미4", "hobby4")
+        );
     }
 
     @GetMapping("/join")
