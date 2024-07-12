@@ -32,8 +32,12 @@ ${commonValue}
     <dl>
         <dt>취미</dt>
         <dd>
-            <form:select path="hobby" items="${hobbies}" />
+            <form:select path="hobby">
+                <option value=''>- 선택하세요 -</option>
+                <form:options items="${hobbies}" />
+            </form:select>
             <%--
+            <form:select path="hobby" items="${hobbies}" />
             <form:checkboxes path="hobby" items="${hobbies}" />
             --%>
         </dd>

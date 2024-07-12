@@ -24,6 +24,11 @@ public class MemberController {
         return List.of("취미1", "취미2", "취미3", "취미4");
     }
 
+    @ModelAttribute("hobbies2")
+    public List<CodeValue> hobbies2() {
+
+    }
+
     @GetMapping("/join")
     public String join(@ModelAttribute RequestJoin form) {
 
