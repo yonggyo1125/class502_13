@@ -6,6 +6,8 @@ import org.springframework.context.MessageSource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 
+import java.util.Locale;
+
 @SpringJUnitWebConfig
 @ContextConfiguration(classes = MvcConfig.class)
 public class MessageSourceTest {
@@ -15,6 +17,13 @@ public class MessageSourceTest {
 
     @Test
     void test1() {
+        String message = messageSource.getMessage("LOGIN_MSG", new Object[] {"사용자01", "USER01"}, Locale.KOREAN);
+        System.out.println(message);
+    }
 
+    @Test
+    void test2() {
+        String message = messageSource.getMessage("EMAIL", null, Locale.KOREAN);
+        System.out.println(message);
     }
 }
