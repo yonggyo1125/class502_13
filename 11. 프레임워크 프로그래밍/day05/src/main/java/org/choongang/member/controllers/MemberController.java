@@ -2,6 +2,7 @@ package org.choongang.member.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController {
 
     @GetMapping("/join")
-    public String join() {
+    public String join(Model model) {
+
+        RequestJoin form = new RequestJoin();
+
+        model.addAttribute("requestJoin", form);
 
         return "member/join";
     }
