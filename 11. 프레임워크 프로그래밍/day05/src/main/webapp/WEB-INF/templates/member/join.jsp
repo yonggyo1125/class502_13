@@ -8,7 +8,7 @@ ${commonValue}
     <dl>
         <dt>이메일</dt>
         <dd>
-            <form:input path="email" cssClass="input-txt" cssStyle="border-color: red;"/>
+            <form:input path="email" cssClass="input-txt" cssStyle="border: 1px solid red; outline: none;"/>
         </dd>
     </dl>
     <dl>
