@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.validators.JoinValidator;
+import org.choongang.member.validators.LoginValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,8 @@ public class MemberController {
 
     private final JoinValidator joinValidator;
     private final JoinService joinService;
+
+    private final LoginValidator loginValidator;
 
     @GetMapping("/join")
     public String join(@ModelAttribute RequestJoin form) {
@@ -49,6 +52,12 @@ public class MemberController {
 
     @PostMapping("/login")
     public String loginPs(@Valid RequestLogin form, Errors errors) {
+
+        loginValidator.validate(form, errors);
+
+        if (errors.hasErrors()) {
+            return "member/login";
+        }
 
         return "redirect:/";
     }
