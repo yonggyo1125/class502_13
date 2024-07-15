@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.choongang.member.controllers.RequestJoin;
 import org.choongang.member.mappers.MemberMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -21,7 +22,28 @@ public class JoinValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+        /**
+         * 1. 필수 항목 검증 (email, password, confirmPassword, userName, agree)
+         * 2. 이메일 중복 여부(회원이 가입되어 있는지 체크)
+         * 3. 비밀번호 자리수 체크(8자리)
+         * 4. 비밀번호, 비밀번호 확인 일치 여부
+         */
 
+        RequestJoin form = (RequestJoin) target;
+        String email = form.getEmail();
+        String password = form.getPassword();
+        String confirmPassword = form.getConfirmPassword();
+        String userName = form.getUserName();
+        boolean agree = form.isAgree();
+
+        // 필수 항목 검증
+        if (!StringUtils.hasText(email)) {
+            errors.rejectValue("email", "Required", "이메일을 입력하세요.");
+        }
+
+        if (!StringUtils.hasText(password)) {
+            errors.rejectValue("password", "Required", "비밀번호를 입력하세요.");
+        }
     }
 
     /*
