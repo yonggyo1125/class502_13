@@ -53,6 +53,15 @@ public class JoinValidator implements Validator {
             errors.rejectValue("email", "Duplicated");
         }
 
+        // 3. 비밀번호 자리수 체크(8자리)
+        if (StringUtils.hasText(password) && password.length() < 8) {
+            errors.rejectValue("password", "Length");
+        }
+
+        // 4. 비밀번호, 비밀번호 확인 일치 여부
+        if (StringUtils.hasText(password) && StringUtils.hasText(confirmPassword) && !password.equals(confirmPassword)) {
+            errors.rejectValue("confirmPassword", "Mismatch");
+        }
     }
 
     /*
