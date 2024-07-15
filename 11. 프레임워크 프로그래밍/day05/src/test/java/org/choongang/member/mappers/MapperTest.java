@@ -22,7 +22,13 @@ public class MapperTest {
 
     @Test
     void test2() {
-        Member member = mapper.get("user01@test.org");
+        Member member = mapper.get("user02@test.org");
         System.out.println(member);
+    }
+
+    @Test
+    void test3() {
+        int cnt = mapper.exists("user02@test.org");
+        System.out.println(cnt);
     }
 }
