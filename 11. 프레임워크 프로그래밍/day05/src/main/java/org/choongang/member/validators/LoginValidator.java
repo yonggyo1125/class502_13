@@ -23,6 +23,12 @@ public class LoginValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+
+        // Bean Validation 검증 실패시에는 다음 검증을 진행 X
+        if (errors.hasErrors()) {
+            return;
+        }
+
         /**
          * 2) email로 회원이 조회 되는지 검증
          * 3) 조회된 회원의 비밀번호가 입력한 값과 일치하는지 검증
@@ -39,7 +45,7 @@ public class LoginValidator implements Validator {
             }
 
 
-            if (StringUtils.hasText(password) && !BCrypt.checkpw(password, member.getPassword())) {
+            if (member != null && StringUtils.hasText(password) && !BCrypt.checkpw(password, member.getPassword())) {
                 //errors.rejectValue("password", "Check.emailPassword");
                 errors.reject("Check.emailPassword");
             }
