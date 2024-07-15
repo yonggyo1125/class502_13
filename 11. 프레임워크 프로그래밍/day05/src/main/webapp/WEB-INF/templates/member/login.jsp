@@ -4,6 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <c:url var="actionUrl" value="/member/login" />
+<spring:message var="saveEmailTitle" code='이메일_기억하기' />
 
 <h1>
     <spring:message code="로그인" />
@@ -29,8 +30,11 @@
         </dd>
     </dl>
     <div>
-        <form:checkbox path="saveEmail" value="true" label="<spring:message code='이메일_기억하기' />" />
+        <form:checkbox path="saveEmail" value="true" label="${saveEmailTitle}" />
     </div>
+
+    <form:errors element="div" delimiter="" />
+
     <button type="submit">
         <spring:message code="로그인" />
     </button>

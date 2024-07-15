@@ -34,12 +34,14 @@ public class LoginValidator implements Validator {
         if (StringUtils.hasText(email)) {
             Member member = mapper.get(email);
             if (member == null) {
-                errors.rejectValue("email", "Check.emailPassword");
+                //errors.rejectValue("email", "Check.emailPassword");
+                errors.reject("Check.emailPassword");
             }
 
 
             if (StringUtils.hasText(password) && !BCrypt.checkpw(password, member.getPassword())) {
-                errors.rejectValue("password", "Check.emailPassword");
+                //errors.rejectValue("password", "Check.emailPassword");
+                errors.reject("Check.emailPassword");
             }
         }
     }
