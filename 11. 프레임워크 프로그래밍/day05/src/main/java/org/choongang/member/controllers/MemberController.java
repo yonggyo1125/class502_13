@@ -52,6 +52,7 @@ public class MemberController {
 
         return "redirect:/";
     }
+
     /*
     @InitBinder
     public void initBinder(WebDataBinder binder) {
