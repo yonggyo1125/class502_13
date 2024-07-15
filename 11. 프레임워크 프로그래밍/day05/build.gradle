@@ -34,6 +34,10 @@ dependencies {
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
     implementation 'org.mindrot:jbcrypt:0.4'
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+
+
 
     testImplementation "org.springframework:spring-test:$springVersion"
     testImplementation platform('org.junit:junit-bom:5.10.0')
