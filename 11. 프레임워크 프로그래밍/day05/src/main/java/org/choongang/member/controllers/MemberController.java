@@ -3,6 +3,7 @@ package org.choongang.member.controllers;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.choongang.member.services.JoinService;
+import org.choongang.member.services.LoginService;
 import org.choongang.member.validators.JoinValidator;
 import org.choongang.member.validators.LoginValidator;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ public class MemberController {
     private final JoinService joinService;
 
     private final LoginValidator loginValidator;
+    private final LoginService loginService;
 
     @GetMapping("/join")
     public String join(@ModelAttribute RequestJoin form) {
@@ -58,6 +60,10 @@ public class MemberController {
         if (errors.hasErrors()) {
             return "member/login";
         }
+
+        // 로그인 처리
+        String email = form.getEmail();
+        loginService.process(email);
 
         return "redirect:/";
     }
