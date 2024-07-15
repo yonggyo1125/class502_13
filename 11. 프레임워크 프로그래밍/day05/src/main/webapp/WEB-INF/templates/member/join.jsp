@@ -13,7 +13,8 @@
             <spring:message code="이메일" />
         </dt>
         <dd>
-            <form:input path="email" cssClass="input-txt" cssStyle="border: 1px solid red; outline: none;"/>
+            <form:input path="email" />
+            <form:errors path="email" element="div" delimiter="" />
         </dd>
     </dl>
     <dl>
@@ -22,6 +23,7 @@
         </dt>
         <dd>
             <form:password path="password" />
+            <form:errors path="password" />
         </dd>
     </dl>
     <dl>
