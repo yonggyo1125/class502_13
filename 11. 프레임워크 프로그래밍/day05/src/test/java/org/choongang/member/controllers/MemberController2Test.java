@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 
 @SpringJUnitWebConfig
 @ContextConfiguration(classes = MvcConfig.class)
-public class MemberControllerTest {
+public class MemberController2Test {
 
     @Autowired
     private WebApplicationContext ctx;
