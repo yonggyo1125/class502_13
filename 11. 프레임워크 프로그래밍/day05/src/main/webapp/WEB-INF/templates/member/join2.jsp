@@ -4,6 +4,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <c:url var="actionUrl" value="/member/join" />
+
+<%--
+<spring:message code="LOGIN_MSG" arguments="사용자01,USER01"/>
+--%>
+<spring:message code="LOGIN_MSG">
+    <spring:argument value="사용자01" />
+    <spring:argument value="USER01" />
+</spring:message>
+
 <h1>
     <spring:message code="회원가입" />
 </h1>
@@ -40,6 +49,38 @@
             <form:input path="userName" />
         </dd>
     </dl>
+    <%--
+    <dl>
+        <dt>취미</dt>
+        <dd>
+            <form:radiobuttons path="hobby" items="${hobbies2}" itemLabel="code" itemValue="value" />
+
+            <form:select path="hobby">
+                <option value=''>- 선택하세요 -</option>
+                <form:option value="hobby0" label="취미0" />
+                <form:options items="${hobbies2}" itemLabel="code" itemValue="value" />
+            </form:select>
+
+
+            <form:select path="hobby">
+                <option value=''>- 선택하세요 -</option>
+                <form:options items="${hobbies}" />
+            </form:select>
+
+            <form:select path="hobby" items="${hobbies}" />
+            <form:checkboxes path="hobby" items="${hobbies}" />
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>주소</dt>
+        <dd>
+            <form:input path="addr.zipCode" placeholder="우편번호" />
+            <form:input path="addr.address" placeholder="주소" />
+            <form:input path="addr.addressSub" placeholder="나머지 주소" />
+        </dd>
+    </dl>
+    --%>
     <dl>
         <dt>
             <spring:message code="약관동의" />
@@ -49,6 +90,6 @@
         </dd>
     </dl>
     <button type="submit">
-      <spring:message code="가입하기" />
+        <spring:message code="가입하기" />
     </button>
 </form:form>
