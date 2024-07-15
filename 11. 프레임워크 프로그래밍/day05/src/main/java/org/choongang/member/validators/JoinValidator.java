@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.choongang.member.controllers.RequestJoin;
 import org.choongang.member.mappers.MemberMapper;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 @Component
@@ -37,13 +37,16 @@ public class JoinValidator implements Validator {
         boolean agree = form.isAgree();
 
         // 필수 항목 검증
-        if (!StringUtils.hasText(email)) {
-            errors.rejectValue("email", "Required", "이메일을 입력하세요.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Required", "이메일을 입력하세요.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required", "비밀번호를 입력하세요.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "Required", "비밀번호를 확인하세요.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "Required", "회원명을 입력하세요.");
+
+        if (!agree) {
+            errors.rejectValue("agree", "Required", "회원 가입 약관에 동의하세요.");
         }
 
-        if (!StringUtils.hasText(password)) {
-            errors.rejectValue("password", "Required", "비밀번호를 입력하세요.");
-        }
+
     }
 
     /*
