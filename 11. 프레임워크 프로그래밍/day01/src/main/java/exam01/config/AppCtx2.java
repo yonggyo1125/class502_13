@@ -14,12 +14,12 @@ import java.time.format.DateTimeFormatter;
 public class AppCtx2 {
 
     @Bean
-    @Qualifier("mDao")
+    //@Qualifier("mDao")
     public MemberDao memberDao() {
         return new MemberDao();
     }
 
-    @Bean
+    //@Bean
     public MemberDao memberDao2() {
         return new MemberDao();
     }

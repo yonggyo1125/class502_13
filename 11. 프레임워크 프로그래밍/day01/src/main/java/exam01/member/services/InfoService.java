@@ -20,7 +20,6 @@ public class InfoService {
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy.MM.dd");
 
     @Autowired
-
     public void setMemberDao(Optional<MemberDao> opt) {
         this.memberDao = opt.get();
     }
@@ -33,10 +32,12 @@ public class InfoService {
     }
     */
 
-    @Autowired
-    public void setFormatter(@Nullable DateTimeFormatter formatter) {
+    @Autowired(required = false)
+    public void setFormatter(DateTimeFormatter formatter) {
         System.out.println("호출!");
-        this.formatter = formatter;
+        if (formatter != null) {
+            this.formatter = formatter;
+        }
     }
 
     public void printList() {
