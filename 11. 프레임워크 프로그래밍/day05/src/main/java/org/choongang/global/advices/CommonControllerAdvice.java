@@ -21,14 +21,13 @@ public class CommonControllerAdvice {
 
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR; // 500
         if (e instanceof CommonException commonException) {
-            //CommonException commonException = (CommonException) e;
+           // CommonException commonException = (CommonException) e;
             status = commonException.getStatus();
         }
 
         ModelAndView mv = new ModelAndView();
-        mv.setStatus(status);
-
         mv.setViewName("error/common");
+        mv.setStatus(status);
 
         return mv;
     }
