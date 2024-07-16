@@ -105,8 +105,8 @@ public class MemberController {
     }
 
     @ResponseBody
-    @GetMapping("/info/{id}/{id2}")
-    public void info(@PathVariable("id") String email, @PathVariable("id2") String email2) {
+    @GetMapping({"/info/{id}/{id2}", "/info/{id}"})
+    public void info(@PathVariable("id") String email, @PathVariable(name="id2", required = false) String email2) {
 
         log.info("email:{}, email2:{}", email, email2);
     }
