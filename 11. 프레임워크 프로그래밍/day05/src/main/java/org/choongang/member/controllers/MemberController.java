@@ -1,17 +1,15 @@
 package org.choongang.member.controllers;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.choongang.global.exceptions.BadRequestException;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.LoginService;
 import org.choongang.member.validators.JoinValidator;
 import org.choongang.member.validators.LoginValidator;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -99,7 +97,7 @@ public class MemberController {
 
         boolean result = false;
         if (!result) {
-            throw new RuntimeException("예외 발생!!!");
+            throw new BadRequestException("예외 발생!!!");
         }
 
 
@@ -113,14 +111,14 @@ public class MemberController {
         log.info("email:{}, email2:{}", email, email2);
     }
 
-
+    /*
     @ExceptionHandler(Exception.class)
     public String errorHandler(Exception e, HttpServletRequest request, HttpServletResponse response, Model model) {
         e.printStackTrace();
         log.info("MemberController에서 유입");
         return "error/common";
     }
-
+    */
 
     /*
     @InitBinder
