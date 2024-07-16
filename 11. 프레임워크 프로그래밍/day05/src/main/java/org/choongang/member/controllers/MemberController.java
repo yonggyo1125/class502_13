@@ -90,7 +90,7 @@ public class MemberController {
 
 
     @GetMapping("/list")
-    public String list(@ModelAttribute MemberSearch search) {
+    public String list(@Valid @ModelAttribute MemberSearch search, Errors errors) {
 
         log.info(search.toString());
 
