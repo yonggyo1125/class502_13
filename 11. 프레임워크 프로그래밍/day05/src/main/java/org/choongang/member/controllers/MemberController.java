@@ -112,6 +112,12 @@ public class MemberController {
     }
 
 
+    @ExceptionHandler(BadRequestException.class)
+    public String errorHandler() {
+
+        return "error/common";
+    }
+
 
     /*
     @InitBinder
