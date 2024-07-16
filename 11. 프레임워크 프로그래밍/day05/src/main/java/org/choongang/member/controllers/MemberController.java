@@ -88,6 +88,15 @@ public class MemberController {
         return "redirect:/member/login";
     }
 
+
+    @GetMapping("/list")
+    public String list(@ModelAttribute MemberSearch search) {
+
+        log.info(search.toString());
+
+        return "member/list";
+    }
+
     /*
     @InitBinder
     public void initBinder(WebDataBinder binder) {
