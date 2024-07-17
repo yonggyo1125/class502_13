@@ -16,9 +16,14 @@ const todos = {
 
     const schedulesEl = document.getElementById("schedules");
     schedulesEl.append(liEl);
+
+    // 스케줄 삭제
+    button.addEventListener("click", function () {
+      if (confirm("정말 삭제하겠습니까?")) {
+        liEl.remove();
+      }
+    });
   },
-  // 스케줄 제거
-  remove() {},
 };
 
 window.addEventListener("DOMContentLoaded", function () {
