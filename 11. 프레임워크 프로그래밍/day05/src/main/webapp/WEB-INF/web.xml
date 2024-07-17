@@ -21,6 +21,10 @@
                 org.choongang.config.MvcConfig
             </param-value>
         </init-param>
+        <init-param>
+            <param-name>spring.profiles.active</param-name>
+            <param-value>dev</param-value>
+        </init-param>
         <multipart-config>
             <max-file-size>20971520</max-file-size>  <!-- 한 파일당 최대 20mb -->
             <max-request-size>62914560</max-request-size> <!-- 최대 업로드 파일 용량 60mb -->
