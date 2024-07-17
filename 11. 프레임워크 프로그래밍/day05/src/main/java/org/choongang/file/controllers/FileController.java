@@ -1,6 +1,7 @@
 package org.choongang.file.controllers;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +13,9 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/file")
 public class FileController {
+
+    @Value("${file.upload.path}")
+    private String uploadDir;
 
     @GetMapping("/upload")
     public String upload() {
@@ -25,7 +29,7 @@ public class FileController {
         String name = file.getOriginalFilename();
         log.info("파일명: {}", name);
 
-        File uploadPath = new File("D:/uploads/" + name);
+        File uploadPath = new File(uploadDir + name);
 
         try {
             file.transferTo(uploadPath);
