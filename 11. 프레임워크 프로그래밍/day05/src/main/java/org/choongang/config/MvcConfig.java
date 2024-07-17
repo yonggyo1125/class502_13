@@ -24,8 +24,9 @@ import java.util.List;
 @Import({DBConfig.class,
         MessageConfig.class,
         InterceptorConfig.class,
-        FileConfig.class}) */
+        FileConfig.class})
 //@RequiredArgsConstructor
+ */
 public class MvcConfig implements WebMvcConfigurer {
 
     /*
