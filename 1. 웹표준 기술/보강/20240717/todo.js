@@ -18,7 +18,17 @@ const todos = {
 
     const domParser = new DOMParser();
     const dom = domParser.parseFromString(html, "text/html");
-    console.log(dom);
+    const liEl = dom.querySelector("li");
+
+    const schedulesEl = document.getElementById("schedules");
+    schedulesEl.append(liEl);
+
+    const buttonEl = liEl.querySelector("button");
+    buttonEl.addEventListener("click", function () {
+      if (confirm("정말 삭제하겠습니까?")) {
+        liEl.remove();
+      }
+    });
   },
 };
 
