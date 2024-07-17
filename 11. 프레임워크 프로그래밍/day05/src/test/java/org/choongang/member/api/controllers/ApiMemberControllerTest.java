@@ -13,7 +13,7 @@ import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -70,5 +70,11 @@ public class ApiMemberControllerTest {
                 .andDo(print());
 
          */
+    }
+
+    @Test
+    void test2() throws Exception {
+        mockMvc.perform(get("/api/member/list"))
+                .andDo(print());
     }
 }
