@@ -22,11 +22,17 @@ window.addEventListener("DOMContentLoaded", function () {
   frmRegist.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    const todoEl = this.todo;
+
     try {
-      todos.add(this.todo.value); // 스케줄 등록
+      todos.add(todoEl.value); // 스케줄 등록
+
+      todoEl.value = "";
+      
     } catch (e) {
-      alert(e.message);
-      this.todo.focus();
+      alert(e.message);git 
     }
+
+    todoEl.focus();
   });
 });
