@@ -8,8 +8,11 @@ const todos = {
       throw new Error("스케줄을 입력하세요.");
     }
 
+    const button = document.createElement("button");
+    button.append("삭제");
+
     const liEl = document.createElement("li");
-    liEl.append(todo);
+    liEl.append(todo, button);
 
     const schedulesEl = document.getElementById("schedules");
     schedulesEl.append(liEl);
@@ -28,9 +31,8 @@ window.addEventListener("DOMContentLoaded", function () {
       todos.add(todoEl.value); // 스케줄 등록
 
       todoEl.value = "";
-      
     } catch (e) {
-      alert(e.message);git 
+      alert(e.message);
     }
 
     todoEl.focus();
