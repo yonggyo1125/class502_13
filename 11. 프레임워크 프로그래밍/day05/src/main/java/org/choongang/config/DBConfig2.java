@@ -6,7 +6,6 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
@@ -18,10 +17,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Slf4j
-@Configuration
+//@Configuration
 public class DBConfig2 {
     @Profile("!prod") // prod 프로파일이 아닌 경우
-    @Configuration
+    //@Configuration
     @EnableTransactionManagement
     @MapperScan("org.choongang")
     @EnableJdbcRepositories("org.choongang")
@@ -75,7 +74,7 @@ public class DBConfig2 {
     }
 
     @Profile("prod")
-    @Configuration
+    //@Configuration
     @EnableTransactionManagement
     @MapperScan("org.choongang")
     @EnableJdbcRepositories("org.choongang")

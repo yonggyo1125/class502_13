@@ -3,7 +3,6 @@ package org.choongang.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StringUtils;
@@ -12,10 +11,11 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration
 @EnableWebMvc
 @ComponentScan("org.choongang")
+/*
 @Import({DBConfig.class,
         MessageConfig.class,
         InterceptorConfig.class,
-        FileConfig.class})
+        FileConfig.class}) */
 //@RequiredArgsConstructor
 public class MvcConfig implements WebMvcConfigurer {
 
