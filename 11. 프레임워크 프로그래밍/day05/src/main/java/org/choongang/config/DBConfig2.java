@@ -1,11 +1,13 @@
 package org.choongang.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,15 +17,19 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+@Slf4j
 @Configuration
 public class DBConfig2 {
+    @Profile("dev")
+    @Configuration
     @EnableTransactionManagement
     @MapperScan("org.choongang")
     @EnableJdbcRepositories("org.choongang")
     static class DBConfigDev extends AbstractJdbcConfiguration {
-
         @Bean(destroyMethod = "close")
         public DataSource dataSource() {
+            log.info("dev 프로파일!");
+
             DataSource ds = new DataSource();
 
             /* 연결 설정 S */
@@ -68,6 +74,8 @@ public class DBConfig2 {
         }
     }
 
+    @Profile("prod")
+    @Configuration
     @EnableTransactionManagement
     @MapperScan("org.choongang")
     @EnableJdbcRepositories("org.choongang")
@@ -75,6 +83,8 @@ public class DBConfig2 {
 
         @Bean(destroyMethod = "close")
         public DataSource dataSource() {
+            log.info("prod 프로파일!");
+
             DataSource ds = new DataSource();
 
             /* 연결 설정 S */
