@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Slf4j
 @Configuration
 public class DBConfig2 {
-    @Profile("dev")
+    @Profile("!prod") // prod 프로파일이 아닌 경우
     @Configuration
     @EnableTransactionManagement
     @MapperScan("org.choongang")
