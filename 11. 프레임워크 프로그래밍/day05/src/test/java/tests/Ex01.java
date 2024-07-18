@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.choongang.config.MvcConfig;
 import org.choongang.exam.PostData;
 import org.choongang.member.controllers.RequestJoin;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -13,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -72,6 +75,7 @@ public class Ex01 {
     }
 
     @Test
+    @DisplayName("JSON 형식으로 POST 처리 예시")
     void test4() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
 
@@ -91,6 +95,28 @@ public class Ex01 {
         HttpEntity<String> request = new HttpEntity<>(params, headers);
 
         String url = "http://localhost:3000/day05/api/member";
+        ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
+        System.out.println(response);
+    }
+
+    @Test
+    @DisplayName("일반 양식 형식으로 전송 - Content-Type: application/x-www-form-urlencoded")
+    void test5() {
+        RestTemplate restTemplate = new RestTemplate();
+
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add("email", "user998@test.org");
+        params.add("password", "12345678");
+        params.add("confirmPassword", "12345678");
+        params.add("userName", "사용자998");
+        params.add("agree", "true");
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
+
+        String url = "http://localhost:3000/day05/member/join";
         ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
         System.out.println(response);
     }
