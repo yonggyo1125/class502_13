@@ -24,7 +24,16 @@ public class Utils {
         // FieldErrors
         Map<String, List<String>> messages = errors.getFieldErrors()
                 .stream()
-                .collect(Collectors.toMap(FieldError::getField, e -> e.getCodes() ))
+                .collect(Collectors.toMap(FieldError::getField, e -> getCodeMessages(e.getCodes())));
+
+        // GlobalErrors
+        List<String> gMessages = errors.getGlobalErrors()
+                                    .stream()
+                .flatMap(e -> getCodeMessages(e.getCodes()).stream()).toList();
+
+        messages.put("global", gMessages);
+
+        return messages;
     }
 
 
