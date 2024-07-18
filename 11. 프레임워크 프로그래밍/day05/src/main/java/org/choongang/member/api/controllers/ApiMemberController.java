@@ -31,10 +31,7 @@ public class ApiMemberController {
     @PostMapping // POST /api/member
     public ResponseEntity join(@RequestBody @Valid RequestJoin form, Errors errors) {
         if (errors.hasErrors()) {
-            errors.getFieldErrors().forEach(System.out::println);
-            errors.getGlobalErrors().forEach(System.out::println);
 
-            return ResponseEntity.badRequest().build();
         }
     
         boolean result = false;
