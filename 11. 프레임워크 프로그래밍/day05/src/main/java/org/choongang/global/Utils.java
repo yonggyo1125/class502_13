@@ -1,6 +1,5 @@
 package org.choongang.global;
 
-import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
@@ -40,7 +39,7 @@ public class Utils {
     public List<String> getCodeMessages(String[] codes) {
         List<String> messages = Arrays.stream(codes)
                 .map(c -> messageSource.getMessage(c, null, request.getLocale()))
-                .filter(s -> !StringUtils.isBlank(s))
+                .filter(s -> s != null && !s.isBlank())
                 .toList();
 
         return messages;
