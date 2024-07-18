@@ -35,12 +35,12 @@ public class ApiMemberController {
 
 
     @GetMapping("/info/{email}")
-    public Member info(@PathVariable("email") String email) {
+    public ResponseEntity<Member> info(@PathVariable("email") String email) {
         // Content-Type: application/json
 
         Member member = mapper.get(email);
 
-        return member;
+        return ResponseEntity.ok(member);
     }
 
     @GetMapping("/list")
