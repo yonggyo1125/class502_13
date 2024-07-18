@@ -1,5 +1,6 @@
 package org.choongang.global;
 
+import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -27,6 +29,11 @@ public class Utils {
 
 
     public List<String> getCodeMessages(String[] codes) {
+        List<String> messages = Arrays.stream(codes)
+                .map(c -> messageSource.getMessage(c, null, request.getLocale()))
+                .filter(s -> !StringUtils.isBlank(s))
+                .toList();
 
+        return messages;
     }
 }
