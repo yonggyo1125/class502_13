@@ -7,6 +7,10 @@ import org.choongang.exam.PostData;
 import org.choongang.member.controllers.RequestJoin;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.web.client.RestTemplate;
@@ -79,6 +83,15 @@ public class Ex01 {
         form.setAgree(true);
 
         String params = om.writeValueAsString(form);
-        System.out.println(params);
+
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<String> request = new HttpEntity<>(params, headers);
+
+        String url = "http://localhost:3000/day05/api/member";
+        ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
+        System.out.println(response);
     }
 }
