@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.choongang.global.exceptions.BadRequestException;
-import org.choongang.global.exceptions.CommonException;
 import org.choongang.global.rests.JSONData;
 import org.choongang.member.controllers.RequestJoin;
 import org.choongang.member.entities.Member;
@@ -85,7 +84,7 @@ public class ApiMemberController {
         log.info("test2....");
 
     }
-
+    /*
     @ExceptionHandler(Exception.class)
     public ResponseEntity<JSONData> errorHandler(Exception e) {
 
@@ -102,5 +101,5 @@ public class ApiMemberController {
         e.printStackTrace();
 
         return ResponseEntity.status(status).body(data);
-    }
+    } */
 }
