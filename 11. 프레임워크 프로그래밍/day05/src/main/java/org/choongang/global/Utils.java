@@ -30,8 +30,9 @@ public class Utils {
                                     .stream()
                 .flatMap(e -> getCodeMessages(e.getCodes()).stream()).toList();
 
-        messages.put("global", gMessages);
-
+        if (!gMessages.isEmpty()) {
+            messages.put("global", gMessages);
+        }
         return messages;
     }
 
