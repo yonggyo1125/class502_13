@@ -3,11 +3,28 @@
     <head>
         <meta charset="UTF-8">
         <script>
+            /*
             window.addEventListener("DOMContentLoaded", function() {
                 const buttonEl = document.getElementById("button");
                 buttonEl.onclick = function() {
                     alert("클릭1~");
                 };
+
+                buttonEl.onclick = function() {
+                    alert("클릭2~");
+                };
+            }); */
+
+            window.addEventListener("DOMContentLoaded", function() {
+                const buttonEl = document.getElementById("button");
+
+                buttonEl.addEventListener("click", function() {
+                    alert("클릭1");
+                });
+
+                buttonEl.addEventListener("click", function() {
+                    alert("클릭2");
+                });
             });
         </script>
     </head>
