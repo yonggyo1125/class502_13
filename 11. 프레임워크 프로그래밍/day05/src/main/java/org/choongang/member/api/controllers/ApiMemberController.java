@@ -1,5 +1,6 @@
 package org.choongang.member.api.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.choongang.global.rests.JSONData;
@@ -10,6 +11,7 @@ import org.choongang.member.services.JoinService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -26,7 +28,11 @@ public class ApiMemberController {
     private final JoinService joinService;
 
     @PostMapping // POST /api/member
-    public ResponseEntity join(@RequestBody RequestJoin form) {
+    public ResponseEntity join(@Valid @RequestBody RequestJoin form, Errors errors) {
+
+        if (errors.hasErrors()) {
+            return ResponseEntity.badRequest().build();
+        }
 
         joinService.process(form);
 
