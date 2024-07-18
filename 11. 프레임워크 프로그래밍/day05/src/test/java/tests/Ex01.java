@@ -1,17 +1,27 @@
 package tests;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.choongang.config.MvcConfig;
 import org.choongang.exam.PostData;
+import org.choongang.member.controllers.RequestJoin;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
+
 @SpringJUnitWebConfig
 @ContextConfiguration(classes= MvcConfig.class)
 public class Ex01 {
+
+    @Autowired
+    private ObjectMapper om;
+
     @Test
     void test1() {
         UriComponents url = UriComponentsBuilder.fromUriString("https://www.naver.com")
@@ -42,10 +52,33 @@ public class Ex01 {
     }
 
     @Test
-    void test3() {
+    void test3() throws Exception {
         RestTemplate restTemplate = new RestTemplate();
         String body = restTemplate.getForObject("https://jsonplaceholder.typicode.com/posts/1", String.class);
 
+        // 단일 객체 변환
+        PostData data = om.readValue(body, PostData.class);
+        System.out.println(data);
 
+        // 복합 데이터 객체 변환 - List, Set, Map ..
+        String itemsBody = restTemplate.getForObject("https://jsonplaceholder.typicode.com/posts", String.class);
+
+        List<PostData> items = om.readValue(itemsBody, new TypeReference<>(){});
+        items.forEach(System.out::println);
+    }
+
+    @Test
+    void test4() throws Exception {
+        RestTemplate restTemplate = new RestTemplate();
+
+        RequestJoin form = new RequestJoin();
+        form.setEmail("user999@test.org");
+        form.setPassword("12345678");
+        form.setConfirmPassword(form.getPassword());
+        form.setUserName("사용자999");
+        form.setAgree(true);
+
+        String params = om.writeValueAsString(form);
+        System.out.println(params);
     }
 }
