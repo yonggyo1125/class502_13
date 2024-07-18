@@ -35,12 +35,12 @@ public class ApiMemberController {
         if (errors.hasErrors()) {
             throw new BadRequestException(utils.getErrorMessages(errors));
         }
-    
+        /*
         boolean result = false;
         if (!result) {
             throw new BadRequestException("예외 테스트!");
         }
-
+        */
         joinService.process(form);
 
         // 응답 코드 201, 출력 바디 X
