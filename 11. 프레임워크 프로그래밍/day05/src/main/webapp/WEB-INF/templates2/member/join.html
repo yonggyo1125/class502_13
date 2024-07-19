@@ -6,29 +6,29 @@
     </head>
     <body>
         <h1>회원가입</h1>
-        <form method="post" autocomplete="off">
+        <form method="post" autocomplete="off" th:object="${requestJoin}">
             <dl>
-                <dt th:text="#{이메일2}">이메일</dt>
+                <dt th:text="#{이메일}">이메일</dt>
                 <dd>
-                    <input type="text" name="email" th:value="${requestJoin.email}" value="user01@test.org">
+                    <input type="text" name="email" th:field="*{email}">
                 </dd>
             </dl>
             <dl>
                 <dt>비밀번호</dt>
                 <dd>
-                    <input type="password" name="password">
+                    <input type="password" name="password" th:field="*{password}">
                 </dd>
             </dl>
             <dl>
                 <dt>비밀번호확인</dt>
                 <dd>
-                    <input type="password" name="confirmPassword">
+                    <input type="password" name="confirmPassword" th:field="*{confirmPassword}">
                 </dd>
             </dl>
             <dl>
                 <dt>회원명</dt>
                 <dd>
-                    <input type="text" name="userName" value="사용자01">
+                    <input type="text" name="userName" th:field="*{userName}">
                 </dd>
             </dl>
             <div>
