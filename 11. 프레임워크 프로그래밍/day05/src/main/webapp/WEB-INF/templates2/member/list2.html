@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <h1>회원 정보</h1>
+        <th:block th:object="${member}">
+            <dl>
+                <dt th:text="#{이메일}">이메일</dt>
+                <!--<dd th:text="${member.email}"></dd>-->
+                <dd th:text="*{email}"></dd>
+            </dl>
+            <dl>
+                <dt th:text="#{회원명}">회원명</dt>
+                <!--<dd th:text="${member.userName}"></dd>-->
+                <dd th:utext="*{userName}"></dd>
+            </dl>
+            <dl>
+                <dt th:text="#{가입일시}">가입일시</dt>
+                <!--<dd th:text="${member.regDt}"></dd>-->
+                <dd th:text="*{regDt}"></dd>
+            </dl>
+
+
+            <a th:href="@{/member/login}" th:text="#{로그인}"></a>
+            <br>
+            <!-- /day05/member/login?p1=user01...&p2=사용자01 -->
+            <a th:href="@{/member/login(p1=${member.email}, p2=${member.userName})}" th:text="#{로그인}"></a>
+            <a th:href="@{/member/login(p1=*{email}, p2=*{userName})}" th:text="#{로그인}"></a>
+            <a th:href="@{/member/info/{email}/{email2}(email=*{email}, email2=*{userName})}"></a>
+        </th:block>
+    </body>
+</html>
