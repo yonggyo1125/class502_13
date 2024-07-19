@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <h1>회원 정보</h1>
+        <dl>
+            <dt>이메일</dt>
+            <dd th:text="${member.email}"></dd>
+        </dl>
+        <dl>
+            <dt>회원명</dt>
+            <dd th:text="${member.userName}"></dd>
+        </dl>
+        <dl>
+            <dt>가입일시</dt>
+            <dd th:text="${member.regDt}"></dd>
+        </dl>
+    </body>
+</html>

@@ -4,13 +4,13 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.choongang.global.exceptions.BadRequestException;
 import org.choongang.member.entities.Member;
 import org.choongang.member.services.JoinService;
 import org.choongang.member.services.LoginService;
 import org.choongang.member.validators.JoinValidator;
 import org.choongang.member.validators.LoginValidator;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -94,7 +94,7 @@ public class MemberController {
         return "redirect:/member/login";
     }
 
-
+    /*
     @GetMapping("/list")
     public String list(@Valid @ModelAttribute MemberSearch search, Errors errors) {
 
@@ -105,6 +105,22 @@ public class MemberController {
             throw new BadRequestException("예외 발생!!!");
         }
 
+
+        return "member/list";
+    }
+     */
+
+    @GetMapping("/list")
+    public String list2(Model model) {
+
+        Member member = Member.builder()
+                .email("user01@test.org")
+                .password("12345678")
+                .userName("사용자01")
+                .regDt(LocalDateTime.now())
+                .build();
+
+        model.addAttribute("member", member);
 
         return "member/list";
     }
