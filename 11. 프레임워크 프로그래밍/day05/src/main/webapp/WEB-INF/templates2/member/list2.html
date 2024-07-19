@@ -20,7 +20,7 @@
             </dl>
 
 
-            <a th:href="@{/member/login}" th:text="#{로그인}"></a>
+            <a href="#" th:href="@{/member/login}" th:text="#{로그인}"></a>
             <br>
             <!-- /day05/member/login?p1=user01...&p2=사용자01 -->
             <a th:href="@{/member/login(p1=${member.email}, p2=${member.userName})}" th:text="#{로그인}"></a>

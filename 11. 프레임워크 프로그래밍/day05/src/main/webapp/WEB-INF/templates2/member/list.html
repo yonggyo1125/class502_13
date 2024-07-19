@@ -11,13 +11,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="item, s : ${items}" th:object="${item}">
+                <tr th:each="item, s : ${items}" th:object="${item}" class="item" th:classappend="${s.even} ? 'on':''">
                     <td>
                         순번:[[${s.count}]]
                         / 첫번째 : [[${s.first}]]
                         / 마지막 : [[${s.last}]]
+                        <th:block th:switch="${s.even}">
+                            <span th:case="true">짝수</span>
+                            <span th:case="false">홀수</span>
+                        </th:block>
+                        <!--
                         <th:block th:if="${s.even}">짝수</th:block>
                         <th:block th:unless="${s.even}">홀수</th:block>
+                        -->
                         <!--<th:block th:if="${s.odd}">홀수</th:block>-->
                     </td>
                     <td th:text="*{email}"></td>
