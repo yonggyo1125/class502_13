@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            window.addEventListener("DOMContentLoaded", function() {
+                const linkEl = document.getElementById("link");
+                linkEl.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    console.log(this.href);
+                });
+
+                const divEl = document.getElementById("div");
+                /*
+                divEl.addEventListener("click", function(e) {
+                    console.log("e.currentTarget", e.currentTarget);
+                    console.log("e.target", e.target);
+                    console.log("this", this); // e.currentTarget
+                });*/
+
+                divEl.addEventListener("click", (e) => {
+                    console.log("e.currentTarget", e.currentTarget);
+                    console.log("e.target", e.target);
+                    console.log("this", this); // window
+                });
+            });
+        </script>
+        <a href="https://www.naver.com" id="link">네이버</a>
+
+        <div id="div">
+            <span>클릭!</span>
+        </div>
+    </body>
+</html>
