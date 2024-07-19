@@ -20,6 +20,11 @@
                 <input type="checkbox" name="saveEmail" value="true" id="saveEmail" th:field="*{saveEmail}">
                 <label for="saveEmail" th:text="#{이메일_기억하기}"></label>
             </div>
+
+            <!--
+            <div th:each="err : ${#fields.errors('global')}" th:text="${err}"></div>
+            -->
+            <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
             <button type="submit" th:text="#{로그인}"></button>
         </form>
     </body>
