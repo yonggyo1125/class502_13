@@ -52,7 +52,7 @@ public class Utils {
                         return "";
                     }
                 })
-                .filter(s -> s != null && !s.isBlank())
+                .filter(s -> !s.isBlank())
                 .toList();
 
         ms.setUseCodeAsDefaultMessage(true);
