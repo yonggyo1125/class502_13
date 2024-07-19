@@ -4,18 +4,36 @@
         <table border="1">
             <thead>
                 <tr>
+                    <th>순번</th>
                     <th>이메일</th>
                     <th>회원명</th>
                     <th>가입일시</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="item : ${items}">
-                    <td th:text="${item.email}"></td>
-                    <td th:text="${item.userName}"></td>
-                    <td th:text="${item.regDt}"></td>
+                <tr th:each="item, s : ${items}" th:object="${item}">
+                    <td>
+                        순번:[[${s.count}]]
+                        / 첫번째 : [[${s.first}]]
+                        / 마지막 : [[${s.last}]]
+                        <th:block th:if="${s.even}">짝수</th:block>
+                        <th:block th:unless="${s.even}">홀수</th:block>
+                        <!--<th:block th:if="${s.odd}">홀수</th:block>-->
+                    </td>
+                    <td th:text="*{email}"></td>
+                    <td th:text="*{userName}"></td>
+                    <td th:text="*{regDt}"></td>
                 </tr>
+                <!--
+                <tr th:each="item : ${items}" th:object="${item}" >
+                    <td th:text="*{email}"></td>
+                    <td th:text="*{userName}"></td>
+                    <td th:text="*{regDt}"></td>
+                </tr>
+                -->
             </tbody>
         </table>
+        <h1 th:if="true">항상 노출</h1>
+        <h1 th:if="false">항상 미노출</h1>
     </body>
 </html>
