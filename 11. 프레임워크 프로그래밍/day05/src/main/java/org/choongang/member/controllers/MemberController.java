@@ -116,7 +116,7 @@ public class MemberController {
         Member member = Member.builder()
                 .email("user01@test.org")
                 .password("12345678")
-                .userName("사용자01")
+                .userName("<h1>사용자01</h1>")
                 .regDt(LocalDateTime.now())
                 .build();
 
