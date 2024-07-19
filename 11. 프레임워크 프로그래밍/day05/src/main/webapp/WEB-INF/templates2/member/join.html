@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>회원가입</title>
@@ -8,9 +8,9 @@
         <h1>회원가입</h1>
         <form method="post" autocomplete="off">
             <dl>
-                <dt>이메일</dt>
+                <dt th:text="#{이메일2}">이메일</dt>
                 <dd>
-                    <input type="text" name="email" value="${requestJoin.email}">
+                    <input type="text" name="email" th:value="${requestJoin.email}" value="user01@test.org">
                 </dd>
             </dl>
             <dl>
