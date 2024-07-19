@@ -9,6 +9,13 @@
                     <th>가입일시</th>
                 </tr>
             </thead>
+            <tbody>
+                <tr th:each="item : ${items}">
+                    <td th:text="${item.email}"></td>
+                    <td th:text="${item.userName}"></td>
+                    <td th:text="${item.regDt}"></td>
+                </tr>
+            </tbody>
         </table>
     </body>
 </html>
