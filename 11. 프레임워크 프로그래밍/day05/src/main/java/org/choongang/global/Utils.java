@@ -15,10 +15,14 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class Utils {
+public class Utils { // 빈의 이름 - utils
 
     private final MessageSource messageSource;
     private final HttpServletRequest request;
+
+    public String toUpper(String str) {
+        return str.toUpperCase();
+    }
 
     public Map<String, List<String>> getErrorMessages(Errors errors) {
         // FieldErrors

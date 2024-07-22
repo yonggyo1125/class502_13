@@ -26,7 +26,7 @@
                         -->
                         <!--<th:block th:if="${s.odd}">홀수</th:block>-->
                     </td>
-                    <td th:text="*{email}"></td>
+                    <td th:text="*{#strings.concat(userName, '(', @utils.toUpper(email), ')')}"></td>
                     <td th:text="*{userName}"></td>
                     <td th:text="*{#temporals.format(regDt, 'yyyy.MM.dd HH:mm')}"></td>
                 </tr>
@@ -41,5 +41,12 @@
         </table>
         <h1 th:if="true">항상 노출</h1>
         <h1 th:if="false">항상 미노출</h1>
+
+        <div th:text="${#numbers.formatInteger(1000000000, 3, 'COMMA')}"></div>
+
+        <div th:each="num : ${#numbers.sequence(1, 10, 2)}">
+            <div th:text="${num}"></div>
+        </div>
+        <div th:text="${@utils.toUpper('abc')}"></div>
     </body>
 </html>
