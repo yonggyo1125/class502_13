@@ -3,7 +3,10 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>
         <meta charset="UTF-8">
+        <title th:if="${pageTitle != null}" th:text="${pageTitle}"></title>
         <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+        <th:block layout:fragment="addCss"></th:block>
 
         <th:block th:if="${addCss != null}">
             <link rel="stylesheet" type="text/css" th:each="cssFile : ${addCss}"
@@ -12,6 +15,9 @@
 
 
         <script th:src="@{/js/common.js}"></script>
+
+        <th:block layout:fragment="addScript"></th:block>
+
         <th:block th:if="${addScript != null}">
             <script th:each="jsFile : ${addScript}"
                     th:src="@{/js/{file}.js(file=${jsFile})}"></script>
@@ -23,5 +29,6 @@
         <main layout:fragment="content"></main>
 
         <footer th:replace="~{outlines/footer::common}"></footer>
+        <iframe name="ifrmProcess" class="dn"></iframe>
     </body>
 </html>

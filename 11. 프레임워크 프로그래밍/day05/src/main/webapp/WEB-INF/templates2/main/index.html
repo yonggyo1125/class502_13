@@ -3,6 +3,14 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layouts/main}">
 
+    <th:block layout:fragment="addCss">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/main/style.css}">
+    </th:block>
+
+    <th:block layout:fragment="addScript">
+        <script th:src="@{/js/main/common.js}"></script>
+    </th:block>
+
     <main layout:fragment="content">
         <h1>내용 영역....</h1>
     </main>
