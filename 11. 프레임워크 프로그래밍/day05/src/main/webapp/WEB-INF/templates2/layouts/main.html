@@ -4,6 +4,13 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+        <th:block th:if="${addCss != null}">
+            <link rel="stylesheet" type="text/css" th:each="cssFile : ${addCss}"
+                  th:href="@{/css/{file}.css(file=${cssFile})}">
+        </th:block>
+
+
         <script th:src="@{/js/common.js}"></script>
     </head>
     <body>
