@@ -28,7 +28,7 @@
                     </td>
                     <td th:text="*{email}"></td>
                     <td th:text="*{userName}"></td>
-                    <td th:text="*{regDt}"></td>
+                    <td th:text="*{#temporals.format(regDt, 'yyyy.MM.dd HH:mm')}"></td>
                 </tr>
                 <!--
                 <tr th:each="item : ${items}" th:object="${item}" >
