@@ -33,6 +33,7 @@ public class Ex02 {
         }
 
         em.flush(); // DB 영구 반영
+        em.clear(); // 영속 상태 엔티티 모두 비우기
     }
 
     @Test
@@ -46,5 +47,12 @@ public class Ex02 {
         System.out.println(member == member2);
         System.out.println("member:" + System.identityHashCode(member));
         System.out.println("member2:" + System.identityHashCode(member2));
+
+        member.setUserName("(수정)사용자1");
+
+        //em.flush(); // UPDATE 쿼리 수행
+        // 값 변경후, 삭제 상태 변경 후 해당 데이터를 조회 -> 암묵적으로 flush()
+        Member member3 = em.find(Member.class, 1L);
+        System.out.println(member3);
     }
 }
