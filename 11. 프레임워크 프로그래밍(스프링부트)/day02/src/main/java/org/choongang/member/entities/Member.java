@@ -1,15 +1,20 @@
 package org.choongang.member.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+//@Table(name="CH_MEMBER")
+/*
+@Table(indexes = {
+        @Index(name="idx_created_at_desc", columnList = "createdAt DESC"),
+        @Index(name="uq_email_passsword", columnList = "email, password", unique = true)
+})*/
 public class Member {
-    @Id
+    @Id @GeneratedValue
     private Long seq;
     private String email;
     private String password;
