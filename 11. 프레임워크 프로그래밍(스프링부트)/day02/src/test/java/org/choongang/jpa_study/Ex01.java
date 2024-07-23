@@ -2,6 +2,7 @@ package org.choongang.jpa_study;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
 import org.choongang.member.entities.Member;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class Ex01 {
     void test1() {
         EntityManager em = emf.createEntityManager();
 
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin(); // Transaction 시작
         Member member = new Member();
         member.setSeq(1L);
         member.setEmail("user01@test.org");
@@ -31,5 +35,7 @@ public class Ex01 {
         em.persist(member);
 
         em.flush();
+
+        tx.commit();
     }
 }
