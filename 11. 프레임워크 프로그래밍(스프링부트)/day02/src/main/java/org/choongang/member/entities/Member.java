@@ -2,6 +2,7 @@ package org.choongang.member.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.choongang.member.constants.Authority;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -22,8 +23,12 @@ public class Member {
     private String password;
     private String userName;
 
-    @Lob
+   // @Lob
+    @Transient
     private String introduction;
+
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
