@@ -13,10 +13,11 @@ spring:
   # JPA 설정
   jpa:
     properties:
-      show_sql: true # 실행하는 SQL을 콘솔에 출력
-      format_sql: true # 실행되는 SQL의 들여쓰기 및 줄 개행
-      use_sql_comments: true
-      #dialect: org.hibernate.dialect.OracleDialect
+      hibernate:
+        show_sql: true # 실행하는 SQL을 콘솔에 출력
+        format_sql: true # 실행되는 SQL의 들여쓰기 및 줄 개행
+        use_sql_comments: true
+        #dialect: org.hibernate.dialect.OracleDialect
     hibernate:
       ddlAuto: create
 
@@ -26,6 +27,4 @@ logging:
   level:
     org:
       hibernate:
-        type:
-          descriptor:
-            sql: trace
+        type: trace
