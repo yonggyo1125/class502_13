@@ -26,4 +26,6 @@ logging:
   level:
     org:
       hibernate:
-        type: trace
+        type:
+          descriptor:
+            sql: trace
