@@ -37,6 +37,14 @@ public class Ex02 {
 
     @Test
     void test1() {
+        Member member = em.find(Member.class, 1L);
+        System.out.println(member);
 
+        Member member2 = em.find(Member.class, 1L);
+        System.out.println(member2);
+
+        System.out.println(member == member2);
+        System.out.println("member:" + System.identityHashCode(member));
+        System.out.println("member2:" + System.identityHashCode(member2));
     }
 }
