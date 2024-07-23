@@ -1,0 +1,19 @@
+server:
+  port: 3000
+
+
+spring:
+  # 데이터베이스 설정
+  datasource:
+    driverClassName: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: ${db.username}
+    password: ${db.password}
+
+  # JPA 설정
+  jpa:
+    properties:
+      show_sql: true # 실행하는 SQL을 콘솔에 출력
+      format_sql: true # 실행되는 SQL의 들여쓰기 및 줄 개행
+      use_sql_comments: true
+      #dialect: org.hibernate.dialect.OracleDialect
