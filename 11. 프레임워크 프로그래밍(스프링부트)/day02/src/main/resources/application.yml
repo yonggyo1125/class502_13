@@ -25,6 +25,5 @@ spring:
 # 로거 설정
 logging:
   level:
-    org:
-      hibernate:
-        type: trace
+    org.hibernate.type: trace
+    org.hibernate.orm.jdbc.bind: trace
