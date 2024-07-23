@@ -19,7 +19,7 @@ spring:
         use_sql_comments: true
         #dialect: org.hibernate.dialect.OracleDialect
     hibernate:
-      ddlAuto: update
+      ddlAuto: create
 
 
 # 로거 설정
