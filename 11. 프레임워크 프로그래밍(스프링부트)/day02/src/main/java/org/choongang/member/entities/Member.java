@@ -16,15 +16,21 @@ import org.choongang.member.constants.Authority;
 public class Member extends BaseEntity {
     @Id /* @GeneratedValue(strategy = GenerationType.AUTO) */ @GeneratedValue
     private Long seq;
+
+    @Column(length=60, nullable = false, unique = true)
     private String email;
+
+    @Column(length=65, nullable = false)
     private String password;
-    @Column(name="name")
+
+    @Column(length=40, nullable = false, name="name")
     private String userName;
 
    // @Lob
     @Transient
     private String introduction;
 
+    @Column(length=10)
     @Enumerated(EnumType.STRING)
     private Authority authority;
 }
