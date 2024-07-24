@@ -18,6 +18,7 @@ public class Member extends BaseEntity {
     private Long seq;
     private String email;
     private String password;
+    @Column(name="name")
     private String userName;
 
    // @Lob
