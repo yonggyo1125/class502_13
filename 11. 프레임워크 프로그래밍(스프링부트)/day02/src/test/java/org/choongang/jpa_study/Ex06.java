@@ -7,6 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.TestPropertySource;
 
 import java.util.List;
@@ -44,5 +47,21 @@ public class Ex06 {
         List<Member> members = memberRepository.findByEmailContainingAndUserNameContainingOrderByCreatedAtDesc("ser", "용");
 
         members.forEach(System.out::println);
+    }
+
+    @Test
+    void test3() {
+        Pageable pageable = PageRequest.of(1, 3);
+        Page<Member> data = memberRepository.findByEmailContaining("ser", pageable);
+
+        List<Member> items = data.getContent(); // 조회된 데이터
+        long total = data.getTotalElements();
+        System.out.printf("총 갯수 : %d%n", total);
+        items.forEach(System.out::println);
+    }
+
+    @Test
+    void test4() {
+        List<Member> members = memberRepository.getMembers("%ser%", "%용%");
     }
 }
