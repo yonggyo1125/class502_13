@@ -1,16 +1,9 @@
 package org.choongang.member.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 import org.choongang.global.entities.BaseEntity;
 import org.choongang.member.constants.Authority;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity
