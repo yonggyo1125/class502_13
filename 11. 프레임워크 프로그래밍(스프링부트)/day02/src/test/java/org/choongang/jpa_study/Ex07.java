@@ -1,5 +1,7 @@
 package org.choongang.jpa_study;
 
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import org.choongang.member.constants.Authority;
 import org.choongang.member.entities.Member;
 import org.choongang.member.entities.QMember;
@@ -37,7 +39,35 @@ public class Ex07 {
     @Test
     void test1() {
         QMember member = QMember.member;
+        BooleanExpression c1 = member.userName.contains("용");
 
+        List<Member> members = (List<Member>) memberRepository.findAll(c1);
+
+        members.forEach(System.out::println);
     }
 
+    @Test
+    void test2() {
+        String key = "용";
+        QMember member = QMember.member;
+        BooleanBuilder andBuilder = new BooleanBuilder();
+
+        BooleanBuilder orBuilder = new BooleanBuilder();
+        orBuilder.or(member.email.contains(key))
+                .or(member.userName.contains(key));
+
+        andBuilder.and(orBuilder);
+
+        List<Member> members = (List<Member>) memberRepository.findAll(andBuilder);
+        members.forEach(System.out::println);
+    }
+
+    @Test
+    void test3() {
+        QMember member = QMember.member;
+        BooleanExpression c1 = member.email.concat(member.userName).contains("용");
+
+        List<Member> members = (List<Member>)memberRepository.findAll(c1);
+        members.forEach(System.out::println);
+    }
 }
