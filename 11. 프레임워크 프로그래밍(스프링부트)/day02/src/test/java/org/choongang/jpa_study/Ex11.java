@@ -10,15 +10,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
 @SpringBootTest
-@ActiveProfiles("test")
-@Transactional
+//@ActiveProfiles("test")
+//@Transactional
 public class Ex11 {
 
     @Autowired
@@ -47,7 +45,12 @@ public class Ex11 {
                         .build()).toList();
         boardDataRepository.saveAllAndFlush(items);
 
-        em.clear();
+        //em.clear();
+    }
+
+    @Test
+    void test0() {
+
     }
 
     @Test
