@@ -1,7 +1,13 @@
 import React from 'react';
 
-function Buttons() {
-  return <button>클릭!</button>;
+const Buttons = ({ color, children }) => {
+  //const { color, children} = props;
+
+  const styles = {
+    background: color,
+  };
+
+  return <button style={styles}>{children}</button>;
 }
 
 export default Buttons;
