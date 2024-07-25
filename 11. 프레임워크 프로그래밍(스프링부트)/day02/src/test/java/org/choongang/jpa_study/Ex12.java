@@ -99,8 +99,21 @@ public class Ex12 {
     @Test
     void test5() {
         QBoardData boardData = QBoardData.boardData;
-        JPAQuery<Tuple> query = queryFactory.select(boardData.subject, boardData.content);
+        JPAQuery<Tuple> query = queryFactory.select(boardData.subject, boardData.content)
+                .from(boardData);
         List<Tuple> items = query.fetch();
+        for (Tuple item : items) {
+            String subject = item.get(boardData.subject);
+            String content = item.get(boardData.content);
+            System.out.printf("subject=%s, content=%s%n", subject, content);
+        }
+    }
+
+    @Test
+    void test6() {
+        QBoardData boardData = QBoardData.boardData;
+        JPAQuery<Long> query = queryFactory.select(boardData.seq.sum())
+                .from(boardData);
 
     }
 }
