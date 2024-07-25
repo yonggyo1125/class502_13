@@ -1,5 +1,6 @@
 package org.choongang.jpa_study;
 
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
@@ -29,6 +30,9 @@ public class Ex12 {
 
     @Autowired
     private BoardDataRepository boardDataRepository;
+
+    @Autowired
+    private JPAQueryFactory queryFactory;
 
     @PersistenceContext
     private EntityManager em;
@@ -82,8 +86,8 @@ public class Ex12 {
     void test4() {
         QBoardData boardData = QBoardData.boardData;
 
-        JPAQueryFactory factory = new JPAQueryFactory(em);
-        JPAQuery<BoardData> query = factory
+        //JPAQueryFactory factory = new JPAQueryFactory(em);
+        JPAQuery<BoardData> query = queryFactory
                 .selectFrom(boardData)
                 .leftJoin(boardData.member)
                 .fetchJoin();
@@ -94,6 +98,9 @@ public class Ex12 {
 
     @Test
     void test5() {
+        QBoardData boardData = QBoardData.boardData;
+        JPAQuery<Tuple> query = queryFactory.select(boardData.subject, boardData.content);
+        List<Tuple> items = query.fetch();
 
     }
 }
