@@ -60,6 +60,8 @@ public class Ex11 {
 
     @Test
     void test2() {
-
+        HashTag tag = hashTagRepository.findById("태그2").orElse(null);
+        List<BoardData> items = tag.getItems();
+        items.forEach(System.out::println);
     }
 }
