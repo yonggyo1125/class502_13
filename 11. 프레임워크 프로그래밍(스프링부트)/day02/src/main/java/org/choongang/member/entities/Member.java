@@ -40,7 +40,7 @@ public class Member extends BaseEntity {
     private Authority authority;
 
     @OneToOne
-    @JoinColumn(name="profile_seq")
+    @JoinColumn(name="profileSeq")
     private MemberProfile profile;
 
     @ToString.Exclude // ToString 추가 배제
