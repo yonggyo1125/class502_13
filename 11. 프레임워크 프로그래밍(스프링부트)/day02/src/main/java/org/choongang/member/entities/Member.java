@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.choongang.board.entities.BoardData;
 import org.choongang.global.entities.BaseEntity;
 import org.choongang.member.constants.Authority;
+
+import java.util.List;
 
 @Builder
 @Data
@@ -38,4 +41,7 @@ public class Member extends BaseEntity {
     @Column(length=10)
     @Enumerated(EnumType.STRING)
     private Authority authority;
+
+    @OneToMany(mappedBy = "member")
+    private List<BoardData> items;
 }
