@@ -17,6 +17,7 @@ public class BoardData extends BaseEntity {
     private Long seq;
 
     @ManyToOne // member_seq - 엔티티명_기본키 속성명
+    @JoinColumn(name="mSeq")
     private Member member;
 
     @Column(nullable = false)
