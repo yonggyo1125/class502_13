@@ -7,14 +7,18 @@ import org.choongang.board.entities.HashTag;
 import org.choongang.board.repositories.BoardDataRepository;
 import org.choongang.board.repositories.HashTagRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
 @SpringBootTest
-//@Transactional
+@ActiveProfiles("test")
+@Transactional
 public class Ex11 {
 
     @Autowired
@@ -23,8 +27,8 @@ public class Ex11 {
     @Autowired
     private HashTagRepository hashTagRepository;
 
-    @PersistenceContext
-    private EntityManager em;
+   @PersistenceContext
+   private EntityManager em;
 
     @BeforeEach
     void init() {
@@ -41,5 +45,21 @@ public class Ex11 {
                         .content("내용" + i)
                         .tags(tags)
                         .build()).toList();
+        boardDataRepository.saveAllAndFlush(items);
+
+        em.clear();
+    }
+
+    @Test
+    void test1() {
+        BoardData item = boardDataRepository.findById(1L).orElse(null);
+
+        List<HashTag> tags = item.getTags();
+        tags.forEach(System.out::println);
+    }
+
+    @Test
+    void test2() {
+
     }
 }
