@@ -38,6 +38,8 @@ public class QBoardData extends EntityPathBase<BoardData> {
 
     public final StringPath subject = createString("subject");
 
+    public final ListPath<HashTag, QHashTag> tags = this.<HashTag, QHashTag>createList("tags", HashTag.class, QHashTag.class, PathInits.DIRECT2);
+
     public QBoardData(String variable) {
         this(BoardData.class, forVariable(variable), INITS);
     }
@@ -56,7 +58,7 @@ public class QBoardData extends EntityPathBase<BoardData> {
 
     public QBoardData(Class<? extends BoardData> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.member = inits.isInitialized("member") ? new org.choongang.member.entities.QMember(forProperty("member")) : null;
+        this.member = inits.isInitialized("member") ? new org.choongang.member.entities.QMember(forProperty("member"), inits.get("member")) : null;
     }
 
 }
