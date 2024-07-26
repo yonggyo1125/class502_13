@@ -27,6 +27,7 @@ const JoinForm = () => {
           <input type="text" name="userName" />
         </dd>
       </dl>
+      <button type="button">가입하기</button>
     </form>
   );
 };
