@@ -1,6 +1,8 @@
 import React from 'react';
 
-const JoinForm = () => {
+const JoinForm = (props) => {
+  console.log('pre', Object.getOwnPropertyDescriptors(props));
+  console.log('pre', Object.isFrozen(props));
   return (
     <form autoComplete="off">
       <dl>
@@ -27,7 +29,7 @@ const JoinForm = () => {
           <input type="text" name="userName" />
         </dd>
       </dl>
-      <button type="button">가입하기</button>
+      <button type="submit">가입하기</button>
     </form>
   );
 };

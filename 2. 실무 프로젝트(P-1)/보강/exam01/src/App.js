@@ -1,8 +1,8 @@
 import React from 'react';
-import Counter from './components/Counter2';
+import JoinContainer from './member/containers/JoinContainer';
 
 const App = () => {
-  return <Counter />;
+  return <JoinContainer />;
 };
 
 export default App;
