@@ -38,8 +38,6 @@ public class QBoardData extends EntityPathBase<BoardData> {
 
     public final StringPath subject = createString("subject");
 
-    public final ListPath<HashTag, QHashTag> tags = this.<HashTag, QHashTag>createList("tags", HashTag.class, QHashTag.class, PathInits.DIRECT2);
-
     public QBoardData(String variable) {
         this(BoardData.class, forVariable(variable), INITS);
     }

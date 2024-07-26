@@ -150,7 +150,7 @@ public class Ex12 {
                 .limit(3) // 3개 레코드로 한정 - 갯수 제한
                 .orderBy(
                         new OrderSpecifier(Order.DESC, pathBuilder.get("createdAt")),
-                        new OrderSpecifier(Order.ASC, pathBuilder.get("userName"))
+                        new OrderSpecifier(Order.ASC, pathBuilder.get("subject"))
                 );
                 //.where(boardData.seq.in(2L, 3L, 4L)); // BooleanExpression - Predicate
 
