@@ -127,18 +127,21 @@ public class Ex12 {
         BooleanBuilder andBuilder = new BooleanBuilder();
         andBuilder.and(boardData.subject.contains("제목"))
                 .and(boardData.member.email.eq("user01@test.org"));
-
+        /*
         BooleanBuilder orBuilder = new BooleanBuilder();
         orBuilder.or(boardData.seq.eq(2L))
                 .or(boardData.seq.eq(3L))
                 .or(boardData.seq.eq(4L));
 
         andBuilder.and(orBuilder);
+        */
 
         JPAQuery<BoardData> query = queryFactory.selectFrom(boardData)
                 .leftJoin(boardData.member)
                 .fetchJoin()
-                .where(boardData.seq.in(2L, 3L, 4L)); // BooleanExpression - Predicate
+                .where(andBuilder)
+                .limit(3); // 3개 레코드로 한정 - 갯수 제한
+                //.where(boardData.seq.in(2L, 3L, 4L)); // BooleanExpression - Predicate
 
         List<BoardData> items = query.fetch();
         items.forEach(System.out::println);
