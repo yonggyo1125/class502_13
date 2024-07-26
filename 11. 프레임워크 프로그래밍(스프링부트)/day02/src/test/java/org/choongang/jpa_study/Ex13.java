@@ -61,4 +61,15 @@ public class Ex13 {
         memberRepository.flush();
 
     }
+
+    @Test
+    void test2() {
+        Member member = memberRepository.findById(1L).orElse(null);
+
+        List<BoardData> items = member.getItems();
+        items.remove(0);
+        items.remove(1);
+
+        memberRepository.flush();
+    }
 }
