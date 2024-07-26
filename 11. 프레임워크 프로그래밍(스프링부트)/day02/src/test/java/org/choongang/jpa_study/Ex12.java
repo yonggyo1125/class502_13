@@ -1,5 +1,6 @@
 package org.choongang.jpa_study;
 
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -114,6 +115,35 @@ public class Ex12 {
         QBoardData boardData = QBoardData.boardData;
         JPAQuery<Long> query = queryFactory.select(boardData.seq.sum())
                 .from(boardData);
+        long sum = query.fetchOne();
+        System.out.println(sum);
+
+    }
+
+    @Test
+    void test7() {
+        QBoardData boardData = QBoardData.boardData;
+
+        BooleanBuilder andBuilder = new BooleanBuilder();
+        andBuilder.and(boardData.subject.contains("제목"))
+                .and(boardData.member.email.eq("user01@test.org"));
+
+        BooleanBuilder orBuilder = new BooleanBuilder();
+        orBuilder.or(boardData.seq.eq(2L))
+                .or(boardData.seq.eq(3L))
+                .or(boardData.seq.eq(4L));
+
+        andBuilder.and(orBuilder);
+
+        JPAQuery<BoardData> query = queryFactory.selectFrom(boardData)
+                .leftJoin(boardData.member)
+                .fetchJoin()
+                .where(boardData.seq.in(2L, 3L, 4L)); // BooleanExpression - Predicate
+
+        List<BoardData> items = query.fetch();
+        items.forEach(System.out::println);
+
+
 
     }
 }
