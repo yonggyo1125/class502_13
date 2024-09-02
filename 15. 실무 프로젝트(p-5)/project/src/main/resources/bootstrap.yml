@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: member-service
+
+  cloud:
+    config:
+      uri: http://localhost:3100
