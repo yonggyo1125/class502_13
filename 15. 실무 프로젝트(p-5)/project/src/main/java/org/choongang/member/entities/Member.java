@@ -11,4 +11,5 @@ public class Member {
     @JsonIgnore
     private String password;
     private String userName;
+    private String mobile;
 }
