@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import Greeting from './components/Greeting';
 
 const Counter = () => {
   const num = 10;
@@ -6,8 +7,9 @@ const Counter = () => {
 
   return (
     <>
+      <Greeting name="김이름" />
       {/* 주석.... */}
-      <h1 style={{ backgroundColor: "skyblue", color: "blue" }}>{num}</h1>
+      <h1 style={{ backgroundColor: 'skyblue', color: 'blue' }}>{num}</h1>
       <button
         type="button" // 주석
       >
