@@ -1,15 +1,16 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 const Counter = () => {
   const [num, setNum] = useState(0);
 
-  let num2 = 1;
+  let num2 = useRef(1);
 
-  const onIncrease = () => {
+  const onIncrease = (e) => {
+    console.log(e);
     setNum(num + 1);
-    num2++;
-    console.log('num2', num2);
+    num2.current++;
+    console.log('num2', num2.current);
   };
 
   const onDecrease = () => setNum(num - 1);
