@@ -10,6 +10,7 @@ const TodoContainer = () => {
     { id: 2, title: '할일2', done: false },
     { id: 3, title: '할일3', done: false },
   ]);
+  const [form, setForm] = useState({});
 
   const onToggle = (id) => {
     /*
@@ -44,7 +45,7 @@ const TodoContainer = () => {
   return (
     <>
       <TodoForm />
-      <TodoList items={items} onToggle={onToggle} />
+      <TodoList items={items} onToggle={onToggle} onRemove={onRemove} />
     </>
   );
 };
