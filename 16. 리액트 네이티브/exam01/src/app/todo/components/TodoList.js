@@ -1,11 +1,17 @@
 import React from 'react';
+import { FaCheckSquare, FaRegCheckSquare } from 'react-icons/fa';
 
-const TodoList = ({ items }) => {
+const TodoList = ({ items, onToggle }) => {
   return (
     <ul>
       {items &&
         items.length > 0 &&
-        items.map((item) => <li key={item.id}>{item.title}</li>)}
+        items.map(({ id, title, done }) => (
+          <li key={id} onClick={onToggle}>
+            {done ? <FaCheckSquare /> : <FaRegCheckSquare />}
+            {title}
+          </li>
+        ))}
     </ul>
   );
 };
