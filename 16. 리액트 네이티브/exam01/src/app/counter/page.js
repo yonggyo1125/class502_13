@@ -1,22 +1,26 @@
-import React from 'react';
-import Greeting from './components/Greeting';
+'use client';
+import React, { useState } from 'react';
 
 const Counter = () => {
-  const num = 10;
-  const visible = false;
+  const [num, setNum] = useState(0);
+
+  let num2 = 1;
+
+  const onIncrease = () => {
+    setNum(num + 1);
+    num2++;
+    console.log("num2", num2);
+  }
 
   return (
     <>
-      <Greeting name="김이름" age={40} />
-      {/* 주석.... */}
-      <h1 style={{ backgroundColor: 'skyblue', color: 'blue' }}>{num}</h1>
-      <button
-        type="button" // 주석
-      >
+      <h1>{num}</h1>
+      <button type="button" onClick={() => setNum(num - 1)}>
         -1
       </button>
-      <button type="button">+1</button>
-      {visible && <h1>보일까?</h1>}
+      <button type="button" onClick={() => setNum(num + 1)}>
+        +1
+      </button>
     </>
   );
 };
