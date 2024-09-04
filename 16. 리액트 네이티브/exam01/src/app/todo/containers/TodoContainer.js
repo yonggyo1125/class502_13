@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import { produce } from 'immer';
 import TodoForm from '../components/TodoForm';
 import TodoList from '../components/TodoList';
 
@@ -11,10 +12,28 @@ const TodoContainer = () => {
   ]);
 
   const onToggle = (id) => {
+    /*
     const newItems = items.map((item) =>
       id === item.id ? { ...item, done: !item.done } : item,
     );
     setItems(newItems);
+    */
+    /*
+    setItems((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, done: !item.done } : item,
+      ),
+    );
+    */
+    setItems(
+      produce((draft) => {
+        draft
+          .filter((item) => item.id === id)
+          .forEach((item) => {
+            item.done = !item.done;
+          });
+      }),
+    );
   };
 
   return (
