@@ -36,6 +36,11 @@ const TodoContainer = () => {
     );
   };
 
+  const onRemove = (id) => {
+    // filter 메서드
+    setItems((items) => items.filter((item) => item.id !== id));
+  };
+
   return (
     <>
       <TodoForm />

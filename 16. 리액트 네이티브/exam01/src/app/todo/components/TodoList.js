@@ -1,7 +1,8 @@
 import React from 'react';
 import { FaCheckSquare, FaRegCheckSquare } from 'react-icons/fa';
+import { CiSquareRemove } from 'react-icons/ci';
 
-const TodoList = ({ items, onToggle }) => {
+const TodoList = ({ items, onToggle, onRemove }) => {
   return (
     <ul>
       {items &&
@@ -10,6 +11,7 @@ const TodoList = ({ items, onToggle }) => {
           <li key={id} onClick={() => onToggle(id)}>
             {done ? <FaCheckSquare /> : <FaRegCheckSquare />}
             {title}
+            <CiSquareRemove onClick={() => onRemove(id)} />
           </li>
         ))}
     </ul>
