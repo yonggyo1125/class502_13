@@ -10,14 +10,17 @@ const TodoContainer = () => {
     { id: 3, title: '할일3', done: false },
   ]);
 
-  const onToggle = () => {
-
+  const onToggle = (id) => {
+    const newItems = items.map((item) =>
+      id === item.id ? { ...item, done: !item.done } : item,
+    );
+    setItems(newItems);
   };
 
   return (
     <>
       <TodoForm />
-      <TodoList items={items} />
+      <TodoList items={items} onToggle={onToggle} />
     </>
   );
 };
