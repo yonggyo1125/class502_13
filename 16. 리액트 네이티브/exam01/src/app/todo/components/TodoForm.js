@@ -1,13 +1,19 @@
 import React from 'react';
 import { IoMdRadioButtonOff, IoMdRadioButtonOn } from 'react-icons/io';
 
-const TodoForm = () => {
+const TodoForm = ({ onSubmit }) => {
   return (
-    <form autoComplete="off">
+    <form autoComplete="off" onSubmit={onSubmit}>
       <dl>
         <dt>할일</dt>
         <dd>
-          <input type="text" />
+          <input type="text" onChange={onChange} />
+        </dd>
+      </dl>
+      <dl>
+        <dt>내용</dt>
+        <dd>
+          <textarea></textarea>
         </dd>
       </dl>
       <dl>
@@ -23,6 +29,7 @@ const TodoForm = () => {
           </span>
         </dd>
       </dl>
+      <button type="submit">할일 등록</button>
     </form>
   );
 };
