@@ -53,14 +53,31 @@ const TodoContainer = () => {
     setForm((form) => ({ ...form, [name]: value }));
   };
 
+  const onClick = (done) => {
+    setForm((form) => ({ ...form, done }));
+  };
+
   const onSubmit = (e) => {
     e.preventDefault(); // 양식 기본 동작 차단
-    console.log('form', form);
+
+    // 검증
+
+    // 일정 등록 처리
+    const nextId = items ? Math.max(items.map((item) => item.id)) + 1 : 1;
+    setItems((items) => items.concat({ ...form, id: nextId }));
+
+    // 양식 초기화
+    setForm({});
   };
 
   return (
     <>
-      <TodoForm onSubmit={onSubmit} onChange={onChange} form={form} />
+      <TodoForm
+        onSubmit={onSubmit}
+        onChange={onChange}
+        onClick={onClick}
+        form={form}
+      />
       <TodoList items={items} onToggle={onToggle} onRemove={onRemove} />
     </>
   );
