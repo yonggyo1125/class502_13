@@ -65,7 +65,7 @@ const TodoContainer = () => {
     // 검증
 
     // 일정 등록 처리
-    const nextId = items ? Math.max(items.map((item) => item.id)) + 1 : 1;
+    const nextId = items ? Math.max(...items.map((item) => item.id)) + 1 : 1;
     setItems((items) => items.concat({ ...form, id: nextId }));
 
     // 양식 초기화
