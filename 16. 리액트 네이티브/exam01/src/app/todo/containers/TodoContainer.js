@@ -42,13 +42,25 @@ const TodoContainer = () => {
     setItems((items) => items.filter((item) => item.id !== id));
   };
 
+  const onChange = (e) => {
+    /**
+     * e.target
+     * //e.currentTarget
+     */
+
+    const name = e.target.name;
+    const value = e.target.value;
+    setForm((form) => ({ ...form, [name]: value }));
+  };
+
   const onSubmit = (e) => {
     e.preventDefault(); // 양식 기본 동작 차단
+    console.log('form', form);
   };
 
   return (
     <>
-      <TodoForm onSubmit={onSubmit} />
+      <TodoForm onSubmit={onSubmit} onChange={onChange} />
       <TodoList items={items} onToggle={onToggle} onRemove={onRemove} />
     </>
   );
