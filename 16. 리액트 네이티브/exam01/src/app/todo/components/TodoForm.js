@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoMdRadioButtonOff, IoMdRadioButtonOn } from 'react-icons/io';
 
-const TodoForm = ({ onSubmit, onChange, onClick, form }) => {
+const TodoForm = ({ onSubmit, onChange, onClick, form, titleRef }) => {
   return (
     <form autoComplete="off" onSubmit={onSubmit}>
       <dl>
@@ -12,6 +12,7 @@ const TodoForm = ({ onSubmit, onChange, onClick, form }) => {
             name="title"
             value={form?.title ?? ''}
             onChange={onChange}
+            ref={titleRef}
           />
         </dd>
       </dl>

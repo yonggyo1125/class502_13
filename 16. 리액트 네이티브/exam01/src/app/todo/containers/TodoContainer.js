@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { produce } from 'immer';
 import TodoForm from '../components/TodoForm';
 import TodoList from '../components/TodoList';
@@ -11,6 +11,8 @@ const TodoContainer = () => {
     { id: 3, title: '할일3', content: '내용3', done: false },
   ]);
   const [form, setForm] = useState({});
+
+  const titleRef = useRef();
 
   const onToggle = (id) => {
     /*
@@ -77,6 +79,7 @@ const TodoContainer = () => {
         onChange={onChange}
         onClick={onClick}
         form={form}
+        titleRef={titleRef}
       />
       <TodoList items={items} onToggle={onToggle} onRemove={onRemove} />
     </>
