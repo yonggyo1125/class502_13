@@ -60,7 +60,7 @@ const TodoContainer = () => {
 
   return (
     <>
-      <TodoForm onSubmit={onSubmit} onChange={onChange} />
+      <TodoForm onSubmit={onSubmit} onChange={onChange} form={form} />
       <TodoList items={items} onToggle={onToggle} onRemove={onRemove} />
     </>
   );

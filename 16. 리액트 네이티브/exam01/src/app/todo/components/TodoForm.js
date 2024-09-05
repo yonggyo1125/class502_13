@@ -1,19 +1,26 @@
 import React from 'react';
 import { IoMdRadioButtonOff, IoMdRadioButtonOn } from 'react-icons/io';
 
-const TodoForm = ({ onSubmit, onChange }) => {
+const TodoForm = ({ onSubmit, onChange, form }) => {
   return (
     <form autoComplete="off" onSubmit={onSubmit}>
       <dl>
         <dt>할일</dt>
         <dd>
-          <input type="text" name="title" onChange={onChange} />
+          <input
+            type="text"
+            name="title"
+            value={form?.title ?? ''}
+            onChange={onChange}
+          />
         </dd>
       </dl>
       <dl>
         <dt>내용</dt>
         <dd>
-          <textarea name="content" onChange={onChange}></textarea>
+          <textarea name="content" onChange={onChange}>
+            {form?.content ?? ''}
+          </textarea>
         </dd>
       </dl>
       <dl>
