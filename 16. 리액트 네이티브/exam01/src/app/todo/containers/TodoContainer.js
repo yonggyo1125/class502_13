@@ -99,6 +99,7 @@ const TodoContainer = () => {
         onClick={onClick}
         form={form}
         titleRef={titleRef}
+        errors={errors}
       />
       <TodoList items={items} onToggle={onToggle} onRemove={onRemove} />
     </>
