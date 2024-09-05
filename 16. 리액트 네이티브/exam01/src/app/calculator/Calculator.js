@@ -10,9 +10,18 @@ function getAverage(nums) {
 
 const Calculator = () => {
   const [numbers, setNumbers] = useState([]);
+    const [number, setNumber] = useState();
 
   const avg = getAverage(numbers);
 
+  const onSubmit = (e) => {
+
+  };
+
+  const onChange = (e) => {
+    const num = e.target.value;
+    setNumber(num);
+  };
   return (
     <>
       <form autoComplete="off" onSubmit={onSubmit}>
