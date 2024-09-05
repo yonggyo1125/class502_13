@@ -1,15 +1,37 @@
 'use client';
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { produce } from 'immer';
 import TodoForm from '../components/TodoForm';
 import TodoList from '../components/TodoList';
+
+
 
 const TodoContainer = () => {
   const [items, setItems] = useState([]);
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
 
+
+
   const titleRef = useRef();
+
+  /*
+  useEffect(() => {
+    //if (titleRef) {
+    //  titleRef.current.focus();
+    //}
+    console.log('useEffect() 호출');
+
+    return () => {
+      console.log('뒷정리 함수 - 2번째 부터 처음 호출 - 정리 작업 ');
+    };
+  }, [form]);
+  */
+  useEffect(() => {
+    if (titleRef) {
+      titleRef.current.focus();
+    }
+  }, [titleRef]);
 
   const onToggle = useCallback((id) => {
     /*

@@ -1,7 +1,8 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 function getAverage(nums) {
+  console.log('getAverage() 함수 호출!!!');
   if (nums.length === 0) return 0;
 
   const total = nums.reduce((a, b) => a + b);
@@ -12,7 +13,7 @@ const Calculator = () => {
   const [numbers, setNumbers] = useState([]);
   const [number, setNumber] = useState();
 
-  const avg = getAverage(numbers);
+  const avg = useMemo(() => getAverage(numbers), [numbers]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ const Calculator = () => {
 
   const onChange = (e) => {
     const num = e.target.value;
-    setNumber(num);
+    setNumber(Number(num));
   };
   return (
     <>
