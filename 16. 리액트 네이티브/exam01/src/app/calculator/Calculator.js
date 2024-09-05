@@ -34,6 +34,7 @@ const Calculator = () => {
           <li key={i}>{n}</li>
         ))}
       </ul>
+      <div>평균: {avg}</div>
     </>
   );
 };
