@@ -47,4 +47,4 @@ const TodoForm = ({ onSubmit, onChange, onClick, form, titleRef, errors }) => {
   );
 };
 
-export default TodoForm;
+export default React.memo(TodoForm);
