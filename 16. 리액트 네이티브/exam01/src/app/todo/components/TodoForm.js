@@ -18,20 +18,22 @@ const TodoForm = ({ onSubmit, onChange, form }) => {
       <dl>
         <dt>내용</dt>
         <dd>
-          <textarea name="content" onChange={onChange}>
-            {form?.content ?? ''}
-          </textarea>
+          <textarea
+            name="content"
+            onChange={onChange}
+            value={form?.content ?? ''}
+          ></textarea>
         </dd>
       </dl>
       <dl>
         <dt>완료여부</dt>
         <dd>
           <span>
-            <IoMdRadioButtonOff />
+            {form?.done ? <IoMdRadioButtonOn /> : <IoMdRadioButtonOff />}
             완료
           </span>
           <span>
-            <IoMdRadioButtonOff />
+            {form?.done ? <IoMdRadioButtonOff /> : <IoMdRadioButtonOn />}
             미완료
           </span>
         </dd>
