@@ -28,11 +28,11 @@ const TodoForm = ({ onSubmit, onChange, form }) => {
       <dl>
         <dt>완료여부</dt>
         <dd>
-          <span>
+          <span onClick={() => onClick(true)}>
             {form?.done ? <IoMdRadioButtonOn /> : <IoMdRadioButtonOff />}
             완료
           </span>
-          <span>
+          <span onClick={() => onClick(false)}>
             {form?.done ? <IoMdRadioButtonOff /> : <IoMdRadioButtonOn />}
             미완료
           </span>
