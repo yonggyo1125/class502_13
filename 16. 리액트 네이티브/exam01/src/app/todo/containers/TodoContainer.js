@@ -5,12 +5,9 @@ import TodoForm from '../components/TodoForm';
 import TodoList from '../components/TodoList';
 
 const TodoContainer = () => {
-  const [items, setItems] = useState([
-    { id: 1, title: '할일1', content: '내용1', done: true },
-    { id: 2, title: '할일2', content: '내용2', done: false },
-    { id: 3, title: '할일3', content: '내용3', done: false },
-  ]);
+  const [items, setItems] = useState([]);
   const [form, setForm] = useState({});
+  const [errors, setErrors] = useState({});
 
   const titleRef = useRef();
 
@@ -63,6 +60,27 @@ const TodoContainer = () => {
     e.preventDefault(); // 양식 기본 동작 차단
 
     // 검증
+    const _errors = {};
+    let hasErrors = false;
+
+    const requiredFields = {
+      title: '제목을 입력하세요.',
+      content: '내용을 입력하세요.',
+    };
+
+    for (const [field, message] of Object.entries(requiredFields)) {
+      if (!form[field] || !form[field].trim()) {
+        _errors[field] = _errors[field] ?? [];
+        _errors[field].push(message);
+        hasErrors = true;
+      }
+    }
+
+    setErrors(_errors);
+    if (hasErrors) {
+      // 검증 실패
+      return;
+    }
 
     // 일정 등록 처리
     const nextId = items ? Math.max(...items.map((item) => item.id)) + 1 : 1;

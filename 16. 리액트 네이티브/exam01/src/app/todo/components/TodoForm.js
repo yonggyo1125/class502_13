@@ -1,7 +1,8 @@
 import React from 'react';
 import { IoMdRadioButtonOff, IoMdRadioButtonOn } from 'react-icons/io';
+import MessageBox from '@/app/commons/components/MessageBox';
 
-const TodoForm = ({ onSubmit, onChange, onClick, form, titleRef }) => {
+const TodoForm = ({ onSubmit, onChange, onClick, form, titleRef, errors }) => {
   return (
     <form autoComplete="off" onSubmit={onSubmit}>
       <dl>
@@ -14,6 +15,7 @@ const TodoForm = ({ onSubmit, onChange, onClick, form, titleRef }) => {
             onChange={onChange}
             ref={titleRef}
           />
+          {errors?.title && <MessageBox>{errors.title}</MessageBox>}
         </dd>
       </dl>
       <dl>
@@ -24,6 +26,7 @@ const TodoForm = ({ onSubmit, onChange, onClick, form, titleRef }) => {
             onChange={onChange}
             value={form?.content ?? ''}
           ></textarea>
+          {errors?.content && <MessageBox>{errors.content}</MessageBox>}
         </dd>
       </dl>
       <dl>
