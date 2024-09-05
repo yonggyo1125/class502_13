@@ -70,6 +70,7 @@ const TodoContainer = () => {
 
     // 양식 초기화
     setForm({});
+    titleRef.current.focus();
   };
 
   return (
