@@ -3,10 +3,10 @@ import { FaCheckSquare, FaRegCheckSquare } from 'react-icons/fa';
 import { CiSquareRemove } from 'react-icons/ci';
 import styled from 'styled-components';
 
-const ItemBox = ({ item, onToggle, onRemove }) => {
+const ItemBox = ({ item, onToggle, onRemove, className }) => {
   const { id, title, content, done } = item;
   return (
-    <li key={id} onClick={() => onToggle(id)}>
+    <li key={id} onClick={() => onToggle(id)} className={className}>
       <div>
         {done ? <FaCheckSquare /> : <FaRegCheckSquare />}
         {title}
@@ -32,7 +32,7 @@ const TodoList = ({ items, onToggle, onRemove }) => {
       {items &&
         items.length > 0 &&
         items.map((item) => (
-          <ItemBox
+          <StyledItemBox
             key={item.id}
             item={item}
             onToggle={onToggle}
