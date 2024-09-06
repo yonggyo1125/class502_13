@@ -3,6 +3,25 @@ import { IoMdRadioButtonOff, IoMdRadioButtonOn } from 'react-icons/io';
 import classNames from 'classnames/bind';
 import MessageBox from '@/app/commons/components/MessageBox';
 import styles from '../todo.module.scss';
+import styled, { css } from 'styled-components';
+
+const commonStyle = css`
+  border: 0;
+  height: 45px;
+  padding: 0 35px;
+  color: #fff;
+`;
+
+const ButtonBox = styled.button`
+  background: ${({ color }) => color ?? 'blue'};
+  font-size: 1.3rem;
+  ${commonStyle}
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width};
+    `}
+`;
 
 const cx = classNames.bind(styles);
 
@@ -51,7 +70,9 @@ const TodoForm = ({ onSubmit, onChange, onClick, form, titleRef, errors }) => {
           </span>
         </dd>
       </dl>
-      <button type="submit">할일 등록</button>
+      <ButtonBox type="submit" color="black" width="300px">
+        할일 등록
+      </ButtonBox>
     </form>
   );
 };
