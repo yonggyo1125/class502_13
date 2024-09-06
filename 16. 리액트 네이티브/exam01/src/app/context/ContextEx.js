@@ -1,8 +1,13 @@
+'use client';
 import UserContext from './UserContext';
-console.log(UserContext);
+import ContextEx2 from './ContextEx2';
 
 const ContextEx = () => {
-  return <></>;
+  return (
+    <UserContext.Provider value={{ color: 'red' }}>
+      <ContextEx2 />
+    </UserContext.Provider>
+  );
 };
 
 export default ContextEx;
