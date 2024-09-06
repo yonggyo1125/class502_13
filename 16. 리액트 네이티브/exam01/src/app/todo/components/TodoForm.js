@@ -1,12 +1,21 @@
 import React from 'react';
 import { IoMdRadioButtonOff, IoMdRadioButtonOn } from 'react-icons/io';
+import classNames from 'classnames/bind';
 import MessageBox from '@/app/commons/components/MessageBox';
+import styles from '../todo.module.scss';
+
+const cx = classNames.bind(styles);
 
 const TodoForm = ({ onSubmit, onChange, onClick, form, titleRef, errors }) => {
+  const active = true;
   return (
     <form autoComplete="off" onSubmit={onSubmit}>
-      <dl>
-        <dt>할일</dt>
+      <button type="button" className={cx({ on: active })}>
+        클릭!
+      </button>
+
+      <dl className={styles.item}>
+        <dt className="tit">할일</dt>
         <dd>
           <input
             type="text"

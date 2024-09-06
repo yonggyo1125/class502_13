@@ -1,0 +1,19 @@
+$primaryColor: #000;
+
+form {
+    border: 1px solid $primaryColor;
+    width: 500px;
+    padding: 20px;
+
+    dl {
+        display: flex;
+    }
+
+    dl + dl {
+        border-top: 1px dashed #000;
+    }
+
+    &:hover {
+        border-color: blue;
+    }
+}

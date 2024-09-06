@@ -1,0 +1,14 @@
+.item {
+    display: flex;
+    dt {
+        width: 100px;
+    }
+
+    dd {
+        flex-grow: 1;
+    }
+}
+
+.on {
+    background: blue;
+}
