@@ -2,13 +2,10 @@
 import React, { useContext } from 'react';
 import UserContext from './UserContext';
 
-
 const ContextEx2 = () => {
-  return (
-    <UserContext.Consumer>
-      {(value) => <div>{value.color}</div>}
-    </UserContext.Consumer>
-  );
+  const value = useContext(UserContext);
+  
+  return <div>{value.color}</div>;
 };
 
 export default ContextEx2;
