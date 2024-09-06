@@ -1,12 +1,12 @@
 'use client';
-import UserContext from './UserContext';
 import ContextEx2 from './ContextEx2';
+import { UserProvider } from './UserContext';
 
 const ContextEx = () => {
   return (
-    <UserContext.Provider value={{ color: 'red' }}>
+    <UserProvider>
       <ContextEx2 />
-    </UserContext.Provider>
+    </UserProvider>
   );
 };
 
